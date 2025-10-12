@@ -12,3 +12,9 @@ Front-End of a Cafe Website
   ```shell
   npx vite
   ```
+
+You can learn more from this video:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=vj8KSZjPTUU" target="_blank">
+ <img src="https://i.ytimg.com/vi/vj8KSZjPTUU/maxresdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
+</a>
