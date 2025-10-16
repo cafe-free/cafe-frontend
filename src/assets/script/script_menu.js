@@ -1,291 +1,739 @@
+// Full script including PRODUCTS (unchanged data)
+// Paste your original PRODUCTS array here exactly as you provided.
+// For brevity in this block I'll include the whole PRODUCTS array exactly as in your previous parts.
 
-/* ===========================
-   Data (replace with real product feed)
-   =========================== */
 const PRODUCTS = [
-  { id:101, category:'food', title:'Avocado Toast', price:7.20, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg01.png', desc:'Smashed avocado, lemon, chilli, olive oil on toasted sourdough.', tags:['vegan','bestseller'], ingredients:'Avocado, sourdough, lemon, olive oil', allergens:'Gluten', cal:'420 kcal', sizes:[{label:'Regular',price:7.2},{label:'Double',price:9.5}]},
-  { id:102, category:'food', title:'Seasonal Scone', price:4.50, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg02.png', desc:'Buttery scone served with house jam.', tags:['bakery'], ingredients:'Flour, butter, sugar, eggs', allergens:'Dairy, Gluten, Eggs', cal:'350 kcal', sizes:[{label:'Single',price:4.5},{label:'Box 3',price:12.0}]},
-  { id:103, category:'food', title:'Quiche Lorraine', price:6.90, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg03.png', desc:'Classic quiche with smoky bacon and gruyere.', tags:['classic'], ingredients:'Egg, cream, bacon, cheese', allergens:'Eggs, Dairy, Gluten', cal:'520 kcal', sizes:[{label:'Slice',price:6.9}]},
-  { id:201, category:'drink', title:'Espresso', price:2.80, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg01.png', desc:'Rich single-origin espresso.', tags:['hot','espresso'], ingredients:'Coffee', allergens:'—', cal:'5 kcal', sizes:[{label:'Single',price:2.8},{label:'Double',price:3.6}]},
-  { id:202, category:'drink', title:'Cappuccino', price:3.80, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg02.png', desc:'Steamed milk and velvety foam over espresso.', tags:['hot','milk'], ingredients:'Espresso, milk', allergens:'Dairy', cal:'150 kcal', sizes:[{label:'Regular',price:3.8},{label:'Large',price:4.5}]},
-  { id:203, category:'drink', title:'Iced Latte', price:4.20, img:'./src/assets/images/PickUp01.png', hero:'./src/assets/images/TopImg03.png', desc:'Chilled milk and espresso over ice.', tags:['cold'], ingredients:'Espresso, milk, ice', allergens:'Dairy', cal:'160 kcal', sizes:[{label:'Regular',price:4.2}]}
+  // Part 1 Food
+  // 1. bread of the food
+  {
+    id: 101,
+    category: 'food',
+    sub: 'bread',
+    title: 'Bread Oil',
+    price: 7.20,
+    img: './src/assets/images/menu/bread/Bread_BreadOil.png',
+    desc: 'Sourdough drizzled with extra virgin olive oil and herbs.',
+    tags: ['vegan', 'bestseller'],
+    cal: '420 kcal'
+  },
+  {
+    id: 102,
+    category: 'food',
+    sub: 'bread',
+    title: 'Calzones',
+    price: 4.50,
+    img: './src/assets/images/menu/bread/Bread_Calzones.png',
+    desc: 'Golden folded calzone stuffed with savory fillings.',
+    tags: ['bakery'],
+    cal: '350 kcal'
+  },
+  {
+    id: 103,
+    category: 'food',
+    sub: 'bread',
+    title: 'Cinnamon Roll',
+    price: 6.90,
+    img: './src/assets/images/menu/bread/Bread_CinnamonRoll.png',
+    desc: 'Warm cinnamon roll topped with sweet glaze.',
+    tags: ['classic'],
+    cal: '520 kcal'
+  },
+  {
+    id: 104,
+    category: 'food',
+    sub: 'bread',
+    title: 'Pumpkin Bread',
+    price: 2.80,
+    img: './src/assets/images/menu/bread/Bread_PumpkinBread.png',
+    desc: 'Moist pumpkin loaf spiced with autumn flavours.',
+    tags: ['seasonal', 'bakery'],
+    cal: '310 kcal'
+  },
+  {
+    id: 201,
+    category: 'food',
+    sub: 'bread',
+    title: 'Monkey Bread',
+    price: 7.20,
+    img: './src/assets/images/menu/bread/Bread_MonkeyBread.png',
+    desc: 'Pull-apart sweet monkey bread with cinnamon sugar.',
+    tags: ['bestseller'],
+    cal: '420 kcal'
+  },
+  {
+    id: 202,
+    category: 'food',
+    sub: 'bread',
+    title: 'Fruit Bread',
+    price: 4.50,
+    img: './src/assets/images/menu/bread/Bread_FruitBread.png',
+    desc: 'Loaf studded with mixed dried fruits and citrus zest.',
+    tags: ['bakery'],
+    cal: '350 kcal'
+  },
+  {
+    id: 203,
+    category: 'food',
+    sub: 'bread',
+    title: 'Fougasse',
+    price: 6.90,
+    img: './src/assets/images/menu/bread/Bread_Fougasse.png',
+    desc: 'Rustic fougasse with olive oil and aromatic herbs.',
+    tags: ['classic'],
+    cal: '290 kcal'
+  },
+
+  // 2. sandwich of Food
+  {
+    id: 301,
+    category: 'food',
+    sub: 'sandwich',
+    title: 'Ham Sandwich',
+    price: 7.20,
+    img: './src/assets/images/menu/bread/Bread_HamSandwich.png',
+    desc: 'Classic ham sandwich on freshly baked bread.',
+    tags: ['classic'],
+    cal: '420 kcal'
+  },
+  {
+    id: 302,
+    category: 'food',
+    sub: 'sandwich',
+    title: 'Turkey Club Sandwich',
+    price: 4.50,
+    img: './src/assets/images/menu/bread/Bread_TurkeyClubSandwich.png',
+    desc: 'Triple-decker turkey club with crisp lettuce and tomato.',
+    tags: ['popular'],
+    cal: '350 kcal'
+  },
+  {
+    id: 303,
+    category: 'food',
+    sub: 'sandwich',
+    title: 'Burritos',
+    price: 6.90,
+    img: './src/assets/images/menu/bread/Bread_Burritos.png',
+    desc: 'Hearty burrito rolled with savory fillings and salsa.',
+    tags: ['wrap'],
+    cal: '520 kcal'
+  },
+  {
+    id: 304,
+    category: 'food',
+    sub: 'sandwich',
+    title: 'Sandwich',
+    price: 2.80,
+    img: './src/assets/images/menu/bread/Bread_Sandwich.png',
+    desc: 'Simple sandwich made for a quick, satisfying bite.',
+    tags: ['basic'],
+    cal: '250 kcal'
+  },
+
+  // 3. cookie of Food
+  {
+    id: 401,
+    category: 'food',
+    sub: 'cookie',
+    title: 'Cinnamon Cookies',
+    price: 7.20,
+    img: './src/assets/images/menu/Cookie/Cookie_CinnamonCookies.png',
+    desc: 'Crisp cinnamon cookies dusted with spiced sugar.',
+    tags: ['vegan', 'bestseller'],
+    cal: '200 kcal'
+  },
+  {
+    id: 402,
+    category: 'food',
+    sub: 'cookie',
+    title: 'Chocolate Chip Cookies',
+    price: 4.50,
+    img: './src/assets/images/menu/Cookie/Cookie_ChocolateChipCookies.png',
+    desc: 'Classic chocolate chunk cookies with gooey centers.',
+    tags: ['bakery'],
+    cal: '220 kcal'
+  },
+  {
+    id: 403,
+    category: 'food',
+    sub: 'cookie',
+    title: 'Thumbprint',
+    price: 6.90,
+    img: './src/assets/images/menu/Cookie/Cookie_Thumbprint.png',
+    desc: 'Buttery thumbprint cookies filled with fruit jam.',
+    tags: ['classic'],
+    cal: '210 kcal'
+  },
+  {
+    id: 404,
+    category: 'food',
+    sub: 'cookie',
+    title: 'Peanut Butter Cookie Cups',
+    price: 2.80,
+    img: './src/assets/images/menu/Cookie/Cookie_PeanutButterCookieCups.png',
+    desc: 'Peanut butter cookie cups with a sweet center.',
+    tags: ['nutty'],
+    cal: '260 kcal'
+  },
+
+  // 4. cake of food
+  {
+    id: 501,
+    category: 'food',
+    sub: 'cake',
+    title: 'Almond Frangipane',
+    price: 7.20,
+    img: './src/assets/images/menu/Cake/Cake_AlmondFrangipane.png',
+    desc: 'Flaky tart with rich almond frangipane filling.',
+    tags: ['pastry'],
+    cal: '380 kcal'
+  },
+  {
+    id: 502,
+    category: 'food',
+    sub: 'cake',
+    title: 'Black Tea Cake',
+    price: 4.50,
+    img: './src/assets/images/menu/Cake/Cake_BlackTeaCake.png',
+    desc: 'Light cake infused with aromatic black tea.',
+    tags: ['tea-flavored'],
+    cal: '300 kcal'
+  },
+  {
+    id: 503,
+    category: 'food',
+    sub: 'cake',
+    title: 'Chocolate Cup Cakes',
+    price: 6.90,
+    img: './src/assets/images/menu/Cake/Cake_ChocolateCupCakes.png',
+    desc: 'Rich chocolate cupcakes topped with frosting.',
+    tags: ['chocolate'],
+    cal: '420 kcal'
+  },
+  {
+    id: 504,
+    category: 'food',
+    sub: 'cake',
+    title: 'Matcha White Chocolate',
+    price: 2.80,
+    img: './src/assets/images/menu/Cake/Cake_MatchWhiteChocolate.png',
+    desc: 'Matcha sponge cake with white chocolate glaze.',
+    tags: ['matcha'],
+    cal: '260 kcal'
+  },
+  {
+    id: 601,
+    category: 'food',
+    sub: 'cake',
+    title: 'Red Velvet Royale',
+    price: 7.20,
+    img: './src/assets/images/menu/Cake/Cake_RedVekvetRoyale.png',
+    desc: 'Velvety red cake layered with cream cheese frosting.',
+    tags: ['bestseller'],
+    cal: '430 kcal'
+  },
+  {
+    id: 602,
+    category: 'food',
+    sub: 'cake',
+    title: 'Banana Walnut Loaf',
+    price: 4.50,
+    img: './src/assets/images/menu/Cake/Cake_BananaWalnutLoaf.png',
+    desc: 'Moist banana loaf studded with crunchy walnuts.',
+    tags: ['loaf'],
+    cal: '340 kcal'
+  },
+  {
+    id: 603,
+    category: 'food',
+    sub: 'cake',
+    title: 'Chocolate Cheesecake',
+    price: 6.90,
+    img: './src/assets/images/menu/Cake/Cake_ChocolateCheesecake.png',
+    desc: 'Creamy chocolate cheesecake slice with rich filling.',
+    tags: ['cheesecake'],
+    cal: '450 kcal'
+  },
+  {
+    id: 604,
+    category: 'food',
+    sub: 'cake',
+    title: 'Lemon Drizzle Cake',
+    price: 2.80,
+    img: './src/assets/images/menu/Cake/Cake_LemonDrizzleCake.png',
+    desc: 'Zesty lemon drizzle cake with a sugary finish.',
+    tags: ['citrus'],
+    cal: '300 kcal'
+  },
+  {
+    id: 701,
+    category: 'food',
+    sub: 'cake',
+    title: 'Opera Slice',
+    price: 6.90,
+    img: './src/assets/images/menu/Cake/Cake_OperaSlice.png',
+    desc: 'Layered opera slice with coffee and chocolate notes.',
+    tags: ['classic'],
+    cal: '410 kcal'
+  },
+  {
+    id: 702,
+    category: 'food',
+    sub: 'cake',
+    title: 'Tiramisu Delight',
+    price: 2.80,
+    img: './src/assets/images/menu/Cake/Cake_TiramisuDelight.png',
+    desc: 'Classic tiramisu with mascarpone and espresso-soaked sponge.',
+    tags: ['coffee'],
+    cal: '380 kcal'
+  },
+
+  // Part 2 Drink
+  // 1. coffee of drink
+  {
+    id: 801,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Americano',
+    price: 3.80,
+    img: './src/assets/images/menu/coffee/coffee_Americano.png',
+    desc: 'Robust Americano brewed from rich espresso shots.',
+    tags: ['hot'],
+    cal: '10 kcal'
+  },
+  {
+    id: 802,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Cappuccino',
+    price: 3.80,
+    img: './src/assets/images/menu/coffee/coffee_Cappuccino.png',
+    desc: 'Creamy cappuccino with steamed milk and foam.',
+    tags: ['hot', 'milk'],
+    cal: '150 kcal'
+  },
+  {
+    id: 803,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Cold Brew',
+    price: 3.00,
+    img: './src/assets/images/menu/coffee/coffee_Coldbrew.png',
+    desc: 'Smooth cold brew steeped for a clean, mellow taste.',
+    tags: ['cold'],
+    cal: '5 kcal'
+  },
+  {
+    id: 804,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Expresso',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Expresso.png',
+    desc: 'Intense single-shot espresso with a rich crema.',
+    tags: ['hot'],
+    cal: '5 kcal'
+  },
+  {
+    id: 901,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Flatwhite',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Flatwhite.png',
+    desc: 'Smooth flat white with silky steamed milk over espresso.',
+    tags: ['hot', 'milk'],
+    cal: '120 kcal'
+  },
+  {
+    id: 902,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Frappe',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Frappe.png',
+    desc: 'Iced frappe blended to a frothy, chilled finish.',
+    tags: ['cold'],
+    cal: '180 kcal'
+  },
+  {
+    id: 903,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Irsh Coffee',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Irshcoffee.png',
+    desc: 'Irish-style coffee with warmth and a hint of liqueur.',
+    tags: ['warm'],
+    cal: '210 kcal'
+  },
+  {
+    id: 904,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Latte',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Latte.png',
+    desc: 'Classic latte with steamed milk and a smooth espresso base.',
+    tags: ['hot', 'milk'],
+    cal: '140 kcal'
+  },
+  {
+    id: 1001,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Long Black',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Longblack.png',
+    desc: 'Long black made by topping hot water with espresso shots.',
+    tags: ['hot'],
+    cal: '10 kcal'
+  },
+  {
+    id: 1002,
+    category: 'drink',
+    sub: 'coffee',
+    title: 'Mocha',
+    price: 2.50,
+    img: './src/assets/images/menu/coffee/coffee_Mocha.png',
+    desc: 'Chocolate mocha blending espresso and steamed chocolate milk.',
+    tags: ['chocolate'],
+    cal: '220 kcal'
+  },
+
+  // 2. tea
+  {
+    id: 1101,
+    category: 'drink',
+    sub: 'tea',
+    title: 'Black Tea',
+    price: 2.50,
+    img: './src/assets/images/menu/tea/tea_Blacktea.png',
+    desc: 'Full-bodied black tea brewed to a brisk finish.',
+    tags: ['hot'],
+    cal: '2 kcal'
+  },
+  {
+    id: 1102,
+    category: 'drink',
+    sub: 'tea',
+    title: 'Ginger Tea',
+    price: 2.50,
+    img: './src/assets/images/menu/tea/tea_Gingertea.png',
+    desc: 'Warming ginger tea with bright, spicy notes.',
+    tags: ['hot'],
+    cal: '5 kcal'
+  },
+  {
+    id: 1103,
+    category: 'drink',
+    sub: 'tea',
+    title: 'Green Tea',
+    price: 2.50,
+    img: './src/assets/images/menu/tea/tea_Greentea.png',
+    desc: 'Delicate green tea with vegetal, fresh flavors.',
+    tags: ['hot'],
+    cal: '2 kcal'
+  },
+  {
+    id: 1104,
+    category: 'drink',
+    sub: 'tea',
+    title: 'White Tea',
+    price: 2.50,
+    img: './src/assets/images/menu/tea/tea_Whitetea.png',
+    desc: 'Light, subtle white tea with floral aroma.',
+    tags: ['hot'],
+    cal: '2 kcal'
+  },
+
+  // 3. juice
+  {
+    id: 1201,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Beatroot',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Beatroot.png',
+    desc: 'Earthy beetroot juice, fresh-pressed and vibrant.',
+    tags: ['cold'],
+    cal: '60 kcal'
+  },
+  {
+    id: 1202,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Kiwi',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Kiwi.png',
+    desc: 'Tart-sweet kiwi juice with refreshing zing.',
+    tags: ['cold'],
+    cal: '55 kcal'
+  },
+  {
+    id: 1203,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Lemonada',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Lemonada.png',
+    desc: 'Sharp, chilled lemonade with bright citrus notes.',
+    tags: ['cold'],
+    cal: '45 kcal'
+  },
+  {
+    id: 1204,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Mongo',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Mongo.png',
+    desc: 'Rich mango juice, sweet and tropical.',
+    tags: ['cold'],
+    cal: '110 kcal'
+  },
+  {
+    id: 1301,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Orange',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Orange.png',
+    desc: 'Fresh-squeezed orange juice, bright and tangy.',
+    tags: ['cold'],
+    cal: '80 kcal'
+  },
+  {
+    id: 1302,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Tomato',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Tomato.png',
+    desc: 'Savory tomato juice with a clean, full-bodied taste.',
+    tags: ['cold'],
+    cal: '40 kcal'
+  },
+  {
+    id: 1303,
+    category: 'drink',
+    sub: 'juice',
+    title: 'Watermelon',
+    price: 2.50,
+    img: './src/assets/images/menu/juice/juice_Watermelon.png',
+    desc: 'Light watermelon juice, subtly sweet and hydrating.',
+    tags: ['cold'],
+    cal: '60 kcal'
+  }
 ];
 
-/* Helpers */
-const fmt = n => '€' + n.toFixed(2);
-const viewport = document.getElementById('subwayViewport');
-const productsGridInner = document.getElementById('productsGridInner');
+// ----------------- Script logic -----------------
+// DOM refs
+const grid = document.getElementById('menuGrid');
+const q = document.getElementById('q');
+const sortEl = document.getElementById('sort');
+const drawer = document.getElementById('drawer');
 
-/* Build subway cards with elegant stagger and parallax */
-function createCard(p, idx){
-  const el = document.createElement('a');
-  el.className = 'subway-card';
-  el.href = `product-${p.id}.html`; // per-product pages for SEO
-  el.setAttribute('role','listitem');
-  el.dataset.id = p.id;
-  el.innerHTML = `
-    <div class="media"><img src="${p.hero||p.img}" alt="${p.title}"></div>
-    <div class="layer"></div>
-    <div class="content">
-      <div class="title">${p.title}</div>
-      <div class="meta">${p.tags.join(' • ')} • ${p.cal}</div>
-      <div class="price">${fmt(p.price)}</div>
-    </div>
-  `;
-  // staggered entrance
-  setTimeout(()=> el.classList.add('visible'), 70 * idx);
-  return el;
+let activeSub = 'all';
+
+// Helpers
+function formatP(n) { return '€' + n.toFixed(2); }
+
+function getDetail(p) {
+  // keep title, price, calories unchanged in PRODUCTS
+  // additional preview details shown in drawer only
+  return `${p.desc} Preparation: freshly prepared using our kitchen recipes and finest ingredients. Serving suggestion: enjoy hot or cold depending on item. Allergy note: may contain gluten, dairy, nuts.`;
 }
 
-function populateSubway(){
-  viewport.innerHTML = '';
-  PRODUCTS.forEach((p,i) => viewport.appendChild(createCard(p,i)));
-  requestAnimationFrame(updateCenterClasses);
-}
-
-/* Center detection assigns classes: center / near / far / distant */
-function updateCenterClasses(){
-  const cards = Array.from(viewport.children);
-  if(!cards.length) return;
-  const vp = viewport.getBoundingClientRect();
-  const cx = vp.left + vp.width/2;
-  cards.forEach(card => {
-    const r = card.getBoundingClientRect();
-    const cc = r.left + r.width/2;
-    const d = Math.abs(cc - cx);
-    card.classList.remove('center','near','far','distant');
-    if(d < r.width * 0.55) card.classList.add('center');
-    else if(d < r.width * 1.4) card.classList.add('near');
-    else if(d < r.width * 2.6) card.classList.add('far');
-    else card.classList.add('distant');
-  });
-}
-
-/* Scroll to center card by delta */
-function scrollByCard(delta){
-  const cards = Array.from(viewport.children);
-  if(!cards.length) return;
-  const vp = viewport.getBoundingClientRect();
-  const cx = vp.left + vp.width/2;
-  let idx = 0, best = Infinity;
-  cards.forEach((c,i)=>{ const r = c.getBoundingClientRect(); const cc = r.left + r.width/2; const dist = Math.abs(cc - cx); if(dist < best){ best = dist; idx = i; } });
-  const target = Math.min(Math.max(idx + delta, 0), cards.length - 1);
-  const t = cards[target].getBoundingClientRect();
-  const offset = (t.left + t.width/2) - cx;
-  viewport.scrollTo({ left: viewport.scrollLeft + offset, behavior: 'smooth' });
-}
-
-/* Auto-play rail (play/pause) */
-let railInterval = null;
-function startRailAuto(speed = 2000){
-  if(railInterval) clearInterval(railInterval);
-  railInterval = setInterval(()=> {
-    scrollByCard(1);
-  }, speed);
-  document.getElementById('railPlay').style.display = 'none';
-  document.getElementById('railPause').style.display = '';
-}
-function stopRailAuto(){
-  if(railInterval) clearInterval(railInterval);
-  railInterval = null;
-  document.getElementById('railPlay').style.display = '';
-  document.getElementById('railPause').style.display = 'none';
-}
-
-document.getElementById('prevBtn').addEventListener('click', ()=> scrollByCard(-1));
-document.getElementById('nextBtn').addEventListener('click', ()=> scrollByCard(1));
-document.getElementById('railPlay').addEventListener('click', ()=> startRailAuto(2300));
-document.getElementById('railPause').addEventListener('click', ()=> stopRailAuto());
-
-viewport.addEventListener('scroll', ()=> { window.clearTimeout(window._vpT); updateCenterClasses(); window._vpT = setTimeout(updateCenterClasses, 80); });
-window.addEventListener('resize', updateCenterClasses);
-document.addEventListener('keydown', e => { if(e.key==='ArrowRight') scrollByCard(1); if(e.key==='ArrowLeft') scrollByCard(-1); });
-
-/* Build product grid */
-function productHtml(p){
+// Product card markup (includes overlay + See more)
+function articleMarkup(p) {
   return `
-    <article class="product" data-id="${p.id}">
-      <a href="product-${p.id}.html" aria-label="${p.title}">
-        <div class="product-media"><img src="${p.img}" alt="${p.title}"></div>
-      </a>
-      <div class="product-body">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
-          <a href="product-${p.id}.html"><div class="product-title">${p.title}</div></a>
-          <div class="price">${fmt(p.price)}</div>
+    <article class="product" data-id="${p.id}" tabindex="0" aria-labelledby="title-${p.id}">
+      <div class="product-media">
+        <img src="${p.img}" alt="${p.title}" />
+        <div class="media-overlay">
+          <button class="see-more" data-id="${p.id}" aria-label="See more about ${p.title}">See more</button>
         </div>
-        <div class="product-desc">${p.desc}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-          <div class="muted" style="font-size:13px">${p.tags.join(' • ')}</div>
-          <div style="display:flex;gap:8px">
-            <button class="filter-btn quick-view" data-id="${p.id}" type="button">Quick View</button>
-            <button class="cta add-mini" data-id="${p.id}" type="button">Add</button>
-          </div>
+      </div>
+      <div class="product-body">
+        <div class="product-row">
+          <h3 id="title-${p.id}" class="product-title">${p.title}</h3>
+          <div class="price">${formatP(p.price)}</div>
+        </div>
+        <p class="product-sub">${p.desc}</p>
+        <div class="product-tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="product-footer">
+          <div class="muted">Calories: ${p.cal}</div>
+          <div><button class="btn-ghost quick-view" data-id="${p.id}">Quick View</button></div>
         </div>
       </div>
     </article>
   `;
 }
 
-function renderGrid(list = PRODUCTS){
-  productsGridInner.innerHTML = list.map(productHtml).join('');
+// get currently active main category
+function getActiveMainCategory() {
+  return document.querySelector('.filters-vertical .chip.active')?.dataset.filter || 'all';
 }
 
-/* Filters/search/sort */
-const searchInput = document.getElementById('searchInput');
-const sortSelect = document.getElementById('sortSelect');
-const filterButtons = document.querySelectorAll('.filters .filter-btn');
+// Rendering logic
+function renderProducts(list) {
+  const active = getActiveMainCategory();
 
-function applyFilters(){
-  const q = (searchInput.value||'').trim().toLowerCase();
-  const active = Array.from(filterButtons).find(b => b.classList.contains('active'))?.dataset.filter || 'all';
-  let out = PRODUCTS.filter(p => {
-    const okCat = active==='all' ? true : p.category===active;
-    const okQ = !q ? true : (p.title + ' ' + p.desc + ' ' + p.tags.join(' ') + ' ' + p.ingredients).toLowerCase().includes(q);
-    return okCat && okQ;
-  });
-  const s = sortSelect.value;
-  if(s==='price-asc') out.sort((a,b)=>a.price-b.price);
-  else if(s==='price-desc') out.sort((a,b)=>b.price-a.price);
-  else if(s==='alpha') out.sort((a,b)=>a.title.localeCompare(b.title));
-  renderGrid(out);
-}
-
-filterButtons.forEach(btn => btn.addEventListener('click', () => { filterButtons.forEach(x=>x.classList.remove('active')); btn.classList.add('active'); applyFilters(); }));
-document.querySelector('.filters .filter-btn[data-filter="all"]').classList.add('active');
-searchInput.addEventListener('input', applyFilters);
-sortSelect.addEventListener('change', applyFilters);
-
-/* Drawer quick-view behavior + Cancel button */
-const drawer = document.getElementById('drawer');
-const drawerTitle = document.getElementById('drawerTitle');
-const drawerCategory = document.getElementById('drawerCategory');
-const drawerMedia = document.getElementById('drawerMedia');
-const drawerPrice = document.getElementById('drawerPrice');
-const drawerDesc = document.getElementById('drawerDesc');
-const drawerSizes = document.getElementById('drawerSizes');
-const drawerIngredients = document.getElementById('drawerIngredients');
-const drawerAllergens = document.getElementById('drawerAllergens');
-const drawerCalories = document.getElementById('drawerCalories');
-const drawerAdd = document.getElementById('drawerAdd');
-const drawerCancel = document.getElementById('drawerCancel');
-const drawerClose = document.getElementById('drawerClose');
-
-function openDrawer(id){
-  const p = PRODUCTS.find(x=>String(x.id) === String(id)); if(!p) return;
-  drawerTitle.textContent = p.title;
-  drawerCategory.textContent = p.category.toUpperCase();
-  drawerMedia.innerHTML = `<img src="${p.img}" alt="${p.title}">`;
-  drawerPrice.textContent = fmt(p.price);
-  drawerDesc.textContent = p.desc;
-  drawerIngredients.textContent = p.ingredients || '—';
-  drawerAllergens.textContent = p.allergens || '—';
-  drawerCalories.textContent = p.cal || '—';
-  drawerSizes.innerHTML = (p.sizes||[]).map(s => `<button class="size-pill" data-price="${s.price}">${s.label} — ${fmt(s.price)}</button>`).join('');
-  const first = drawerSizes.querySelector('.size-pill'); if(first) first.classList.add('active');
-  drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
-  drawerAdd.dataset.id = p.id; drawerAdd.dataset.price = p.sizes?.[0]?.price || p.price;
-}
-
-function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
-
-document.addEventListener('click', e => {
-  const t = e.target;
-  if(t.matches('.quick-view')) { openDrawer(t.dataset.id); return; }
-  if(t === drawerCancel){ closeDrawer(); animateCancel(); return; } // cancel action with animation
-  if(t === drawerClose) { closeDrawer(); return; }
-  if(t === drawerAdd){ const id = drawerAdd.dataset.id; const price = parseFloat(drawerAdd.dataset.price || drawerPrice.textContent.replace(/[^\d.]/g,'')); addToCart({ id:String(id), title:drawerTitle.textContent, price, qty:1, img: drawerMedia.querySelector('img')?.src || '' }); }
-  if(t.matches('.size-pill')) { drawerSizes.querySelectorAll('.size-pill').forEach(x=>x.classList.remove('active')); t.classList.add('active'); const p = parseFloat(t.dataset.price); drawerPrice.textContent = fmt(p); drawerAdd.dataset.price = p; }
-  if(t.matches('.add-mini')) { const id = t.dataset.id; const p = PRODUCTS.find(x=>String(x.id)===String(id)); if(!p) return; addToCart({ id:String(p.id), title:p.title, price:p.price, qty:1, img:p.img }); t.textContent='✓ Added'; t.disabled=true; setTimeout(()=>{ t.textContent='Add'; t.disabled=false; },900); }
-});
-
-function animateCancel(){
-  drawer.classList.add('closing');
-  setTimeout(()=> drawer.classList.remove('closing'), 280);
-}
-
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
-
-/* Cart widget: localStorage, toggle via icon, hidden by default */
-const CART_KEY = 'CART@CAFED';
-const cartWidget = document.getElementById('cartWidget');
-const cartIcon = document.getElementById('cartIcon');
-
-function getCart(){ return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
-function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); renderCart(); }
-
-function renderCart(){
-  const cart = getCart();
-  const total = cart.reduce((s,i)=>s + i.price * (i.qty||1), 0);
-  cartWidget.innerHTML = `
-    <div class="cart-panel" role="region" aria-label="Shopping cart">
-      <div class="cart-header"><strong>Cart</strong><div><button id="clearCart" class="filter-btn">Clear</button></div></div>
-      <div class="cart-body" id="cartBody"></div>
-      <div class="cart-footer"><div><div class="muted">Total</div><div id="cartTotal" style="font-weight:800">${fmt(total)}</div></div><div><button id="checkoutBtn" class="cta">Checkout</button></div></div>
-    </div>
-  `;
-  const body = document.getElementById('cartBody');
-  if(!cart.length){ body.innerHTML = '<div class="muted" style="padding:14px;text-align:center">Your cart is empty</div>'; return; }
-  body.innerHTML = '';
-  cart.forEach((it, idx) => {
-    const row = document.createElement('div'); row.className='cart-item';
-    row.innerHTML = `
-      <img src="${it.img}" alt="${it.title}">
-      <div style="flex:1"><div style="font-weight:700">${it.title}</div><div class="muted">€${it.price.toFixed(2)} × <span class="qty">${it.qty}</span></div></div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="filter-btn qty-minus" data-idx="${idx}">−</button>
-        <button class="filter-btn qty-plus" data-idx="${idx}">+</button>
-        <button class="filter-btn remove" data-idx="${idx}">✕</button>
-      </div>
-    `;
-    body.appendChild(row);
-  });
-  cartWidget.classList.remove('hidden'); cartWidget.setAttribute('aria-hidden','false');
-}
-
-function addToCart(item){
-  const cart = getCart();
-  const existing = cart.find(i => i.id === item.id && i.price === item.price);
-  if(existing) existing.qty = (existing.qty||1) + (item.qty||1);
-  else cart.push(Object.assign({qty:item.qty||1}, item));
-  saveCart(cart);
-}
-
-cartWidget.addEventListener('click', e => {
-  const t = e.target;
-  if(t.id === 'clearCart'){ localStorage.removeItem(CART_KEY); renderCart(); cartWidget.classList.add('hidden'); cartWidget.setAttribute('aria-hidden','true'); return; }
-  if(t.id === 'checkoutBtn'){ alert('Checkout placeholder — integrate payment flow'); return; }
-  if(t.matches('.qty-plus')){ const idx=+t.dataset.idx; const c=getCart(); c[idx].qty=(c[idx].qty||1)+1; saveCart(c); return; }
-  if(t.matches('.qty-minus')){ const idx=+t.dataset.idx; const c=getCart(); c[idx].qty=Math.max(1,(c[idx].qty||1)-1); saveCart(c); return; }
-  if(t.matches('.remove')){ const idx=+t.dataset.idx; const c=getCart(); c.splice(idx,1); saveCart(c); return; }
-});
-
-cartIcon.addEventListener('click', ()=> {
-  if(cartWidget.classList.contains('hidden')) renderCart();
-  else { cartWidget.classList.add('hidden'); cartWidget.setAttribute('aria-hidden','true'); }
-});
-
-/* Header shrink on scroll (freeze effect) */
-const siteHeader = document.getElementById('siteHeader');
-window.addEventListener('scroll', ()=>{
-  siteHeader.classList.toggle('shrink', window.scrollY > 40);
-});
-
-/* Init: render subway and grid */
-function init(){
-  // subway and grid render
-  populateSubway();
-  renderGrid(PRODUCTS);
-  // ensure center calculation after images load
-  setTimeout(updateCenterClasses, 120);
-  // ResizeObserver to recalc
-  if(window.ResizeObserver){
-    const ro = new ResizeObserver(()=> updateCenterClasses());
-    ro.observe(viewport);
+  // If user chose All -> single flat grid with four items per row, preserve list order
+  if (active === 'all') {
+    // produce a single grid wrapper that CSS will style as 4-column on desktop
+    const html = `<div class="flat-grid">${list.map(articleMarkup).join('')}</div>`;
+    grid.innerHTML = html;
+    return;
   }
+
+  // For Food or Drink -> group by sub and order preferred subs first
+  const preferredOrder = active === 'drink'
+    ? ['coffee', 'tea', 'juice']
+    : ['bread', 'cake', 'sandwich', 'cookie'];
+
+  const groups = {};
+  const order = [];
+  list.forEach(p => {
+    const key = p.sub || 'other';
+    if (!groups[key]) { groups[key] = []; order.push(key); }
+    groups[key].push(p);
+  });
+
+  // Create final ordering of subgroups: preferred first, then others in discovered order
+  const finalOrder = [];
+  preferredOrder.forEach(s => { if (groups[s]) finalOrder.push(s); });
+  order.forEach(s => { if (!finalOrder.includes(s)) finalOrder.push(s); });
+
+  const htmlParts = [];
+  finalOrder.forEach(sub => {
+    const heading = sub.charAt(0).toUpperCase() + sub.slice(1);
+    htmlParts.push(`<div class="sub-section"><h2 class="sub-title">${heading}</h2>`);
+    htmlParts.push('<div class="sub-grid">');
+    htmlParts.push(groups[sub].map(articleMarkup).join(''));
+    htmlParts.push('</div></div>');
+  });
+
+  grid.innerHTML = htmlParts.join('');
 }
-init();
 
+// Filtering and sorting
+function applyFilterSort() {
+  const qv = (q && q.value || '').trim().toLowerCase();
+  const active = getActiveMainCategory();
 
+  let out = PRODUCTS.filter(p => {
+    const byChip = active === 'all' ? true : p.category === active;
+    const bySub = activeSub === 'all' ? true : p.sub === activeSub;
+    const combined = (p.title + ' ' + p.desc + ' ' + (p.tags||[]).join(' ')).toLowerCase();
+    const byQuery = qv === '' ? true : combined.includes(qv);
+    return byChip && bySub && byQuery;
+  });
 
+  const s = sortEl && sortEl.value;
+  if (s === 'price-asc') out.sort((a,b)=>a.price-b.price);
+  else if (s === 'price-desc') out.sort((a,b)=>b.price-a.price);
+  else if (s === 'alpha') out.sort((a,b)=>a.title.localeCompare(b.title));
+  // If no sort selected, keep original order for All view and for subgroups preserve grouping insertion order
 
+  renderProducts(out);
+}
 
+// Render left sub filters (vertical chips)
+function renderSubFiltersFor(category) {
+  const container = document.getElementById('subFilters');
+  if (!container) return;
+
+  const subs = new Set();
+  PRODUCTS.forEach(p => {
+    if (category === 'all' || p.category === category) {
+      if (p.sub) subs.add(p.sub);
+    }
+  });
+
+  const arr = Array.from(subs).sort();
+  if (arr.length === 0) {
+    container.innerHTML = '';
+    container.setAttribute('aria-hidden','true');
+    activeSub = 'all';
+    return;
+  }
+
+  const parts = [];
+  parts.push(`<div class="sub-filters-inner">`);
+  parts.push(`<button class="chip sub-chip ${activeSub==='all'?'active':''}" data-sub="all">All</button>`);
+  arr.forEach(s => {
+    parts.push(`<button class="chip sub-chip ${activeSub===s?'active':''}" data-sub="${s}">${s.charAt(0).toUpperCase()+s.slice(1)}</button>`);
+  });
+  parts.push(`</div>`);
+  container.innerHTML = parts.join('');
+  container.setAttribute('aria-hidden','false');
+}
+
+// Drawer preview
+function openDrawer(id) {
+  const p = PRODUCTS.find(x => x.id == id);
+  if (!p) return;
+  document.getElementById('drawerTitle').textContent = p.title;
+  document.getElementById('drawerCategory').textContent = p.category.toUpperCase();
+  document.getElementById('drawerMedia').innerHTML = `<img src="${p.img}" alt="${p.title}" />`;
+  document.getElementById('drawerPrice').textContent = formatP(p.price);
+  document.getElementById('drawerDesc').innerHTML = `
+    <p class="drawer-detail-desc">${getDetail(p)}</p>
+    <p><strong>Calories:</strong> ${p.cal}</p>
+    <p><strong>Tags:</strong> ${(p.tags||[]).join(', ')}</p>
+  `;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+}
+
+// Event handling
+document.addEventListener('click', function(e) {
+  const t = e.target;
+
+  if (t.matches('.see-more')) { e.preventDefault(); openDrawer(t.dataset.id); return; }
+  if (t.matches('.quick-view')) { e.preventDefault(); openDrawer(t.dataset.id); return; }
+
+  // main category chips
+  if (t.closest('.filters-vertical') && t.classList.contains('chip')) {
+    document.querySelectorAll('.filters-vertical .chip').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    activeSub = 'all';
+    renderSubFiltersFor(t.dataset.filter || 'all');
+    applyFilterSort();
+    return;
+  }
+
+  // sub-chip clicks
+  if (t.classList.contains('sub-chip')) {
+    document.querySelectorAll('.sub-chip').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    activeSub = t.dataset.sub || 'all';
+    applyFilterSort();
+    return;
+  }
+});
+
+// Keyboard accessibility
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const active = document.activeElement;
+    if (active && active.closest && active.closest('.product')) {
+      const id = active.closest('.product').dataset.id;
+      if (id) openDrawer(id);
+    }
+  }
+});
+
+// Drawer close + ESC
+const drawerCloseBtn = document.getElementById('drawerClose');
+if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', function(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); } });
+
+// search & sort listeners
+if (q) q.addEventListener('input', applyFilterSort);
+if (sortEl) sortEl.addEventListener('change', applyFilterSort);
+
+// initial render using original PRODUCTS order
+renderProducts(PRODUCTS);
+renderSubFiltersFor(getActiveMainCategory());
