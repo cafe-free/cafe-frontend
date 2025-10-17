@@ -1,0 +1,476 @@
+/* Updated CSS - style_menu_updated.css
+   This CSS keeps your header and footer styling intact and updates only the menu product area.
+*/
+
+/* Root variables */
+:root {
+  --accent: #374063;
+  --muted: #6b6b6b;
+  --card-bg: #ffffff;
+  --max-width: 1500px;
+}
+
+/* base */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Quattrocento", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; color: #333; background: #fff; }
+
+.menu-hero-image {
+  width: 100%;
+  height: 300px;
+  background-image: url(../images/menu-hero-background.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 24px; */
+}
+
+.menu-hero-image .menu-hero-title {
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* HEADER and FOOTER kept as original */
+.header {
+  width: 100%;
+  min-width: 900px;
+  height: 140px;
+  padding: 25px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+.header-logo img { 
+  width: 100px; 
+  height: 100px; 
+  object-fit: contain; 
+}
+  
+.header-nav { 
+  border-top: 1px solid #fff; 
+  border-bottom: 1px solid #fff; 
+  width: 700px; 
+  display: flex; 
+  justify-content: center; 
+}
+.header-nav a { 
+  text-decoration: none; 
+  color: var(--accent); 
+  font-weight: 700; 
+  color: #fff; 
+}
+.header-navlist { 
+  width: 650px; 
+  display: flex; 
+  justify-content: space-between; 
+}
+
+/* layout */
+.menu-page { 
+  max-width: var(--max-width); 
+  margin: 24px auto; 
+  display: grid; 
+  grid-template-columns: 
+  260px 1fr; 
+  gap: 24px; 
+  padding: 0 20px; }
+
+.menu-side { 
+  align-self: start; }
+
+.side-inner { 
+  position: sticky; 
+  top: 20px; 
+  padding: 16px; 
+  background: #fff; 
+  border-radius: 10px; 
+  border: 1px solid rgba(0,0,0,0.04); 
+}
+.menu-breadcrumb { 
+  color: var(--muted); 
+  font-size: 14px; 
+  margin-bottom: 8px; 
+}
+.menu-title { 
+  font-size: 24px; 
+  margin: 0 0 12px 0; 
+  color: #222; 
+}
+
+/* chips */
+.side-controls { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+.filters-vertical { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+.chip { 
+  padding: 8px 12px; 
+  border-radius: 8px; 
+  background: transparent; 
+  border: 1px solid rgba(55,64,99,0.06); 
+  cursor: pointer; 
+  text-align: left; 
+}
+.chip.active { 
+  background: var(--accent); 
+  color: #fff; 
+  border-color: var(--accent); 
+}
+
+/* sub-filters */
+.sub-filters { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-top: 6px; 
+}
+.sub-filters .chip { 
+  padding-left: 16px; 
+  font-size: 14px; 
+  border-radius: 6px; 
+}
+
+/* search & sort */
+.search { 
+  padding: 8px 10px; 
+  border: 1px solid #eee; 
+  border-radius: 10px; 
+  width: 100%; 
+}
+.sort { 
+  padding: 8px; 
+  border-radius: 8px; 
+  border: 1px solid #eee; 
+}
+
+/* content area */
+.menu-content { 
+  min-height: 400px; 
+  padding-bottom: 28px; 
+}
+.menu-grid { 
+  display: block; 
+} /* grid will be created inside groups or flat-grid */
+
+/* -------- "All" flat grid: force 4 columns on desktop -------- */
+.flat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* exactly 4 products per row on desktop */
+  gap: 20px;
+}
+
+/* Keep product cards responsive: on narrower screens fall back to fewer columns */
+@media (max-width: 1200px) {
+  .flat-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .flat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .flat-grid { grid-template-columns: 1fr; }
+}
+
+/* subgroup layout when Food/Drink selected */
+.sub-section { 
+  margin-bottom: 34px; }
+.sub-title { 
+  font-size: 20px; 
+  margin: 6px 0 12px 0; 
+  color: var(--accent); 
+  letter-spacing: 0.2px; }
+
+/* balanced subgroup grid: responsive auto-fit so rows are balanced */
+.sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* product card */
+article.product {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transform-origin: center bottom;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease;
+  will-change: transform;
+  position: relative;
+  min-height: 340px;
+}
+
+/* media area */
+.product-media {
+  position: relative;
+  height: 220px;
+  background: #f6f6f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow: hidden;
+}
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* overlay shade + See more button */
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.0);
+  opacity: 0;
+  transition: opacity 160ms ease, background 160ms ease;
+  pointer-events: none;
+}
+.media-overlay .see-more {
+  pointer-events: auto;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.96);
+  border: 0;
+  font-weight:700;
+  color: var(--accent);
+  box-shadow: 0 8px 24px rgba(55,64,99,0.12);
+  transform: translateY(6px);
+  transition: transform 160ms ease, opacity 160ms ease;
+  opacity: 0.98;
+  cursor: pointer;
+}
+
+/* product body */
+.product-body { 
+  padding: 14px 16px; 
+  display:flex; 
+  flex-direction:column; 
+  gap:8px; flex:1; }
+
+.product-row { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; }
+
+.product-title { 
+  font-size:18px; 
+  font-weight:700; 
+  margin:0; }
+
+.product-sub { 
+  margin:0; 
+  color:var(--muted); 
+  font-size:13px; }
+
+.product-tags { 
+  display:flex; 
+  gap:8px; 
+  flex-wrap:wrap; 
+  margin-top:6px; }
+
+.tag { 
+  font-size:12px; 
+  padding:6px 8px; 
+  background:#fff; 
+  border-radius:8px; 
+  border:1px solid rgba(55,64,99,0.06); 
+  color:var(--muted); }
+
+/* footer inside card */
+.product-footer { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+  margin-top:auto; 
+}
+.product-footer .muted { 
+  color: var(--muted); 
+  font-size:13px; 
+}
+.product-footer .quick-view { 
+  padding: 6px 8px; 
+  border-radius: 8px; 
+  background: transparent; 
+  border: 1px solid rgba(55,64,99,0.06); 
+  cursor: pointer; }
+
+/* drawer */
+.drawer {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  height: 100%;
+  width: 420px;
+  max-width: 94%;
+  background: #fff;
+  box-shadow: -24px 0 60px rgba(0,0,0,0.28);
+  transition: right .32s cubic-bezier(.2,.9,.2,1);
+  z-index: 1500;
+  display:flex; flex-direction:column;
+}
+.drawer.open { 
+  right: 0; 
+}
+
+.drawer-head { 
+  padding:18px 16px; 
+  border-bottom:1px solid #eee; 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+}
+.drawer-body { 
+  padding:16px; 
+  overflow:auto; 
+  flex:1; 
+}
+.drawer-media img { 
+  width:100%; 
+  height:auto; 
+  display:block; 
+  border-radius:8px; 
+}
+.drawer-price { 
+  margin-top:12px; 
+  font-weight:700; 
+  font-size:18px; 
+  color:var(--accent); 
+}
+.drawer-detail-desc { 
+  color: #333; 
+  margin-bottom: 12px; 
+  line-height: 1.45; 
+}
+
+/* Hover / focus interactions: overlay and 3D lift */
+article.product:hover .media-overlay,
+article.product:focus-within .media-overlay {
+  opacity: 1;
+  background: rgba(0,0,0,0.36);
+  pointer-events: auto;
+}
+
+article.product:hover,
+article.product:focus-within {
+  transform: translateY(-10px) rotateX(0.8deg) scale(1.02);
+  box-shadow: 0 26px 50px rgba(20,30,60,0.12);
+  z-index: 6;
+}
+
+/* image scales visually to 2x but the parent overflow hides overflow so other items unaffected */
+article.product:hover .product-media img,
+article.product:focus-within .product-media img {
+  transform: scale(2);
+}
+
+/* touch devices adjustments */
+@media (hover: none) {
+  .media-overlay { 
+    opacity: 1; 
+    background: rgba(0,0,0,0.12); 
+    pointer-events: auto; 
+  }
+  article.product:active { 
+    transform: translateY(-6px) scale(1.01); 
+  }
+  article.product .product-media img { 
+    transform: none; 
+  }
+}
+
+/* footer kept */
+.footer { 
+  width: 100%; 
+  min-width: 900px;
+  height: 320px; 
+  background-color: #374063; 
+  display: block; }
+
+.footer-nav { 
+  width: 70%; 
+  min-width: 900px; 
+  height: 90px; 
+  margin: 0 auto; 
+  display: flex; 
+  align-items: center; }
+
+.footer-navlist { 
+  width: 100%; 
+  height: 40px; 
+  padding: 0 20px 0 20px; 
+  list-style: none; 
+  display: flex; 
+  justify-content: space-between; }
+
+.footer-navitem { 
+  width: 120px; 
+  height: 100%; 
+  text-align: center; 
+  display: 
+  flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+.footer-navitem>a { 
+  font-size: 16px; 
+  color: #fff; 
+  text-decoration: none; 
+}
+
+/* make my css bellow same with the abopve style of cidd, not just single line */
+.footer-logo { 
+  width: 50%; 
+  min-width: 900px; 
+  height: 150px; 
+  margin: 0 auto; 
+  padding: 10px 0 0 0; 
+}
+.footer-logo-img { 
+  width: 150px; 
+  height: 150px; 
+  margin: auto; 
+}
+.footer-logo-img>img { 
+  width: 150px; 
+  height: 150px; 
+}
+.footer-copyright { 
+  width: 50%; 
+  min-width: 900px; 
+  margin: 0 auto; 
+  padding-top: 40px; 
+}
+.footer-copyright-infor { 
+  width: 150px; 
+  height: 20px; 
+  color: #fff; 
+  margin: auto; 
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .menu-page { grid-template-columns: 1fr; }
+  .side-inner { position: relative; top: 0; margin-bottom: 12px; }
+  .sub-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .drawer { width: 100%; }
+  .header, .footer { min-width: 320px; }
+}
