@@ -51,6 +51,10 @@ html {
     /* border: 1px dashed #ccc; */
 }
 
+.cards-container {
+    /* border: 1px solid #007bff; */
+}
+
 .menu-category-list {
     margin: 0;
     padding: 0;
