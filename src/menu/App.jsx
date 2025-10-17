@@ -1,24 +1,10 @@
 import React from 'react';
+import Header from './components/Header';
 
 export function App() {
   return (
     <>
-      <header className="header" style={{ background: '#374063', color: '#fff' }}>
-        <div className="header-logo">
-          <img src="./src/assets/images/Logo.png" alt="Cafe de Coral logo" />
-        </div>
-        <nav className="header-nav" aria-label="Main navigation">
-          <ul className="header-navlist">
-            <li><a href="index.html">TOP</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="menu.html">MENU</a></li>
-            <li><a href="pick_up.html">PICK UP</a></li>
-            <li><a href="#">NEWS</a></li>
-            <li><a href="#">ACCESS</a></li>
-          </ul>
-        </nav>
-      </header>
-
+      <Header />
       <div className="menu-hero-image">
         <h1 className="menu-hero-title">Menu</h1>
       </div>
