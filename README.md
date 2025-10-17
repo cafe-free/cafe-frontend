@@ -19,47 +19,89 @@ You can learn more from this video:
  <img src="https://i.ytimg.com/vi/vj8KSZjPTUU/maxresdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
 </a>
 
-## Proposed Project Structure
+## Proposed Project Structure with Vite
+
 ```
 my-website/
 ├── public/
-│   ├── index.html              # Main HTML file for non-React pages
-│   ├── menu.html               # HTML file that loads the React menu page
-│   ├── assets/
-│   │   ├── images/             # Static images
-│   │   └── fonts/              # Custom fonts if needed
+│   ├── index.html              # Main HTML page (non-React)
+│   ├── menu.html               # Loads React menu page
+│   └── assets/
+│       ├── images/             # Static images
+│       └── fonts/              # Fonts if needed
 ├── src/
-│   ├── index.js                # Entry point for React (menu page only)
-│   ├── MenuPage.jsx            # React component for the menu page
+│   ├── main.jsx                # Vite entry point for React
+│   ├── MenuPage.jsx            # React menu page component
 │   ├── components/
-│   │   ├── MenuCard.jsx        # Individual menu card component
-│   │   ├── CategoryList.jsx    # Sidebar category list
-│   │   └── SubcategoryTitle.jsx# Subcategory title component
-│   ├── styles/
-│   │   └── card.css            # Shared CSS for menu styling
-├── package.json                # Project dependencies and scripts
-├── webpack.config.js           # Webpack config to bundle React
-└── README.md                   # Project documentation
+│   │   ├── MenuCard.jsx        # Individual card component
+│   │   ├── CategoryList.jsx    # Sidebar categories
+│   │   └── SubcategoryTitle.jsx# Subcategory title
+│   └── styles/
+│       └── card.css            # Shared CSS
+├── index.html                  # Vite root HTML (used for menu page)
+├── vite.config.js              # Vite config
+├── package.json                # Dependencies and scripts
+└── README.md
 ```
 
-## How It Works
-- `menu.html` includes a `<div id="menu-root"></div>` and loads the React bundle.
-- `index.html` and other pages remain unchanged and use traditional HTML/CSS/JS.
-- React components are modular and styled using `card.css` or CSS Modules.
-- Webpack (or Vite) bundles React code into a single JS file (e.g., `menu.bundle.js`) that’s included in `menu.html`.
+## Setup Steps
 
-## Sample `menu.html`
+### 1. **Initialize Vite**
+
+```bash
+npm create vite@latest my-website --template react
+cd my-website
+npm install
+```
+
+### 2. **Configure Vite for a Custom HTML Entry**
+
+Update `vite.config.js` to support multiple pages:
+
+```js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        menu: 'menu.html'
+      }
+    }
+  }
+});
+```
+
+### 3. **Create `menu.html`**
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Menu Page</title>
-  <link rel="stylesheet" href="/styles/card.css" />
-</head>
-<body>
-  <div id="menu-root"></div>
-  <script src="/dist/menu.bundle.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menu Page</title>
+    <link rel="stylesheet" href="/src/styles/card.css" />
+  </head>
+  <body>
+    <div id="menu-root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
+```
+
+### 4. **React Entry (`main.jsx`)**
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import MenuPage from './MenuPage';
+import './styles/card.css';
+
+ReactDOM.createRoot(document.getElementById('menu-root')).render(
+  <React.StrictMode>
+    <MenuPage />
+  </React.StrictMode>
+);
 ```
