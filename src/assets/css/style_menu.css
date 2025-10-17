@@ -39,16 +39,20 @@ body { margin: 0; font-family: "Quattrocento", "Helvetica Neue", Helvetica, Aria
   display: flex; 
   justify-content: center; 
 }
-.header-nav a { 
+/* .header-nav a { 
   text-decoration: none; 
   color: var(--accent); 
   font-weight: 700; 
   color: #fff; 
-}
+} */
 .header-navlist { 
   width: 650px; 
   display: flex; 
   justify-content: space-between; 
+}
+.header-navitem>a {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* layout */
