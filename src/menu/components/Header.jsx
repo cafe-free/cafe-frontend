@@ -13,7 +13,7 @@ export default function Header() {
                     <li><a href="index.html">TOP</a></li>
                     <li><a href="#">ABOUT</a></li>
                     <li><a href="menu.html">MENU</a></li>
-                    <li><a href="pick_up.html">PICK UP</a></li>
+                    <li><a href="#">PICK UP</a></li>
                     <li><a href="#">NEWS</a></li>
                     <li><a href="#">ACCESS</a></li>
                 </ul>
