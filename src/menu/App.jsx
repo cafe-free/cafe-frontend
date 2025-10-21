@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
+import { menuData } from '../assets/js/data.js';
 
 export function App() {
     return (
@@ -31,8 +32,9 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection title="Coffee" />
-                    <MenuSection title="Tea" />
+                    <MenuSection data={menuData} />
+                    {/* <MenuSection title="Coffee" /> */}
+                    {/* <MenuSection title="Tea" /> */}
                 </div>
             </div>
 
@@ -41,25 +43,29 @@ export function App() {
     );
 }
 
-function MenuSection({ title }) {
+function MenuSection({ data }) {
+    const itemsByCategory = Object.groupBy(data, (item) => item.category);
+
     return (
-        <div className="menu-card-container">
-            <div className="menu-subcategory-title">
-                <h2>{title}</h2>
-            </div>
-            {Array.from({ length: 8 }).map((_, index) => (
-                <div className="menu-card" key={`${title}-${index}`}>
-                    <div>
-                        <img src="https://picsum.photos/300/?random=10" alt="Menu Item" />
+        <>
+            {Object.entries(itemsByCategory).map(([category, items]) => (
+                <div key={category} className="menu-card-container">
+                    <div className="menu-subcategory-title">
+                        <h2>{category}</h2>
                     </div>
-                    <div className="menu-card-content">
-                        <p className="menu-card-title">Delicious Dish</p>
-                        <p className="menu-card-price">HKD 50</p>
-                    </div>
+                    {items.map((item, index) => (
+                        <div key={index} className="menu-card">
+                            <div>
+                                <img src={item.img} alt="Menu Item" />
+                            </div>
+                            <div className="menu-card-content">
+                                <p className="menu-card-title">{item.title}</p>
+                                <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             ))}
-        </div>
+        </>
     );
 }
-
-
