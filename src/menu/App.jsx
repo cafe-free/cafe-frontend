@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
-import { menuData } from '../assets/js/data.js';
+import { menuData } from '../assets/js/data';
+
+const subcategories = ["Appetizer", "Coffee", "Tea"];
 
 export function App() {
+
+    const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+    const filteredMenuData = selectedSubcategory 
+        ? menuData.filter(item => item.category === selectedSubcategory) : menuData;
+
     return (
         <>
             <Header />
@@ -16,18 +23,31 @@ export function App() {
                     <ul>
                         <li className="menu-category">Categories</li>
                         <div className="food-drinks">
-                            <li>Food</li>
+                            {/* <li onClick={setSelectedSubcategory(null)}> */}
+                            <li>
+                                Food
+                            </li>
                         </div>
                         <div className="food-drinks selected-menu-subcategory">
-                            <li>Drinks</li>
+                            {/* <li onClick={setSelectedSubcategory(null)}> */}
+                            <li>
+                                Drinks
+                            </li>
                         </div>
                         <hr />
-                        <li className="selected-menu-subcategory">Subcategory 1</li>
-                        <li>Subcategory 2</li>
-                        <li>Subcategory 3</li>
-                        <li>Subcategory 4</li>
-                        <li>Subcategory 5</li>
-                        <li>Subcategory 6</li>
+
+                        {subcategories.map((sub, index) => {
+                            <li
+                                // onClick={() => setSelectedSubcategory(sub)}
+                                key={index}
+                                className={
+                                    selectedSubcategory === sub ? "selected-menu-subcategory" : ""
+                                }
+                            >
+                                {sub}
+                            </li>
+                        })}
+                    
                     </ul>
                 </nav>
 
