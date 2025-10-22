@@ -97,7 +97,7 @@ html {
     margin-right: 0;
     padding: 0;
     width: 1008px;
-    height: 770px;
+    /* height: 770px; */
     display: flex;
     flex-wrap: wrap;
     /* gap: 20px;
