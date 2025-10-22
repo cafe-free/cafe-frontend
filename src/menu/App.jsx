@@ -36,25 +36,25 @@ export function App() {
                         </div>
                         <hr />
 
-                        {subcategories.map((sub, index) => {
+                        {subcategories.map((sub) => (
                             <li
                                 // onClick={() => setSelectedSubcategory(sub)}
-                                key={index}
-                                className={
-                                    selectedSubcategory === sub ? "selected-menu-subcategory" : ""
-                                }
+                                // key={index}
+                                // className={
+                                //     selectedSubcategory === sub ? "selected-menu-subcategory" : ""
+                                // }
                             >
                                 {sub}
                             </li>
-                        })}
+                        ))}
                     
                     </ul>
                 </nav>
 
+                
+
                 <div className="cards-container">
                     <MenuSection data={menuData} />
-                    {/* <MenuSection title="Coffee" /> */}
-                    {/* <MenuSection title="Tea" /> */}
                 </div>
             </div>
 
