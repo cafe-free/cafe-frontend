@@ -4,7 +4,7 @@ import Footer from "./components/Footer.jsx";
 import { menuData } from '../assets/js/data';
 
 const categories = ["Food", "Drinks"];
-const subcategories = ["All", "Coffee", "Juice", "Tea"];
+const subcategories = ["Coffee", "Juice", "Tea"];
 
 
 export function App() {
@@ -15,13 +15,15 @@ export function App() {
         ? menuData.filter(item => item.category === selectedCategory) : [];
 
     function CategoryListItem({ category, isSub }) {
+        const isSubcategorySelected = isSub;
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
-        const isCategorized = category === "All";
         const isSelected = (category === selectedCategory) || (category === selectedSubcategory);
 
         const handleListItemClick = () => {
             if (isSub) {
                 setSelectedSubcategory(category);
+            } else if (category === "All") {
+                setSelectedSubcategory("All");
             } else {
                 setSelectedCategory(category);
                 selectedSubcategory("All");
@@ -58,9 +60,11 @@ export function App() {
                             <CategoryListItem category={"Food"} isSub={false}/>
                             <CategoryListItem category={"Drinks"} isSub={false}/>
                         <hr />
+                        
+                        <CategoryListItem category={"All"} isSub={false}/>
 
-                        {subcategories.map((c) => (
-                            <CategoryListItem category={c} isSub={true}/>
+                        {subcategories.map((sub) => (
+                            <CategoryListItem category={sub} isSub={true}/>
                         ))}
                     
                     </ul>
