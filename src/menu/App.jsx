@@ -3,16 +3,38 @@ import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
 import { menuData } from '../assets/js/data';
 
-const subcategories = ["Appetizer", "Coffee", "Tea"];
+const categories = ["Food", "Drinks", "Tea"];
+
+function CategoryListItem({ category }) {
+
+    return (
+        <div
+            className={
+                (category === 'Food' || category === 'Drinks') 
+                ? "food-drinks" : ""
+            }
+        >
+            <li 
+                onClick={() => setSelectedCategory(category)}
+                // className={
+                    // selectedCategory === category ? "selected-menu-subcategory" : ""
+                // }
+            >
+                {category}
+            </li>
+        </div>
+    );
+}
 
 export function App() {
 
-    const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-    const filteredMenuData = selectedSubcategory 
-        ? menuData.filter(item => item.category === selectedSubcategory) : menuData;
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const filteredMenuData = selectedCategory 
+        ? menuData.filter(item => item.category === selectedCategory) : menuData;
 
-    // const handleCategoryChange = selectedSubcategory => {
-    //     setSelectedSubcategory(selectedSubcategory);
+    
+        // const handleCategoryChange = selectedSubcategory => {
+    //     setSelectedCategory(selectedCategory);
     // }
 
     return (
@@ -26,23 +48,15 @@ export function App() {
                 <nav className="menu-category-list">
                     <ul>
                         <li className="menu-category">Categories</li>
-                        <div className="food-drinks">
-                            <li onClick={() => setSelectedSubcategory(null)}>
-                                Food
-                            </li>
-                        </div>
-                        <div className="food-drinks selected-menu-subcategory">
-                            <li onClick={() => setSelectedSubcategory(null)}>
-                                Drinks
-                            </li>
-                        </div>
+                            <CategoryListItem category={"Food"} />
+                            <CategoryListItem category={"Drinks"} />
                         <hr />
 
-                        {subcategories.map((sub) => (
+                        {categories.map((sub) => (
                             <li
-                                onClick={() => setSelectedSubcategory(sub)}
+                                onClick={() => setSelectedCategory(sub)}
                                 className={
-                                    selectedSubcategory === sub ? "selected-menu-subcategory" : ""
+                                    selectedCategory === sub ? "selected-menu-subcategory" : ""
                                 }
                             >
                                 {sub}
