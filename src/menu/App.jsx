@@ -10,8 +10,11 @@ export function App() {
 
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
-    const filteredMenuData = selectedCategory 
-        ? menuData.filter(item => item.category === selectedCategory) : [];
+    const filteredMenuData = menuData.filter(item => {
+        const categoryMatch = categories ? item.category === selectedCategory : true;
+        const subcategoryMatch = subcategories ? item.subcategory === selectedSubcategory : true;
+        return categoryMatch && subcategoryMatch;
+    });
 
     function CategoryListItem({ category, isSub }) {
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
@@ -72,7 +75,7 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={menuData} selectedCategory={selectedCategory} />
+                    <MenuSection data={filteredMenuData} selectedCategory={selectedCategory} />
                 </div>
             </div>
 
@@ -83,8 +86,6 @@ export function App() {
 
 function MenuSection({ data, selectedCategory }) {
     const itemsByCategory = Object.groupBy(data, (item) => item.category);
-    // const itemsOfSelectedCategory = selectedCategory != null
-    //     ? itemsByCategory.filter(item => item.category === selectedCategory) : itemsByCategory; 
 
     return (
         <>
