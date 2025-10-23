@@ -4,8 +4,7 @@ import Footer from "./components/Footer.jsx";
 import { menuData } from '../assets/js/data';
 
 const categories = ["Food", "Drinks"];
-const subcategories = ["Coffee", "Juice", "Tea"];
-
+const subcategories = [...new Set(menuData.map(item => item.subcategory))];
 
 export function App() {
 
