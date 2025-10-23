@@ -14,7 +14,6 @@ export function App() {
         ? menuData.filter(item => item.category === selectedCategory) : [];
 
     function CategoryListItem({ category, isSub }) {
-        const isSubcategorySelected = isSub;
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
         const isSelected = (category === selectedCategory) || (category === selectedSubcategory);
 
@@ -23,9 +22,12 @@ export function App() {
                 setSelectedSubcategory(category);
             } else if (category === "All") {
                 setSelectedSubcategory("All");
-            } else {
-                setSelectedCategory(category);
-                selectedSubcategory("All");
+            } else if (category === "Food")  {
+                setSelectedCategory("Food");
+                setSelectedSubcategory("All");
+            } else if (category === "Drinks") {
+                setSelectedCategory("Drinks");
+                setSelectedSubcategory("All");
             }
         }
 
