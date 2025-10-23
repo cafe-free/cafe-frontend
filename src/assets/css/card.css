@@ -122,7 +122,7 @@ html {
     padding-top: 25px;
 }
 
-.selected-menu-subcategory {
+.selected-list-item {
     padding-left: 10px;
     padding-bottom: 0;
     border-left: 3px solid var(--highlight);

@@ -3,27 +3,39 @@ import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
 import { menuData } from '../assets/js/data';
 
-const categories = ["Coffee", "Juice", "Tea"];
+const categories = ["Food", "Drinks"];
+const subcategories = ["All", "Coffee", "Juice", "Tea"];
 
 
 export function App() {
 
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedCategory, setSelectedCategory] = useState("Food");
+    const [selectedSubcategory, setSelectedSubcategory] = useState("All");
     const filteredMenuData = selectedCategory 
         ? menuData.filter(item => item.category === selectedCategory) : [];
 
-    function CategoryListItem({ category }) {
-        const isSelected = category === selectedCategory;
+    function CategoryListItem({ category, isSub }) {
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
+        const isCategorized = category === "All";
+        const isSelected = (category === selectedCategory) || (category === selectedSubcategory);
+
+        const handleListItemClick = () => {
+            if (isSub) {
+                setSelectedSubcategory(category);
+            } else {
+                setSelectedCategory(category);
+                selectedSubcategory("All");
+            }
+        }
 
         return (
             <div
                 className={ isFoodDrinks ? "food-drinks" : "" }
             >
                 <li 
-                    onClick={ !isFoodDrinks ? () => setSelectedCategory(category) : () => setSelectedCategory("All") }
-                    className={ 
-                        isSelected ? "selected-menu-subcategory" : ""
+                    onClick={handleListItemClick}
+                    className={
+                        isSelected ? "selected-list-item" : ""
                     }
                 >
                     {category}
@@ -43,12 +55,12 @@ export function App() {
                 <nav className="menu-category-list">
                     <ul>
                         <li className="menu-category">Categories</li>
-                            <CategoryListItem category={"Food"} />
-                            <CategoryListItem category={"Drinks"} />
+                            <CategoryListItem category={"Food"} isSub={false}/>
+                            <CategoryListItem category={"Drinks"} isSub={false}/>
                         <hr />
 
-                        {categories.map((c) => (
-                            <CategoryListItem category={c}/>
+                        {subcategories.map((c) => (
+                            <CategoryListItem category={c} isSub={true}/>
                         ))}
                     
                     </ul>
@@ -78,7 +90,7 @@ function MenuSection({ data, selectedCategory }) {
                     </div>
 
                     { 
-                        selectedCategory == "All" ? 
+                        selectedCategory === "All" || selectedCategory === 'Food' || selectedCategory === 'Drinks' ?
                             items.map((item, index) => (
                                 <div key={index} className="menu-card">
                                     <div>
