@@ -8,22 +8,20 @@ const categories = ["Coffee", "Juice", "Tea"];
 
 export function App() {
 
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState("All");
     const filteredMenuData = selectedCategory 
-        ? menuData.filter(item => item.category === selectedCategory) : menuData;
+        ? menuData.filter(item => item.category === selectedCategory) : [];
 
     function CategoryListItem({ category }) {
         const isSelected = category === selectedCategory;
+        const isFoodDrinks = (category === 'Food' || category === 'Drinks');
 
         return (
             <div
-                className={
-                    (category === 'Food' || category === 'Drinks') 
-                    ? "food-drinks" : ""
-                }
+                className={ isFoodDrinks ? "food-drinks" : "" }
             >
                 <li 
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={ !isFoodDrinks ? () => setSelectedCategory(category) : () => setSelectedCategory("All") }
                     className={ 
                         isSelected ? "selected-menu-subcategory" : ""
                     }
@@ -78,17 +76,23 @@ function MenuSection({ data, selectedCategory }) {
                     <div className="menu-subcategory-title">
                         <h2>{category}</h2>
                     </div>
-                    {items.map((item, index) => (
-                        <div key={index} className="menu-card">
-                            <div>
-                                <img src={item.img} alt="Menu Item" />
-                            </div>
-                            <div className="menu-card-content">
-                                <p className="menu-card-title">{item.title}</p>
-                                <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
-                            </div>
-                        </div>
-                    ))}
+
+                    { 
+                        selectedCategory == "All" ? 
+                            items.map((item, index) => (
+                                <div key={index} className="menu-card">
+                                    <div>
+                                        <img src={item.img} alt="Menu Item" />
+                                    </div>
+                                    <div className="menu-card-content">
+                                        <p className="menu-card-title">{item.title}</p>
+                                        <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                                    </div>
+                                </div>
+                            )) 
+                        : "Unavailable"
+                    }
+
                 </div>
             ))}
         </>
