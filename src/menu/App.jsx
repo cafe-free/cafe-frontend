@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
 import { menuData } from '../assets/js/data';
 
-const categories = ["Food", "Drinks", "Tea"];
+const categories = ["Coffee", "Juice", "Tea"];
 
 
 export function App() {
@@ -57,7 +57,7 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={menuData} />
+                    <MenuSection data={menuData} selectedCategory={selectedCategory} />
                 </div>
             </div>
 
@@ -66,8 +66,10 @@ export function App() {
     );
 }
 
-function MenuSection({ data }) {
+function MenuSection({ data, selectedCategory }) {
     const itemsByCategory = Object.groupBy(data, (item) => item.category);
+    // const itemsOfSelectedCategory = selectedCategory != null
+    //     ? itemsByCategory.filter(item => item.category === selectedCategory) : itemsByCategory; 
 
     return (
         <>
