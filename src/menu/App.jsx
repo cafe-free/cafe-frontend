@@ -5,26 +5,6 @@ import { menuData } from '../assets/js/data';
 
 const categories = ["Food", "Drinks", "Tea"];
 
-function CategoryListItem({ category }) {
-
-    return (
-        <div
-            className={
-                (category === 'Food' || category === 'Drinks') 
-                ? "food-drinks" : ""
-            }
-        >
-            <li 
-                onClick={() => setSelectedCategory(category)}
-                // className={
-                    // selectedCategory === category ? "selected-menu-subcategory" : ""
-                // }
-            >
-                {category}
-            </li>
-        </div>
-    );
-}
 
 export function App() {
 
@@ -32,10 +12,27 @@ export function App() {
     const filteredMenuData = selectedCategory 
         ? menuData.filter(item => item.category === selectedCategory) : menuData;
 
-    
-        // const handleCategoryChange = selectedSubcategory => {
-    //     setSelectedCategory(selectedCategory);
-    // }
+    function CategoryListItem({ category }) {
+        const isSelected = category === selectedCategory;
+
+        return (
+            <div
+                className={
+                    (category === 'Food' || category === 'Drinks') 
+                    ? "food-drinks" : ""
+                }
+            >
+                <li 
+                    onClick={() => setSelectedCategory(category)}
+                    className={ 
+                        isSelected ? "selected-menu-subcategory" : ""
+                    }
+                >
+                    {category}
+                </li>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -52,21 +49,12 @@ export function App() {
                             <CategoryListItem category={"Drinks"} />
                         <hr />
 
-                        {categories.map((sub) => (
-                            <li
-                                onClick={() => setSelectedCategory(sub)}
-                                className={
-                                    selectedCategory === sub ? "selected-menu-subcategory" : ""
-                                }
-                            >
-                                {sub}
-                            </li>
+                        {categories.map((c) => (
+                            <CategoryListItem category={c}/>
                         ))}
                     
                     </ul>
                 </nav>
-
-                
 
                 <div className="cards-container">
                     <MenuSection data={menuData} />
