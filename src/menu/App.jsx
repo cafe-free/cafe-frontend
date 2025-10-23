@@ -11,6 +11,10 @@ export function App() {
     const filteredMenuData = selectedSubcategory 
         ? menuData.filter(item => item.category === selectedSubcategory) : menuData;
 
+    // const handleCategoryChange = selectedSubcategory => {
+    //     setSelectedSubcategory(selectedSubcategory);
+    // }
+
     return (
         <>
             <Header />
@@ -23,14 +27,12 @@ export function App() {
                     <ul>
                         <li className="menu-category">Categories</li>
                         <div className="food-drinks">
-                            {/* <li onClick={setSelectedSubcategory(null)}> */}
-                            <li>
+                            <li onClick={() => setSelectedSubcategory(null)}>
                                 Food
                             </li>
                         </div>
                         <div className="food-drinks selected-menu-subcategory">
-                            {/* <li onClick={setSelectedSubcategory(null)}> */}
-                            <li>
+                            <li onClick={() => setSelectedSubcategory(null)}>
                                 Drinks
                             </li>
                         </div>
@@ -38,11 +40,10 @@ export function App() {
 
                         {subcategories.map((sub) => (
                             <li
-                                // onClick={() => setSelectedSubcategory(sub)}
-                                // key={index}
-                                // className={
-                                //     selectedSubcategory === sub ? "selected-menu-subcategory" : ""
-                                // }
+                                onClick={() => setSelectedSubcategory(sub)}
+                                className={
+                                    selectedSubcategory === sub ? "selected-menu-subcategory" : ""
+                                }
                             >
                                 {sub}
                             </li>
