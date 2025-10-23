@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
-import { menuData } from '../assets/js/data';
+import {menuData} from '../assets/js/data';
 
 const categories = ["Food", "Drinks"];
 const subcategories = [...new Set(menuData.map(item => item.subcategory))];
@@ -10,11 +10,6 @@ export function App() {
 
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
-    const filteredMenuData = menuData.filter(item => {
-        const categoryMatch = categories ? item.category === selectedCategory : true;
-        const subcategoryMatch = subcategories ? item.subcategory === selectedSubcategory : true;
-        return categoryMatch && subcategoryMatch;
-    });
 
     function CategoryListItem({ category, isSub }) {
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
@@ -75,7 +70,7 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={filteredMenuData} selectedCategory={selectedCategory} />
+                    <MenuSection data={menuData} selectedCategory={selectedCategory} />
                 </div>
             </div>
 

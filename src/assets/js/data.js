@@ -31,15 +31,5 @@ export const menuData = [
   { category: "Dessert", subcategory: "Ice Cream", title: "Vanilla Ice Cream", price: 38, img: defaultImg },
   { category: "Dessert", subcategory: "Ice Cream", title: "Mint Chocolate Chip Ice Cream", price: 40, img: defaultImg },
   { category: "Dessert", subcategory: "Pastry", title: "Croissant", price: 28, img: defaultImg },
-  { category: "Dessert", subcategory: "Pastry", title: "Apple Pie", price: 48, img: defaultImg },
-
-  // Appetizer
-  { category: "Appetizer", subcategory: "Bread", title: "Garlic Bread", price: 30, img: defaultImg },
-  { category: "Appetizer", subcategory: "Bread", title: "Cheesy Breadsticks", price: 35, img: defaultImg },
-  { category: "Appetizer", subcategory: "Cheese", title: "Mozzarella Sticks", price: 45, img: defaultImg },
-  { category: "Appetizer", subcategory: "Rolls", title: "Spring Rolls", price: 40, img: defaultImg },
-  { category: "Appetizer", subcategory: "Soup", title: "Tomato Soup", price: 42, img: defaultImg },
-  { category: "Appetizer", subcategory: "Soup", title: "Mushroom Soup", price: 44, img: defaultImg },
-  { category: "Appetizer", subcategory: "Dip", title: "Hummus with Pita", price: 38, img: defaultImg },
-  { category: "Appetizer", subcategory: "Dip", title: "Spinach Artichoke Dip", price: 46, img: defaultImg }
+  { category: "Dessert", subcategory: "Pastry", title: "Apple Pie", price: 48, img: defaultImg }
 ];
