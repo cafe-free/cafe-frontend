@@ -18,14 +18,23 @@ export function App() {
         const handleListItemClick = () => {
             if (isSub) {
                 setSelectedSubcategory(category);
-            } else if (category === "All") {
-                setSelectedSubcategory("All");
-            } else if (category === "Food")  {
-                setSelectedCategory("Food");
-                setSelectedSubcategory("All");
-            } else if (category === "Drinks") {
-                setSelectedCategory("Drinks");
-                setSelectedSubcategory("All");
+                return;
+            }
+
+            switch (category) {
+                case "All":
+                    setSelectedSubcategory("All");
+                    break;
+                case "Food":
+                    setSelectedCategory("Food");
+                    setSelectedSubcategory("All");
+                    break;
+                case "Drinks":
+                    setSelectedCategory("Drinks");
+                    setSelectedSubcategory("All");
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -81,6 +90,10 @@ export function App() {
 
 function MenuSection({ data, selectedCategory }) {
     const itemsByCategory = Object.groupBy(data, (item) => item.category);
+
+    // function MenuCard() {
+
+    // }
 
     return (
         <>
