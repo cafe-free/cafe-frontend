@@ -8,23 +8,11 @@ export function App() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
 
-    const foodSubcategories = [
-        ...new Set(
-            menuData
-            .filter(item => item.category === "Food")
-            .map(item => item.subcategory)
-        )
+    const getSubcategories = (cat) => [
+        ...new Set(menuData.filter(i => i.category === cat).map(i => i.subcategory))
     ];
 
-    const drinkSubcategories = [
-        ...new Set(
-            menuData
-            .filter(item => item.category === "Drinks")
-            .map(item => item.subcategory)
-        )
-    ];
-    
-    const subcategoriesToDisplay = selectedCategory === "Food" ? foodSubcategories : drinkSubcategories;
+    const subcategoriesToDisplay = getSubcategories(selectedCategory);
 
     function CategoryListItem({ category, isSub }) {
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
