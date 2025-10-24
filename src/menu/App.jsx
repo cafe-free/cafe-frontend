@@ -1,45 +1,73 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer.jsx";
 import { menuData } from "../assets/js/data";
 
-// sample
-
 export function App() {
-    const [filters, setFilters] = useState({
-        category: "Food",
-        subcategory: "All",
-    });
 
-    // --- Derived subcategories based on selected category ---
-    const subcategories = useMemo(() => {
-        const subs = [
-            ...new Set(
-                menuData
-                    .filter(item => item.category === filters.category)
-                    .map(item => item.subcategory)
-            ),
-        ];
-        return ["All", ...subs];
-    }, [filters.category]);
+    const [selectedCategory, setSelectedCategory] = useState("Food");
+    const [selectedSubcategory, setSelectedSubcategory] = useState("All");
 
-    // --- Derived filtered data ---
-    const filteredData = useMemo(() => {
-        let result = menuData.filter(item => item.category === filters.category);
-        if (filters.subcategory !== "All") {
-            result = result.filter(item => item.subcategory === filters.subcategory);
+    const foodSubcategories = [
+        ...new Set(
+            menuData
+            .filter(item => item.category === "Food")
+            .map(item => item.subcategory)
+        )
+    ];
+
+    const drinkSubcategories = [
+        ...new Set(
+            menuData
+            .filter(item => item.category === "Drinks")
+            .map(item => item.subcategory)
+        )
+    ];
+    
+    const subcategoriesToDisplay = selectedCategory === "Food" ? foodSubcategories : drinkSubcategories;
+
+    function CategoryListItem({ category, isSub }) {
+        const isFoodDrinks = (category === 'Food' || category === 'Drinks');
+        const isSelected = (category === selectedCategory) || (category === selectedSubcategory);
+
+        const handleListItemClick = () => {
+            if (isSub) {
+                setSelectedSubcategory(category);
+                return;
+            }
+
+            switch (category) {
+                case "All":
+                    setSelectedSubcategory("All");
+                    break;
+                case "Food":
+                    setSelectedCategory("Food");
+                    setSelectedSubcategory("All");
+                    break;
+                case "Drinks":
+                    setSelectedCategory("Drinks");
+                    setSelectedSubcategory("All");
+                    break;
+                default:
+                    break;
+            }
         }
-        return result;
-    }, [filters]);
 
-    // --- Handlers ---
-    const handleCategoryChange = (category) => {
-        setFilters({ category, subcategory: "All" });
-    };
-
-    const handleSubcategoryChange = (subcategory) => {
-        setFilters(prev => ({ ...prev, subcategory }));
-    };
+        return (
+            <div
+                className={ isFoodDrinks ? "food-drinks" : "" }
+            >
+                <li 
+                    onClick={handleListItemClick}
+                    className={
+                        isSelected ? "selected-list-item" : ""
+                    }
+                >
+                    {category}
+                </li>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -48,17 +76,30 @@ export function App() {
                 <h1 className="menu-hero-title">Menu</h1>
             </div>
 
+            {/* for testing */}
+            {/* <h3>selected: {selectedCategory}</h3> 
+            <h3>selected sub: {selectedSubcategory}</h3>  */}
+
             <div className="menu-container">
-                <CategorySidebar
-                    categories={["Food", "Drinks"]}
-                    subcategories={subcategories}
-                    filters={filters}
-                    onCategoryChange={handleCategoryChange}
-                    onSubcategoryChange={handleSubcategoryChange}
-                />
+                <nav className="menu-category-list">
+                    <ul>
+                        <li className="menu-category">Categories</li>
+                            <CategoryListItem category={"Food"} isSub={false}/>
+                            <CategoryListItem category={"Drinks"} isSub={false}/>
+                        <hr />
+                        
+                        <CategoryListItem category={"All"} isSub={false}/>
+
+                        {subcategoriesToDisplay
+                            .map((sub) => (
+                                <CategoryListItem category={sub} isSub={true}/>
+                        ))}
+                    
+                    </ul>
+                </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={filteredData} filters={filters} />
+                    <MenuSection data={menuData} selectedCategory={selectedCategory} selectedSubcategory={selectedSubcategory} />
                 </div>
             </div>
 
@@ -69,6 +110,8 @@ export function App() {
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
+    const filteredByCategory = data.filter(item => item.category === selectedCategory);
+
     function MenuCard({ item, index }) {
         return (
             <div key={index} className="menu-card">
@@ -77,55 +120,55 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                 </div>
                 <div className="menu-card-content">
                     <p className="menu-card-title">{item.title}</p>
-                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                    <p className="menu-card-price">HKD {item.price.toFixed(1)}</p>
                 </div>
             </div>
         );
     }
 
     if (selectedSubcategory === "All") {
-        const itemsByCategory = Object.groupBy(data, (item) => item.subcategory);
+        const itemsByCategory = Object.groupBy(filteredByCategory, (item) => item.subcategory);
         const entries = Object.entries(itemsByCategory);
         
         return (
             <>
-                {Object.entries(grouped).map(([sub, items]) => (
-                    <div key={sub} className="menu-card-container">
-                        <div className="menu-subcategory-title">
-                            <h2>{sub}</h2>
+                {entries.map(([sub, items]) => {
+                    return (
+                        <div key={sub} className="menu-card-container">
+                            <div className="menu-subcategory-title">
+                                <h2>{sub}</h2>
+                            </div>
+
+                            { 
+                                items.map((item, index) => (
+                                    <MenuCard item={item} index={index} key={`${sub}-${index}`}/>
+                                )) 
+                            }
+
                         </div>
-                        {items.map((item, i) => (
-                            <MenuCard key={`${sub}-${i}`} item={item} />
-                        ))}
+                    );
+
+                })}
+            </>
+        );
+    } 
+    else {
+
+        const filteredMenu = data.filter((it) => it.subcategory === selectedSubcategory);
+        return (
+            <>
+                <div className="menu-card-container">
+                    <div className="menu-subcategory-title">
+                        <h2>{selectedSubcategory}</h2>
                     </div>
-                ))}
+                    {
+                        filteredMenu.map((item, index) => (
+                            <MenuCard item={item} index={index}/>
+                        ))
+                    }
+                </div>
             </>
         );
     }
 
-    // Single subcategory view
-    return (
-        <div className="menu-card-container">
-            <div className="menu-subcategory-title">
-                <h2>{filters.subcategory}</h2>
-            </div>
-            {data.map((item, i) => (
-                <MenuCard key={i} item={item} />
-            ))}
-        </div>
-    );
-}
-
-function MenuCard({ item }) {
-    return (
-        <div className="menu-card">
-            <div>
-                <img src={item.img} alt={item.title} />
-            </div>
-            <div className="menu-card-content">
-                <p className="menu-card-title">{item.title}</p>
-                <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
-            </div>
-        </div>
-    );
 }

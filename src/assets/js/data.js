@@ -13,16 +13,16 @@ export const menuData = [
   { category: "Food", subcategory: "Burger", title: "Beef Burger", price: 98, img: defaultImg },
   { category: "Food", subcategory: "Burger", title: "Veggie Burger", price: 85, img: defaultImg },
 
-  // Drink
-  { category: "Drink", subcategory: "Tea", title: "Iced Lemon Tea", price: 28, img: defaultImg },
-  { category: "Drink", subcategory: "Tea", title: "Green Tea", price: 26, img: defaultImg },
-  { category: "Drink", subcategory: "Coffee", title: "Cappuccino", price: 35, img: defaultImg },
-  { category: "Drink", subcategory: "Coffee", title: "Latte", price: 36, img: defaultImg },
-  { category: "Drink", subcategory: "Coffee", title: "Espresso", price: 30, img: defaultImg },
-  { category: "Drink", subcategory: "Juice", title: "Fresh Orange Juice", price: 32, img: defaultImg },
-  { category: "Drink", subcategory: "Juice", title: "Apple Juice", price: 30, img: defaultImg },
-  { category: "Drink", subcategory: "Water", title: "Sparkling Water", price: 25, img: defaultImg },
-  { category: "Drink", subcategory: "Water", title: "Still Mineral Water", price: 20, img: defaultImg },
+  // Drinks
+  { category: "Drinks", subcategory: "Tea", title: "Iced Lemon Tea", price: 28, img: defaultImg },
+  { category: "Drinks", subcategory: "Tea", title: "Green Tea", price: 26, img: defaultImg },
+  { category: "Drinks", subcategory: "Coffee", title: "Cappuccino", price: 35, img: defaultImg },
+  { category: "Drinks", subcategory: "Coffee", title: "Latte", price: 36, img: defaultImg },
+  { category: "Drinks", subcategory: "Coffee", title: "Espresso", price: 30, img: defaultImg },
+  { category: "Drinks", subcategory: "Juice", title: "Fresh Orange Juice", price: 32, img: defaultImg },
+  { category: "Drinks", subcategory: "Juice", title: "Apple Juice", price: 30, img: defaultImg },
+  { category: "Drinks", subcategory: "Water", title: "Sparkling Water", price: 25, img: defaultImg },
+  { category: "Drinks", subcategory: "Water", title: "Still Mineral Water", price: 20, img: defaultImg },
 
   // Dessert
   { category: "Dessert", subcategory: "Cake", title: "Chocolate Lava Cake", price: 55, img: defaultImg },
