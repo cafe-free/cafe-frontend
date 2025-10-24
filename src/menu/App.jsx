@@ -79,7 +79,7 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={menuData} selectedSubcategory={selectedSubcategory} />
+                    <MenuSection data={menuData} selectedCategory={selectedCategory} selectedSubcategory={selectedSubcategory} />
                 </div>
             </div>
 
@@ -88,7 +88,7 @@ export function App() {
     );
 }
 
-function MenuSection({ data, selectedSubcategory }) {
+function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
     function MenuCard({ item, index }) {
         return (
@@ -106,25 +106,26 @@ function MenuSection({ data, selectedSubcategory }) {
 
     if (selectedSubcategory === "All") {
     
-        const itemsByCategory = Object.groupBy(data, (item) => item.category);
+        const itemsByCategory = Object.groupBy(data, (item) => item.subcategory);
+
+        function filterEntriesByCategoryAll(entries, category) {
+            return entries.filter(([subcategory, items]) => items.length > 0 
+                && items.every(it => it.category === category));
+        }
+
+        const filteredItems = filterEntriesByCategoryAll(Object.entries(itemsByCategory), selectedCategory);
+        
         return (
             <>
-                {Object.entries(itemsByCategory).map(([category, items]) => {
-                    const filteredItems = selectedSubcategory && selectedSubcategory !== "All"
-                        ? items.filter((it) => it.subcategory === selectedSubcategory)
-                        : items;
-
-                    const menuHeading = selectedSubcategory && selectedSubcategory !== "All"
-                        ? selectedSubcategory : category;
-
+                {filteredItems.map(([sub, items]) => {
                     return (
-                        <div key={category} className="menu-card-container">
+                        <div key={sub} className="menu-card-container">
                             <div className="menu-subcategory-title">
-                                <h2>{menuHeading}</h2>
+                                <h2>{sub}</h2>
                             </div>
 
                             { 
-                                filteredItems.map((item, index) => (
+                                items.map((item, index) => (
                                     <MenuCard item={item} index={index}/>
                                 )) 
                             }
