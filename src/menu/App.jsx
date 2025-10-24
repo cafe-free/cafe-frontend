@@ -1,61 +1,45 @@
-import React, {useState} from 'react';
-import Header from './components/Header';
+import React, { useState, useMemo } from "react";
+import Header from "./components/Header";
 import Footer from "./components/Footer.jsx";
-import {menuData} from '../assets/js/data';
+import { menuData } from "../assets/js/data";
+
+// sample
 
 export function App() {
+    const [filters, setFilters] = useState({
+        category: "Food",
+        subcategory: "All",
+    });
 
-    const [selectedCategory, setSelectedCategory] = useState("Food");
-    const [selectedSubcategory, setSelectedSubcategory] = useState("All");
+    // --- Derived subcategories based on selected category ---
+    const subcategories = useMemo(() => {
+        const subs = [
+            ...new Set(
+                menuData
+                    .filter(item => item.category === filters.category)
+                    .map(item => item.subcategory)
+            ),
+        ];
+        return ["All", ...subs];
+    }, [filters.category]);
 
-    const subcategories = [
-        ...new Set(menuData
-            .filter(item => item.category === selectedCategory)
-            .map(item => item.subcategory))
-    ];
-
-    function CategoryListItem({ category, isSub }) {
-        const isFoodDrinks = (category === 'Food' || category === 'Drinks');
-        const isSelected = (category === selectedCategory) || (category === selectedSubcategory);
-
-        const handleListItemClick = () => {
-            if (isSub) {
-                setSelectedSubcategory(category);
-                return;
-            }
-
-            switch (category) {
-                case "All":
-                    setSelectedSubcategory("All");
-                    break;
-                case "Food":
-                    setSelectedCategory("Food");
-                    setSelectedSubcategory("All");
-                    break;
-                case "Drinks":
-                    setSelectedCategory("Drinks");
-                    setSelectedSubcategory("All");
-                    break;
-                default:
-                    break;
-            }
+    // --- Derived filtered data ---
+    const filteredData = useMemo(() => {
+        let result = menuData.filter(item => item.category === filters.category);
+        if (filters.subcategory !== "All") {
+            result = result.filter(item => item.subcategory === filters.subcategory);
         }
+        return result;
+    }, [filters]);
 
-        return (
-            <div
-                className={ isFoodDrinks ? "food-drinks" : "" }
-            >
-                <li 
-                    onClick={handleListItemClick}
-                    className={
-                        isSelected ? "selected-list-item" : ""
-                    }
-                >
-                    {category}
-                </li>
-            </div>
-        );
-    }
+    // --- Handlers ---
+    const handleCategoryChange = (category) => {
+        setFilters({ category, subcategory: "All" });
+    };
+
+    const handleSubcategoryChange = (subcategory) => {
+        setFilters(prev => ({ ...prev, subcategory }));
+    };
 
     return (
         <>
@@ -65,24 +49,16 @@ export function App() {
             </div>
 
             <div className="menu-container">
-                <nav className="menu-category-list">
-                    <ul>
-                        <li className="menu-category">Categories</li>
-                            <CategoryListItem category={"Food"} isSub={false}/>
-                            <CategoryListItem category={"Drinks"} isSub={false}/>
-                        <hr />
-                        
-                        <CategoryListItem category={"All"} isSub={false}/>
-
-                        {subcategories.map((sub) => (
-                            <CategoryListItem category={sub} isSub={true}/>
-                        ))}
-                    
-                    </ul>
-                </nav>
+                <CategorySidebar
+                    categories={["Food", "Drinks"]}
+                    subcategories={subcategories}
+                    filters={filters}
+                    onCategoryChange={handleCategoryChange}
+                    onSubcategoryChange={handleSubcategoryChange}
+                />
 
                 <div className="cards-container">
-                    <MenuSection data={menuData} selectedCategory={selectedCategory} selectedSubcategory={selectedSubcategory} />
+                    <MenuSection data={filteredData} filters={filters} />
                 </div>
             </div>
 
@@ -91,67 +67,82 @@ export function App() {
     );
 }
 
-function MenuSection({ data, selectedCategory, selectedSubcategory }) {
+function CategorySidebar({ categories, subcategories, filters, onCategoryChange, onSubcategoryChange }) {
+    return (
+        <nav className="menu-category-list">
+            <ul>
+                <li className="menu-category">Categories</li>
 
-    const filteredByCategory = data.filter(item => item.category === selectedCategory);
+                {categories.map((cat) => (
+                    <li
+                        key={cat}
+                        onClick={() => onCategoryChange(cat)}
+                        className={filters.category === cat ? "selected-list-item" : ""}
+                    >
+                        {cat}
+                    </li>
+                ))}
 
-    function MenuCard({ item, index }) {
-        return (
-            <div key={index} className="menu-card">
-                <div>
-                    <img src={item.img} alt="Menu Item" />
-                </div>
-                <div className="menu-card-content">
-                    <p className="menu-card-title">{item.title}</p>
-                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
-                </div>
-            </div>
-        );
-    }
+                <hr />
 
-    if (selectedSubcategory === "All") {
-        const itemsByCategory = Object.groupBy(filteredByCategory, (item) => item.subcategory);
-        const entries = Object.entries(itemsByCategory);
-        
+                {subcategories.map((sub) => (
+                    <li
+                        key={sub}
+                        onClick={() => onSubcategoryChange(sub)}
+                        className={filters.subcategory === sub ? "selected-list-item" : ""}
+                    >
+                        {sub}
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+}
+
+function MenuSection({ data, filters }) {
+    if (filters.subcategory === "All") {
+        // Group by subcategory within selected category
+        const grouped = Object.groupBy(data, (item) => item.subcategory);
+
         return (
             <>
-                {entries.map(([sub, items]) => {
-                    return (
-                        <div key={sub} className="menu-card-container">
-                            <div className="menu-subcategory-title">
-                                <h2>{sub}</h2>
-                            </div>
-
-                            { 
-                                items.map((item, index) => (
-                                    <MenuCard item={item} index={index} key={`${sub}-${index}`}/>
-                                )) 
-                            }
-
+                {Object.entries(grouped).map(([sub, items]) => (
+                    <div key={sub} className="menu-card-container">
+                        <div className="menu-subcategory-title">
+                            <h2>{sub}</h2>
                         </div>
-                    );
-
-                })}
-            </>
-        );
-    } 
-    else {
-
-        const filteredMenu = data.filter((it) => it.subcategory === selectedSubcategory);
-        return (
-            <>
-                <div className="menu-card-container">
-                    <div className="menu-subcategory-title">
-                        <h2>{selectedSubcategory}</h2>
+                        {items.map((item, i) => (
+                            <MenuCard key={`${sub}-${i}`} item={item} />
+                        ))}
                     </div>
-                </div>
-                {
-                    filteredMenu.map((item, index) => (
-                        <MenuCard item={item} index={index}/>
-                    ))
-                }
+                ))}
             </>
         );
     }
 
+    // Single subcategory view
+    return (
+        <div className="menu-card-container">
+            <div className="menu-subcategory-title">
+                <h2>{filters.subcategory}</h2>
+            </div>
+            {data.map((item, i) => (
+                <MenuCard key={i} item={item} />
+            ))}
+        </div>
+    );
+}
+
+function MenuCard({ item }) {
+    return (
+        <div className="menu-card">
+            <div>
+                <img src={item.img} alt={item.title} />
+            </div>
+            <div className="menu-card-content">
+                <p className="menu-card-title">{item.title}</p>
+                <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+            </div>
+        </div>
+    );
 }
