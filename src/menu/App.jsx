@@ -91,30 +91,46 @@ export function App() {
 function MenuSection({ data, selectedSubcategory }) {
     const itemsByCategory = Object.groupBy(data, (item) => item.category);
 
+    function MenuCard({ item, index }) {
+        return (
+            <div key={index} className="menu-card">
+                <div>
+                    <img src={item.img} alt="Menu Item" />
+                </div>
+                <div className="menu-card-content">
+                    <p className="menu-card-title">{item.title}</p>
+                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
-            {Object.entries(itemsByCategory).map(([category, items]) => (
-                <div key={category} className="menu-card-container">
-                    <div className="menu-subcategory-title">
-                        <h2>{category}</h2>
+            {Object.entries(itemsByCategory).map(([category, items]) => {
+                const filteredItems = selectedSubcategory && selectedSubcategory !== "All"
+                    ? items.filter((it) => it.subcategory === selectedSubcategory)
+                    : items;
+
+                const menuHeading = selectedSubcategory && selectedSubcategory !== "All"
+                    ? selectedSubcategory : category;
+
+                return (
+                    <div key={category} className="menu-card-container">
+                        <div className="menu-subcategory-title">
+                            <h2>{menuHeading}</h2>
+                        </div>
+
+                        { 
+                            filteredItems.map((item, index) => (
+                                <MenuCard item={item} index={index}/>
+                            )) 
+                        }
+
                     </div>
+                );
 
-                    { 
-                        items.map((item, index) => (
-                            <div key={index} className="menu-card">
-                                <div>
-                                    <img src={item.img} alt="Menu Item" />
-                                </div>
-                                <div className="menu-card-content">
-                                    <p className="menu-card-title">{item.title}</p>
-                                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
-                                </div>
-                            </div>
-                        )) 
-                    }
-
-                </div>
-            ))}
+            })}
         </>
     );
 }
