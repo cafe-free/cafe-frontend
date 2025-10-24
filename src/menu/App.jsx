@@ -89,7 +89,6 @@ export function App() {
 }
 
 function MenuSection({ data, selectedSubcategory }) {
-    const itemsByCategory = Object.groupBy(data, (item) => item.category);
 
     function MenuCard({ item, index }) {
         return (
@@ -105,32 +104,55 @@ function MenuSection({ data, selectedSubcategory }) {
         );
     }
 
-    return (
-        <>
-            {Object.entries(itemsByCategory).map(([category, items]) => {
-                const filteredItems = selectedSubcategory && selectedSubcategory !== "All"
-                    ? items.filter((it) => it.subcategory === selectedSubcategory)
-                    : items;
+    if (selectedSubcategory === "All") {
+    
+        const itemsByCategory = Object.groupBy(data, (item) => item.category);
+        return (
+            <>
+                {Object.entries(itemsByCategory).map(([category, items]) => {
+                    const filteredItems = selectedSubcategory && selectedSubcategory !== "All"
+                        ? items.filter((it) => it.subcategory === selectedSubcategory)
+                        : items;
 
-                const menuHeading = selectedSubcategory && selectedSubcategory !== "All"
-                    ? selectedSubcategory : category;
+                    const menuHeading = selectedSubcategory && selectedSubcategory !== "All"
+                        ? selectedSubcategory : category;
 
-                return (
-                    <div key={category} className="menu-card-container">
-                        <div className="menu-subcategory-title">
-                            <h2>{menuHeading}</h2>
+                    return (
+                        <div key={category} className="menu-card-container">
+                            <div className="menu-subcategory-title">
+                                <h2>{menuHeading}</h2>
+                            </div>
+
+                            { 
+                                filteredItems.map((item, index) => (
+                                    <MenuCard item={item} index={index}/>
+                                )) 
+                            }
+
                         </div>
+                    );
 
-                        { 
-                            filteredItems.map((item, index) => (
-                                <MenuCard item={item} index={index}/>
-                            )) 
-                        }
+                })}
+            </>
+        );
+    } 
+    else {
 
+        const filteredMenu = data.filter((it) => it.subcategory === selectedSubcategory);
+        return (
+            <>
+                <div className="menu-card-container">
+                    <div className="menu-subcategory-title">
+                        <h2>{selectedSubcategory}</h2>
                     </div>
-                );
+                </div>
+                {
+                    filteredMenu.map((item, index) => (
+                        <MenuCard item={item} index={index}/>
+                    ))
+                }
+            </>
+        );
+    }
 
-            })}
-        </>
-    );
 }
