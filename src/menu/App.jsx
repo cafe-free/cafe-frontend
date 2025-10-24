@@ -3,13 +3,16 @@ import Header from './components/Header';
 import Footer from "./components/Footer.jsx";
 import {menuData} from '../assets/js/data';
 
-const categories = ["Food", "Drinks"];
-const subcategories = [...new Set(menuData.map(item => item.subcategory))];
-
 export function App() {
 
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
+
+    const subcategories = [
+        ...new Set(menuData
+            .filter(item => item.category === selectedCategory)
+            .map(item => item.subcategory))
+    ];
 
     function CategoryListItem({ category, isSub }) {
         const isFoodDrinks = (category === 'Food' || category === 'Drinks');
@@ -105,19 +108,12 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
     }
 
     if (selectedSubcategory === "All") {
-    
         const itemsByCategory = Object.groupBy(data, (item) => item.subcategory);
-
-        function filterEntriesByCategoryAll(entries, category) {
-            return entries.filter(([subcategory, items]) => items.length > 0 
-                && items.every(it => it.category === category));
-        }
-
-        const filteredItems = filterEntriesByCategoryAll(Object.entries(itemsByCategory), selectedCategory);
+        const entries = Object.entries(itemsByCategory);
         
         return (
             <>
-                {filteredItems.map(([sub, items]) => {
+                {entries.map(([sub, items]) => {
                     return (
                         <div key={sub} className="menu-card-container">
                             <div className="menu-subcategory-title">
@@ -126,7 +122,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
                             { 
                                 items.map((item, index) => (
-                                    <MenuCard item={item} index={index}/>
+                                    <MenuCard item={item} index={index} key={`${sub}-${index}`}/>
                                 )) 
                             }
 
