@@ -67,43 +67,26 @@ export function App() {
     );
 }
 
-function CategorySidebar({ categories, subcategories, filters, onCategoryChange, onSubcategoryChange }) {
-    return (
-        <nav className="menu-category-list">
-            <ul>
-                <li className="menu-category">Categories</li>
+function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
-                {categories.map((cat) => (
-                    <li
-                        key={cat}
-                        onClick={() => onCategoryChange(cat)}
-                        className={filters.category === cat ? "selected-list-item" : ""}
-                    >
-                        {cat}
-                    </li>
-                ))}
+    function MenuCard({ item, index }) {
+        return (
+            <div key={index} className="menu-card">
+                <div>
+                    <img src={item.img} alt="Menu Item" />
+                </div>
+                <div className="menu-card-content">
+                    <p className="menu-card-title">{item.title}</p>
+                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                </div>
+            </div>
+        );
+    }
 
-                <hr />
-
-                {subcategories.map((sub) => (
-                    <li
-                        key={sub}
-                        onClick={() => onSubcategoryChange(sub)}
-                        className={filters.subcategory === sub ? "selected-list-item" : ""}
-                    >
-                        {sub}
-                    </li>
-                ))}
-            </ul>
-        </nav>
-    );
-}
-
-function MenuSection({ data, filters }) {
-    if (filters.subcategory === "All") {
-        // Group by subcategory within selected category
-        const grouped = Object.groupBy(data, (item) => item.subcategory);
-
+    if (selectedSubcategory === "All") {
+        const itemsByCategory = Object.groupBy(data, (item) => item.subcategory);
+        const entries = Object.entries(itemsByCategory);
+        
         return (
             <>
                 {Object.entries(grouped).map(([sub, items]) => (
