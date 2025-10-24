@@ -79,7 +79,7 @@ export function App() {
                 </nav>
 
                 <div className="cards-container">
-                    <MenuSection data={menuData} selectedCategory={selectedCategory} />
+                    <MenuSection data={menuData} selectedSubcategory={selectedSubcategory} />
                 </div>
             </div>
 
@@ -88,12 +88,8 @@ export function App() {
     );
 }
 
-function MenuSection({ data, selectedCategory }) {
+function MenuSection({ data, selectedSubcategory }) {
     const itemsByCategory = Object.groupBy(data, (item) => item.category);
-
-    // function MenuCard() {
-
-    // }
 
     return (
         <>
@@ -104,19 +100,17 @@ function MenuSection({ data, selectedCategory }) {
                     </div>
 
                     { 
-                        selectedCategory === "All" || selectedCategory === 'Food' || selectedCategory === 'Drinks' ?
-                            items.map((item, index) => (
-                                <div key={index} className="menu-card">
-                                    <div>
-                                        <img src={item.img} alt="Menu Item" />
-                                    </div>
-                                    <div className="menu-card-content">
-                                        <p className="menu-card-title">{item.title}</p>
-                                        <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
-                                    </div>
+                        items.map((item, index) => (
+                            <div key={index} className="menu-card">
+                                <div>
+                                    <img src={item.img} alt="Menu Item" />
                                 </div>
-                            )) 
-                        : "Unavailable"
+                                <div className="menu-card-content">
+                                    <p className="menu-card-title">{item.title}</p>
+                                    <p className="menu-card-price">HKD {item.price.toFixed(2)}</p>
+                                </div>
+                            </div>
+                        )) 
                     }
 
                 </div>
