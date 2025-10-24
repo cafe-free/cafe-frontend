@@ -93,6 +93,8 @@ export function App() {
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
+    const filteredByCategory = data.filter(item => item.category === selectedCategory);
+
     function MenuCard({ item, index }) {
         return (
             <div key={index} className="menu-card">
@@ -108,7 +110,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
     }
 
     if (selectedSubcategory === "All") {
-        const itemsByCategory = Object.groupBy(data, (item) => item.subcategory);
+        const itemsByCategory = Object.groupBy(filteredByCategory, (item) => item.subcategory);
         const entries = Object.entries(itemsByCategory);
         
         return (
