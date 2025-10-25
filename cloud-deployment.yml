@@ -1,0 +1,348 @@
+# Cloud Deployment Configurations
+# Various cloud deployment options for the cafe menu application
+
+# ===========================================
+# AWS ECS TASK DEFINITION
+# ===========================================
+
+# ecs-task-definition.json
+{
+  "family": "cafe-menu-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::ACCOUNT:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "cafe-api",
+      "image": "your-account.dkr.ecr.region.amazonaws.com/cafe-menu:latest",
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "MONGODB_URI",
+          "value": "mongodb+srv://username:password@cluster.mongodb.net/cafe-menu"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/cafe-menu",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      }
+    }
+  ]
+}
+
+# ===========================================
+# GOOGLE CLOUD RUN
+# ===========================================
+
+# cloudbuild.yaml
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cafe-menu:$COMMIT_SHA', '.']
+  
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/cafe-menu:$COMMIT_SHA']
+  
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'cafe-menu'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/cafe-menu:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+# ===========================================
+# AZURE CONTAINER INSTANCES
+# ===========================================
+
+# azure-container-instance.yaml
+apiVersion: 2021-07-01
+location: eastus
+name: cafe-menu-api
+properties:
+  containers:
+  - name: cafe-api
+    properties:
+      image: your-registry.azurecr.io/cafe-menu:latest
+      ports:
+      - port: 3000
+        protocol: TCP
+      environmentVariables:
+      - name: NODE_ENV
+        value: production
+      - name: MONGODB_URI
+        secureValue: mongodb+srv://username:password@cluster.mongodb.net/cafe-menu
+      resources:
+        requests:
+          cpu: 0.5
+          memoryInGb: 1.0
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: TCP
+      port: 3000
+    dnsNameLabel: cafe-menu-api
+
+# ===========================================
+# KUBERNETES DEPLOYMENT
+# ===========================================
+
+# k8s-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cafe-menu-api
+  labels:
+    app: cafe-menu-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cafe-menu-api
+  template:
+    metadata:
+      labels:
+        app: cafe-menu-api
+    spec:
+      containers:
+      - name: cafe-api
+        image: your-registry/cafe-menu:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: cafe-secrets
+              key: mongodb-uri
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cafe-menu-service
+spec:
+  selector:
+    app: cafe-menu-api
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cafe-secrets
+type: Opaque
+data:
+  mongodb-uri: bW9uZ29kYitzcnY6Ly91c2VybmFtZTpwYXNzd29yZEBjbHVzdGVyLm1vbmdvZGIubmV0L2NhZmUtbWVudQ==
+
+# ===========================================
+# HEROKU DEPLOYMENT
+# ===========================================
+
+# Procfile
+web: node api-examples.js
+
+# app.json
+{
+  "name": "cafe-menu-api",
+  "description": "Cafe Menu API with MongoDB",
+  "repository": "https://github.com/yourusername/cafe-frontend",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "mongodb", "api"],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment",
+      "value": "production"
+    },
+    "MONGODB_URI": {
+      "description": "MongoDB connection string",
+      "value": "mongodb+srv://username:password@cluster.mongodb.net/cafe-menu"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "mongolab:sandbox"
+    }
+  ]
+}
+
+# ===========================================
+# DIGITALOCEAN APPS
+# ===========================================
+
+# .do/app.yaml
+name: cafe-menu-api
+services:
+- name: api
+  source_dir: /
+  github:
+    repo: yourusername/cafe-frontend
+    branch: main
+  run_command: node api-examples.js
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: MONGODB_URI
+    value: mongodb+srv://username:password@cluster.mongodb.net/cafe-menu
+    type: SECRET
+  http_port: 3000
+  health_check:
+    http_path: /health
+
+# ===========================================
+# VERCEL DEPLOYMENT
+# ===========================================
+
+# vercel.json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api-examples.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api-examples.js"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://username:password@cluster.mongodb.net/cafe-menu"
+  }
+}
+
+# ===========================================
+# RAILWAY DEPLOYMENT
+# ===========================================
+
+# railway.json
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "node api-examples.js",
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 100,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  }
+}
+
+# ===========================================
+# FLY.IO DEPLOYMENT
+# ===========================================
+
+# fly.toml
+app = "cafe-menu-api"
+primary_region = "ord"
+
+[build]
+
+[env]
+  NODE_ENV = "production"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+# ===========================================
+# RENDER DEPLOYMENT
+# ===========================================
+
+# render.yaml
+services:
+  - type: web
+    name: cafe-menu-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node api-examples.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: cafe-menu-db
+          property: connectionString
+    healthCheckPath: /health
+
+databases:
+  - name: cafe-menu-db
+    plan: free
