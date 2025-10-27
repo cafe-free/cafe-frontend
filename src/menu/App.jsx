@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { menuData } from "../assets/js/data";
+import { menuData } from "../../lib/data";
 
 export function App() {
 

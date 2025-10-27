@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { menuData } from '../../src/assets/js/data'
+import { menuData } from '../../lib/data'
 
 export default function MenuClient() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
