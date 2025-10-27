@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
-    "vite": "^7.1.7"
+    "eslint": "^9",
+    "eslint-config-next": "16.0.0"
   },
   "dependencies": {
     "next": "^16.0.0",
