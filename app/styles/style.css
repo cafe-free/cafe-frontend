@@ -165,13 +165,13 @@ body {
 
 .bg01-img {
     display: inline-block;
-    background-image: url(../images/BG01.jpg);
+    background-image: url(../../public/BG01.jpg);
     background-repeat: repeat;
 }
 
 .bg02-img {
     display: inline-block;
-    background-image: url(../images/BG02.jpg);
+    background-image: url(../../public/BG02.jpg);
     background-repeat: repeat;
 }
 
@@ -249,7 +249,7 @@ body {
     width: 50%;
     min-width: 450px;
     height: 700px;
-    background-image: url(../images/MenuFoodBG.png);
+    background-image: url(../../public/MenuFoodBG.png);
     position: relative;
     z-index: 0;
     overflow: hidden;
@@ -295,7 +295,7 @@ body {
     width: 50%;
     min-width: 450px;
     height: 700px;
-    background-image: url(../images/MenuDrinkBG.png);
+    background-image: url(../../public/MenuDrinkBG.png);
     position: relative;
     z-index: 0;
     overflow: hidden;

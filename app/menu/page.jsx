@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuClient from '../components/MenuClient'
-import '../../styles/cards.css'
+import '../styles/card.css'
 
 export const metadata = {
   title: 'Menu - Cafe de Coral',
