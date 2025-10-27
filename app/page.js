@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import './styles/style.css';
 
 export const metadata = {
     title: 'Cafe de Coral - Home',
