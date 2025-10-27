@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/Footer";
 import { menuData } from "../assets/js/data";
 
 export function App() {
