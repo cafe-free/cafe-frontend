@@ -6,7 +6,7 @@ html, body {
     padding: 0; */
     min-height: 100vh;
     font-family: var(--font-primary);
-    color: var(--primary-text-color);
+    /* color: var(--primary-text-color); */
 }
 
 main {

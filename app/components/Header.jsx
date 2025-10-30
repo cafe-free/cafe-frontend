@@ -8,8 +8,7 @@ export default function Header() {
             <div className={styles.logo}>
                 <img src="/Logo.png"
                     className={styles.logoImg}
-                     // style={{ width: '100px', height: '100px'}}
-                     alt="Cafe de Coral logo" />
+                    alt="Cafe de Coral logo" />
             </div>
 
             <nav className={styles.nav} aria-label="Main navigation">

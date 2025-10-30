@@ -45,7 +45,7 @@ export default function MenuClient() {
             <div className={isFoodDrinks ? styles.foodDrinks : ""}>
                 <li
                     onClick={handleListItemClick}
-                    className={isSelected ? styles.selectedListItem : ""}
+                    className={`${isSelected ? styles.selectedListItem : ""} ${styles.menuCategoryListItem}`}
                 >
                     {category}
                 </li>
@@ -57,7 +57,7 @@ export default function MenuClient() {
         <div className={styles.menuContainer}>
             <nav className={styles.menuCategoryList}>
                 <ul className={styles.menuCategoryListUl}>
-                    <li className={styles.menuCategory}>Categories</li>
+                    <li className={`${styles.menuCategory} ${styles.menuCategoryListItem}`}>Categories</li>
                         <CategoryListItem category={"Food"} isSub={false}/>
                         <CategoryListItem category={"Drinks"} isSub={false}/>
                     <hr />
@@ -86,7 +86,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
     function MenuCard({ item, index }) {
         return (
-            <div key={index} className={styles.MenuCard}>
+            <div key={index} className={styles.menuCard}>
                 <div>
                     <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
                 </div>

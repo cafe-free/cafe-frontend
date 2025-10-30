@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import './styles/style.css';
+import './styles/style.css'
+import './globals.css'
 
 export const metadata = {
     title: 'Cafe de Coral - Home',
@@ -9,6 +10,10 @@ export const metadata = {
 }
 
 export default function HomePage() {
+    const headerStyle = {
+        backgroundColor: '#374063'
+    };
+
     return (
         <main>
             <Header />
