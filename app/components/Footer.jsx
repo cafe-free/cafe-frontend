@@ -1,27 +1,39 @@
 import React from "react";
+import styles from "../styles/Footer.module.css";
 import logo from "../../public/Logo.png";
-import '../styles/style.css';
 
 export default function Footer() {
-    return (
-        <footer className="footer">
-            <div className="footer-nav">
-                <ul className="footer-navlist">
-                    <li className="footer-navitem"><a href="#">ABOUT</a></li>
-                    <li className="footer-navitem"><a href="#">MENU</a></li>
-                    <li className="footer-navitem"><a href="#">PICK UP</a></li>
-                    <li className="footer-navitem"><a href="#">NEWS</a></li>
-                    <li className="footer-navitem"><a href="#">ACCESS</a></li>
-                </ul>
-            </div>
-            <div className="footer-logo">
-                <div className="footer-logo-img">
-                    <img src="/Logo.png" alt="" />
-                </div>
-            </div>
-            <div className="footer-copyright">
-                <div className="footer-copyright-infor">Cafe de Coral ©2025</div>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.footerNav}>
+        <ul className={styles.footerNavlist}>
+          <li className={styles.footerNavitem}>
+            <a className={styles.footerNavitemLink} href="#">ABOUT</a>
+          </li>
+          <li className={styles.footerNavitem}>
+            <a className={styles.footerNavitemLink} href="#">MENU</a>
+          </li>
+          <li className={styles.footerNavitem}>
+            <a className={styles.footerNavitemLink} href="#">PICK UP</a>
+          </li>
+          <li className={styles.footerNavitem}>
+            <a className={styles.footerNavitemLink} href="#">NEWS</a>
+          </li>
+          <li className={styles.footerNavitem}>
+            <a className={styles.footerNavitemLink} href="#">ACCESS</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className={styles.footerLogo}>
+        <div className={styles.footerLogoImg}>
+          <img className={styles.footerLogoImgImage} src="/Logo.png" alt="Logo" />
+        </div>
+      </div>
+
+      <div className={styles.footerCopyright}>
+        <div className={styles.footerCopyrightInfo}>Cafe de Coral ©2025</div>
+      </div>
+    </footer>
+  );
 }

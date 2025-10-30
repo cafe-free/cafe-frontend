@@ -1,0 +1,75 @@
+.footer {
+  width: 100%;
+  min-width: 900px;
+  height: 320px;
+  background-color: #374063;
+  display: block;
+}
+
+.footerNav {
+  width: 70%;
+  min-width: 900px;
+  height: 90px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.footerNavlist {
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerNavitem {
+  width: 120px;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Apply this class directly to the anchor element in JSX */
+.footerNavitemLink {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerLogo {
+  width: 50%;
+  min-width: 900px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+}
+
+.footerLogoImg {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+/* Apply this class directly to the img element in JSX */
+.footerLogoImgImage {
+  width: 150px;
+  height: 150px;
+}
+
+.footerCopyright {
+  width: 50%;
+  min-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.footerCopyrightInfo {
+  width: 150px;
+  height: 20px;
+  color: #fff;
+  margin: auto;
+}

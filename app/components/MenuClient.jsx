@@ -58,8 +58,8 @@ export default function MenuClient() {
             <nav className={styles.menuCategoryList}>
                 <ul className={styles.menuCategoryListUl}>
                     <li className={styles.menuCategory}>Categories</li>
-                    <CategoryListItem category={"Food"} isSub={false}/>
-                    <CategoryListItem category={"Drinks"} isSub={false}/>
+                        <CategoryListItem category={"Food"} isSub={false}/>
+                        <CategoryListItem category={"Drinks"} isSub={false}/>
                     <hr />
 
                     <CategoryListItem category={"All"} isSub={false}/>
@@ -90,7 +90,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                 <div>
                     <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
                 </div>
-                <div className={styles.menuCardContainer}>
+                <div className={styles.menuCardContent}>
                     <p className={styles.menuCardTitle}>{item.title}</p>
                     <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                 </div>
@@ -128,18 +128,16 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
     else {
         const filteredMenu = data.filter((it) => it.subcategory === selectedSubcategory);
         return (
-            <>
-                <div className={styles.menuCardContainer}>
-                    <div className={styles.menuSubcategoryTitle}>
-                        <h2>{selectedSubcategory}</h2>
-                    </div>
-                    {
-                        filteredMenu.map((item, index) => (
-                            <MenuCard item={item} index={index} key={index}/>
-                        ))
-                    }
+            <div className={styles.menuCardContainer}>
+                <div className={styles.menuSubcategoryTitle}>
+                    <h2>{selectedSubcategory}</h2>
                 </div>
-            </>
+                {
+                    filteredMenu.map((item, index) => (
+                        <MenuCard item={item} index={index} key={index}/>
+                    ))
+                }
+            </div>
         );
     }
 }
