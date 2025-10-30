@@ -94,8 +94,11 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
     }
 
     if (selectedSubcategory === "All") {
-        const itemsByCategory = Object.groupBy(filteredByCategory, (item) => item.subcategory);
-        const entries = Object.entries(itemsByCategory);
+        const itemsBySubcategory = filteredByCategory.reduce((accumulator, currentItem) => {
+            (accumulator[currentItem.subcategory] = (accumulator[currentItem.subcategory] || [])).push(currentItem);
+            return accumulator;
+        }, {});
+        const entries = Object.entries(itemsBySubcategory);
 
         return (
             <>
