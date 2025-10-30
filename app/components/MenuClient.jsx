@@ -56,7 +56,7 @@ export default function MenuClient() {
     return (
         <div className={styles.menuContainer}>
             <nav className={styles.menuCategoryList}>
-                <ul>
+                <ul className={styles.menuCategoryListUl}>
                     <li className={styles.menuCategory}>Categories</li>
                     <CategoryListItem category={"Food"} isSub={false}/>
                     <CategoryListItem category={"Drinks"} isSub={false}/>
@@ -65,13 +65,17 @@ export default function MenuClient() {
                     <CategoryListItem category={"All"} isSub={false}/>
 
                     {subcategoriesToDisplay.map((sub) => (
-                        <CategoryListItem key={sub} category={sub} isSub={true}/>
+                        <CategoryListItem key={`sub-${sub}`} category={sub} isSub={true}/>
                     ))}
                 </ul>
             </nav>
 
             <div className={styles.cardsContainer}>
-                <MenuSection data={menuData} selectedCategory={selectedCategory} selectedSubcategory={selectedSubcategory} />
+                <MenuSection 
+                    data={menuData} 
+                    selectedCategory={selectedCategory} 
+                    selectedSubcategory={selectedSubcategory} 
+                />
             </div>
         </div>
     );
@@ -84,7 +88,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
         return (
             <div key={index} className={styles.MenuCard}>
                 <div>
-                    <img src={item.img} alt="Menu Item" />
+                    <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
                 </div>
                 <div className={styles.menuCardContainer}>
                     <p className={styles.menuCardTitle}>{item.title}</p>

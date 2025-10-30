@@ -10,7 +10,25 @@
   width: 1161px;
   height: 3500px;
   display: flex;
-  align-items: flex-start;
+  align-items: left;
+}
+
+.menuHeroImage {
+  width: 100%;
+  height: 300px;
+  background-image: url(../../public/menu-hero-background.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 24px; */
+}
+
+.menuHeroImage .menuHeroTitle {
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .cardsContainer {
@@ -24,7 +42,7 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: left;
 }
 
 /* split the UL into its own class so you can apply it directly in JSX */

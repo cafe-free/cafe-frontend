@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuClient from '../components/MenuClient'
-import '../styles/card.css'
+import styles from '../styles/Menu.module.css';
 
 export const metadata = {
   title: 'Menu - Cafe de Coral',
@@ -13,8 +13,8 @@ export default function MenuPage() {
     <main>
       <Header />
       
-      <div className="menu-hero-image">
-        <h1 className="menu-hero-title">Menu</h1>
+      <div className={styles.menuHeroImage}>
+        <h1 className={styles.menuHeroImage}>Menu</h1>
       </div>
 
       <MenuClient />
