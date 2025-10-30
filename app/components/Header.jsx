@@ -6,7 +6,9 @@ export default function Header() {
     return (
         <header className="header" style={{ background: '#374063', color: '#fff' }}>
             <div className="header-logo">
-                <img src="/Logo.png" alt="Cafe de Coral logo" />
+                <img src="/Logo.png"
+                     // style={{ width: '100px', height: '100px'}}
+                     alt="Cafe de Coral logo" />
             </div>
 
             <nav className="header-nav" aria-label="Main navigation">
