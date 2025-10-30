@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { menuData } from '../../lib/data'
+import { useState } from 'react';
+import { menuData } from '../../lib/data';
+import styles from '../styles/Menu.module.css';
 
 export default function MenuClient() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
@@ -41,10 +42,10 @@ export default function MenuClient() {
         }
 
         return (
-            <div className={isFoodDrinks ? "food-drinks" : ""}>
+            <div className={isFoodDrinks ? styles.foodDrinks : ""}>
                 <li
                     onClick={handleListItemClick}
-                    className={isSelected ? "selected-list-item" : ""}
+                    className={isSelected ? styles.selectedListItem : ""}
                 >
                     {category}
                 </li>
@@ -53,10 +54,10 @@ export default function MenuClient() {
     }
 
     return (
-        <div className="menu-container">
-            <nav className="menu-category-list">
+        <div className={styles.menuContainer}>
+            <nav className={styles.menuCategoryList}>
                 <ul>
-                    <li className="menu-category">Categories</li>
+                    <li className={styles.menuCategory}>Categories</li>
                     <CategoryListItem category={"Food"} isSub={false}/>
                     <CategoryListItem category={"Drinks"} isSub={false}/>
                     <hr />
@@ -69,7 +70,7 @@ export default function MenuClient() {
                 </ul>
             </nav>
 
-            <div className="cards-container">
+            <div className={styles.cardsContainer}>
                 <MenuSection data={menuData} selectedCategory={selectedCategory} selectedSubcategory={selectedSubcategory} />
             </div>
         </div>
@@ -81,13 +82,13 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
 
     function MenuCard({ item, index }) {
         return (
-            <div key={index} className="menu-card">
+            <div key={index} className={styles.MenuCard}>
                 <div>
                     <img src={item.img} alt="Menu Item" />
                 </div>
-                <div className="menu-card-content">
-                    <p className="menu-card-title">{item.title}</p>
-                    <p className="menu-card-price">HKD {item.price.toFixed(1)}</p>
+                <div className={styles.menuCardContainer}>
+                    <p className={styles.menuCardTitle}>{item.title}</p>
+                    <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                 </div>
             </div>
         );
@@ -104,8 +105,8 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
             <>
                 {entries.map(([sub, items]) => {
                     return (
-                        <div key={sub} className="menu-card-container">
-                            <div className="menu-subcategory-title">
+                        <div key={sub} className={styles.menuCardContainer}>
+                            <div className={styles.menuSubcategoryTitle}>
                                 <h2>{sub}</h2>
                             </div>
 
@@ -124,8 +125,8 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
         const filteredMenu = data.filter((it) => it.subcategory === selectedSubcategory);
         return (
             <>
-                <div className="menu-card-container">
-                    <div className="menu-subcategory-title">
+                <div className={styles.menuCardContainer}>
+                    <div className={styles.menuSubcategoryTitle}>
                         <h2>{selectedSubcategory}</h2>
                     </div>
                     {

@@ -14,12 +14,12 @@ export default function Header() {
 
             <nav className={styles.nav} aria-label="Main navigation">
                 <ul className={styles.navlist}>
-                    <li><a href="index.html" className={styles.navItemText}>TOP</a></li>
-                    <li><a href="#" className={styles.navItemText}>ABOUT</a></li>
-                    <li><a href="/menu" className={styles.navItemText}>MENU</a></li>
-                    <li><a href="#" className={styles.navItemText}>PICK UP</a></li>
-                    <li><a href="#" className={styles.navItemText}>NEWS</a></li>
-                    <li><a href="#" className={styles.navItemText}>ACCESS</a></li>
+                    <li><a href="index.html" className={styles.navItem}>TOP</a></li>
+                    <li><a href="#" className={styles.navItem}>ABOUT</a></li>
+                    <li><a href="/menu" className={styles.navItem}>MENU</a></li>
+                    <li><a href="#" className={styles.navItem}>PICK UP</a></li>
+                    <li><a href="#" className={styles.navItem}>NEWS</a></li>
+                    <li><a href="#" className={styles.navItem}>ACCESS</a></li>
                 </ul>
             </nav>
         </header>
