@@ -1,24 +1,25 @@
 import React from "react";
 import logo from "../../public/Logo.png";
-import '../styles/style.css';
+import styles from '../styles/Header.module.css'
 
 export default function Header() {
     return (
-        <header className="header" style={{ background: '#374063', color: '#fff' }}>
-            <div className="header-logo">
+        <header className={styles.header}>
+            <div className={styles.logo}>
                 <img src="/Logo.png"
+                    className={styles.logoImg}
                      // style={{ width: '100px', height: '100px'}}
                      alt="Cafe de Coral logo" />
             </div>
 
-            <nav className="header-nav" aria-label="Main navigation">
-                <ul className="header-navlist">
-                    <li><a href="index.html">TOP</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="/menu">MENU</a></li>
-                    <li><a href="#">PICK UP</a></li>
-                    <li><a href="#">NEWS</a></li>
-                    <li><a href="#">ACCESS</a></li>
+            <nav className={styles.nav} aria-label="Main navigation">
+                <ul className={styles.navlist}>
+                    <li><a href="index.html" className={styles.navItemText}>TOP</a></li>
+                    <li><a href="#" className={styles.navItemText}>ABOUT</a></li>
+                    <li><a href="/menu" className={styles.navItemText}>MENU</a></li>
+                    <li><a href="#" className={styles.navItemText}>PICK UP</a></li>
+                    <li><a href="#" className={styles.navItemText}>NEWS</a></li>
+                    <li><a href="#" className={styles.navItemText}>ACCESS</a></li>
                 </ul>
             </nav>
         </header>
