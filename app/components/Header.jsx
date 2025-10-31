@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import logo from "../../public/Logo.png";
 import styles from '../styles/Header.module.css'
 
@@ -16,9 +17,9 @@ export default function Header({ isOnHomepage }) {
 
             <nav className={styles.nav} aria-label="Main navigation">
                 <ul className={styles.navlist}>
-                    <li><a href="index.html" className={styles.navItem}>TOP</a></li>
+                    <Link href="/" className={styles.navItem}>TOP</Link>
                     <li><a href="#" className={styles.navItem}>ABOUT</a></li>
-                    <li><a href="/menu" className={styles.navItem}>MENU</a></li>
+                    <Link href="/menu" className={styles.navItem}>MENU</Link>
                     <li><a href="#" className={styles.navItem}>PICK UP</a></li>
                     <li><a href="#" className={styles.navItem}>NEWS</a></li>
                     <li><a href="#" className={styles.navItem}>ACCESS</a></li>
