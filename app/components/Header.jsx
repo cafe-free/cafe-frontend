@@ -7,7 +7,7 @@ export default function Header({ isOnHomepage }) {
     return (
         <header
             className={styles.header}
-            style={isOnHomepage ? undefined : {backgroundColor: 'var(--highlight)'}}
+            style={isOnHomepage ? {position: 'absolute'} : {backgroundColor: 'var(--highlight)'}}
         >
             <div className={styles.logo}>
                 <img src="/Logo.png"
@@ -18,11 +18,11 @@ export default function Header({ isOnHomepage }) {
             <nav className={styles.nav} aria-label="Main navigation">
                 <ul className={styles.navlist}>
                     <Link href="/" className={styles.navItem}>TOP</Link>
-                    <li><a href="#" className={styles.navItem}>ABOUT</a></li>
+                    <Link href="/" className={styles.navItem}>ABOUT</Link>
                     <Link href="/menu" className={styles.navItem}>MENU</Link>
-                    <li><a href="#" className={styles.navItem}>PICK UP</a></li>
-                    <li><a href="#" className={styles.navItem}>NEWS</a></li>
-                    <li><a href="#" className={styles.navItem}>ACCESS</a></li>
+                    <Link href="/" className={styles.navItem}>PICK UP</Link>
+                    <Link href="/" className={styles.navItem}>NEWS</Link>
+                    <Link href="/" className={styles.navItem}>ACCESS</Link>
                 </ul>
             </nav>
         </header>

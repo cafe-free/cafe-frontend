@@ -12,7 +12,7 @@ export const metadata = {
 export default function MenuPage() {
   return (
     <main>
-      <Header />
+      <Header isOnHomepage={false}/>
       
       <div className={styles.menuHeroImage}>
         <h1 className={styles.menuHeroTitle}>Menu</h1>
