@@ -1,20 +1,53 @@
-# cafe-frontend
-Front-End of a Cafe Website
+# Cafe
+Building a Cafe Website using [Next.js](https://github.com/vercel/next.js)
 
-## Set Up [Vite](https://github.com/vitejs/vite) for the Project
-1. Make sure you have installed [Node.js](https://github.com/nodejs/node).
-2. Clone this repo to your machine.
-3. Run this command in your repo:
-  ```shell
-  npm install
-  ```
-4. You can now open [Vite](https://github.com/vitejs/vite) using this commnad:
-  ```shell
-  npx vite
-  ```
-
-You can learn more from this video:
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=vj8KSZjPTUU" target="_blank">
- <img src="https://i.ytimg.com/vi/vj8KSZjPTUU/maxresdefault.jpg" alt="Watch the video" width="560" height="315" border="10" />
-</a>
+## Project Structure for Reference
+```
+cafe-next/
+├─ .env.local
+├─ next.config.js
+├─ package.json
+├─ prisma/                    # optional if using Prisma with MongoDB
+│  └─ schema.prisma
+├─ lib/
+│  ├─ db/
+│  │  ├─ mongodb.ts          # Mongo client connection helper (singleton)
+│  │  └─ prismaClient.ts     # optional: Prisma client wrapper if using Prisma
+│  └─ data.ts                # local sample data / migration helpers
+├─ models/                   # optional Mongoose models (if using Mongoose)
+│  └─ MenuItem.ts
+├─ pages/                    # or `app/` if using App Router (below shows pages router)
+│  ├─ api/
+│  │  ├─ menu/
+│  │  │  ├─ index.ts         # GET list, POST create
+│  │  │  └─ [id].ts          # GET, PUT, DELETE single item
+│  │  └─ auth/               # optional auth endpoints (login, callback)
+│  ├─ _app.tsx
+│  ├─ index.tsx
+│  └─ menu/
+│     ├─ index.tsx           # server page that fetches data and renders MenuClient
+│     └─ client/             
+│        └─ MenuClient.tsx   # your current client component (use fetch/SWR)
+├─ app/                      # optional: if you prefer App Router; include route handlers
+│  └─ (if using app router)...
+├─ components/
+│  ├─ Menu/
+│  │  ├─ MenuClient.tsx
+│  │  ├─ MenuSection.tsx
+│  │  └─ MenuCard.tsx
+│  └─ UI/                    # shared UI primitives (Button, Modal, etc.)
+├─ helpers/
+│  └─ seed.ts                # script to seed MongoDB from lib/data.ts
+├─ scripts/
+│  └─ migrate-to-mongo.js    # optional migration script converting local data to DB
+├─ public/
+│  └─ menu/                  # static images referenced by img paths
+│     └─ bread/
+│        ├─ Bread_BreadOil.png
+│        ├─ Bread_Calzones.png
+│        └─ Bread_CinnamonRoll.png
+├─ styles/
+│  └─ Menu.module.css
+└─ types/
+   └─ index.d.ts             # shared TypeScript interfaces (MenuItem)
+```
