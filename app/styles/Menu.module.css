@@ -6,11 +6,11 @@
 
 .menuContainer {
   margin: 0 auto;
-  padding: 0 10px;
+  /*padding: 100px 0 0 10px;*/
   width: 1161px;
   height: 3500px;
   display: flex;
-  align-items: left;
+  align-items: flex-start;
 }
 
 .menuHeroImage {
@@ -18,10 +18,11 @@
   height: 300px;
   background-image: url(../../public/menu-hero-background.png);
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 90px;
   /* margin-bottom: 24px; */
 }
 
@@ -42,7 +43,7 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
-  align-items: left;
+  align-items: flex-start;
 }
 
 /* split the UL into its own class so you can apply it directly in JSX */

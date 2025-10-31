@@ -10,13 +10,9 @@ export const metadata = {
 }
 
 export default function HomePage() {
-    const headerStyle = {
-        backgroundColor: '#374063'
-    };
-
     return (
         <main>
-            <Header />
+            <Header isOnHomepage={true}/>
 
             <section className="section section-top">
                 <div className="top">

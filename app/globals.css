@@ -5,10 +5,10 @@ html, body {
     /* margin: 0;
     padding: 0; */
     min-height: 100vh;
-    font-family: var(--font-primary);
+    font-family: var(--font-primary), serif;
     /* color: var(--primary-text-color); */
 }
 
 main {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }

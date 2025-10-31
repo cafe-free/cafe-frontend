@@ -2,9 +2,12 @@ import React from "react";
 import logo from "../../public/Logo.png";
 import styles from '../styles/Header.module.css'
 
-export default function Header() {
+export default function Header({ isOnHomepage }) {
     return (
-        <header className={styles.header}>
+        <header
+            className={styles.header}
+            style={isOnHomepage ? undefined : {backgroundColor: 'var(--highlight)'}}
+        >
             <div className={styles.logo}>
                 <img src="/Logo.png"
                     className={styles.logoImg}

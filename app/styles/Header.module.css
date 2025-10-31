@@ -2,7 +2,7 @@
     /* background: #374063; */
     width: 100%;
     min-width: 900px;
-    height: 150px;
+    height: 90px;
     padding: 25px;
     color: #fff;
     display: flex;
@@ -10,10 +10,6 @@
     justify-content: space-between;
     position: absolute;
     z-index: 3;
-}
-
-.header.atHomepage {
-    background-color: #374063;
 }
 
 .logo {
