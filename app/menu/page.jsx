@@ -9,6 +9,8 @@ export const metadata = {
   description: 'Explore our delicious menu of food and drinks',
 }
 
+export const dynamic = 'force-static';
+export const revalidate = 60; 
 export default function MenuPage() {
   return (
     <main>

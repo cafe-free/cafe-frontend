@@ -14,6 +14,10 @@ export default function MenuClient() {
         const fetchMenuData = async () => {
             try {
                 const response = await fetch('/api/menu');
+                if (!response.ok) {
+                    const text = await response.text();
+                    throw new Error(`HTTP ${response.status} ${response.statusText} - ${text}`);
+                }
                 const data = await response.json();
                 setMenuData(data);
             } catch (error) {
