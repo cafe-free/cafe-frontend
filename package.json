@@ -10,10 +10,14 @@
     "lint": "next lint"
   },
   "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.2",
     "eslint": "^9",
-    "eslint-config-next": "16.0.0"
+    "eslint-config-next": "16.0.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
+    "mongoose": "^8.19.2",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
