@@ -87,6 +87,13 @@
   margin-top: 10px;
 }
 
+.menuSubcategoryTitle h2 {
+  font-size: 24px;
+  font-weight: var(--font-weight-normal);
+  margin: 0;
+  padding-top: 25px;
+}
+
 /* apply to the heading element directly in JSX */
 .menuSubcategoryTitleHeading {
   font-size: 24px;
