@@ -1,12 +1,34 @@
 'use client'
 
-import { useState } from 'react';
-import { menuData } from '../../lib/data';
+import { useEffect, useState } from 'react';
 import styles from '../styles/Menu.module.css';
 
 export default function MenuClient() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
+    const [menuData, setMenuData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    
+    // Fetch menu data from the API when the component mounts
+    useEffect(() => {
+        const fetchMenuData = async () => {
+            try {
+                const response = await fetch('/api/menu');
+                const data = await response.json();
+                setMenuData(data);
+            } catch (error) {
+                console.error('Error fetching menu data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMenuData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading menu...</div>;
+    }
 
     const getSubcategories = (cat) => [
         ...new Set(menuData.filter(i => i.category === cat).map(i => i.subcategory))
