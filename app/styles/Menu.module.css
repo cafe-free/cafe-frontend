@@ -114,6 +114,18 @@
   height: 280px;
 }
 
+.menuCardButton {
+  border: none;
+  background: none;
+  padding: 0;
+  /* text-align: left; */
+  cursor: pointer;
+}
+
+.menuCardButton > div > p {
+  text-decoration: none;
+}
+
 .menuCardImage {
   width: 200px;
   height: 200px;
