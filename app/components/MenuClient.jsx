@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import styles from '../styles/Menu.module.css';
 
 export default function MenuClient() {
@@ -16,7 +16,7 @@ export default function MenuClient() {
                 const response = await fetch('/api/menu');
                 if (!response.ok) {
                     const text = await response.text();
-                    throw new Error(`HTTP ${response.status} ${response.statusText} - ${text}`);
+                    console.error(`HTTP ${response.status} ${response.statusText} - ${text}`);
                 }
                 const data = await response.json();
                 setMenuData(data);
@@ -27,7 +27,7 @@ export default function MenuClient() {
             }
         };
 
-        fetchMenuData();
+        fetchMenuData().then(r => console.log(r));
     }, []);
 
     if (loading) {
@@ -108,14 +108,14 @@ export default function MenuClient() {
 }
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
-    const [dialogContent, setDialogContent] = useState("");
-    const dialogRef =  useState(null);
+    // const [dialogContent, setDialogContent] = useState("");
+    const dialogRef =  useRef(null);
 
     const toggleDialog = () => {
         if (!dialogRef.current) {
             return;
         }
-        dialogRef.current.hasAttribute('open') 
+        dialogRef.current.hasAttribute("open")
             ? dialogRef.current.close() : dialogRef.current.showModal();
     };
 
@@ -132,7 +132,6 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
         return (
             <div key={index} className={styles.menuCard}>
                 <button onClick={() => {
-                    setDialogContent(sampleDescription);
                     toggleDialog();
                 }} className={styles.menuCardButton}>
                     <div>
@@ -143,6 +142,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                         <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                     </div>
                 </button>
+                <dialog ref={dialogRef}>Item Description</dialog>
             </div>
         );
     }
