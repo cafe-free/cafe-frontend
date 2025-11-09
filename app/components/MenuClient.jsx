@@ -119,9 +119,9 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
             ? dialogRef.current.close() : dialogRef.current.showModal();
     };
 
-    function Modal() {
+    function Modal({ ref }) {
         return (
-            <dialog ref={dialogRef}>Item Description</dialog>
+            <dialog ref={ref}>Item Description</dialog>
         );
     }
 
@@ -142,7 +142,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                         <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                     </div>
                 </button>
-                <dialog ref={dialogRef}>Item Description</dialog>
+                <Modal ref={dialogRef}/>
             </div>
         );
     }
