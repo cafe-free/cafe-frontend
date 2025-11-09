@@ -103,13 +103,15 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
     function MenuCard({ item, index }) {
         return (
             <div key={index} className="menu-card">
-                <div>
-                    <img src={item.img} alt="Menu Item" />
-                </div>
-                <div className="menu-card-content">
-                    <p className="menu-card-title">{item.title}</p>
-                    <p className="menu-card-price">HKD {item.price.toFixed(1)}</p>
-                </div>
+                <a href="#">
+                    <div>
+                        <img src={item.img} alt="Menu Item" />
+                    </div>
+                    <div className="menu-card-content">
+                        <p className="menu-card-title">{item.title}</p>
+                        <p className="menu-card-price">HKD {item.price.toFixed(1)}</p>
+                    </div>
+                </a>
             </div>
         );
     }
