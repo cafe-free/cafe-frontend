@@ -110,70 +110,70 @@ export const menuData = [
     subcategory: 'cake',
     title: 'Almond Frangipane',
     price: 7.2,
-    img: './src/assets/images/menu/Cake/Cake_AlmondFrangipane.png'
+    img: './src/assets/images/menu/cake/Cake_AlmondFrangipane.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Black Tea Cake',
     price: 4.5,
-    img: './src/assets/images/menu/Cake/Cake_BlackTeaCake.png'
+    img: './src/assets/images/menu/cake/Cake_BlackTeaCake.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Chocolate Cup Cakes',
     price: 6.9,
-    img: './src/assets/images/menu/Cake/Cake_ChocolateCupCakes.png'
+    img: './src/assets/images/menu/cake/Cake_ChocolateCupCakes.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Matcha White Chocolate',
     price: 2.8,
-    img: './src/assets/images/menu/Cake/Cake_MatchWhiteChocolate.png'
+    img: './src/assets/images/menu/cake/Cake_MatchWhiteChocolate.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Red Velvet Royale',
     price: 7.2,
-    img: './src/assets/images/menu/Cake/Cake_RedVekvetRoyale.png'
+    img: './src/assets/images/menu/cake/Cake_RedVekvetRoyale.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Banana Walnut Loaf',
     price: 4.5,
-    img: './src/assets/images/menu/Cake/Cake_BananaWalnutLoaf.png'
+    img: './src/assets/images/menu/cake/Cake_BananaWalnutLoaf.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Chocolate Cheesecake',
     price: 6.9,
-    img: './src/assets/images/menu/Cake/Cake_ChocolateCheesecake.png'
+    img: './src/assets/images/menu/cake/Cake_ChocolateCheesecake.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Lemon Drizzle Cake',
     price: 2.8,
-    img: './src/assets/images/menu/Cake/Cake_LemonDrizzleCake.png'
+    img: './src/assets/images/menu/cake/Cake_LemonDrizzleCake.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Opera Slice',
     price: 6.9,
-    img: './src/assets/images/menu/Cake/Cake_OperaSlice.png'
+    img: './src/assets/images/menu/cake/Cake_OperaSlice.png'
   },
   {
     category: 'Food',
     subcategory: 'cake',
     title: 'Tiramisu Delight',
     price: 2.8,
-    img: './src/assets/images/menu/Cake/Cake_TiramisuDelight.png'
+    img: './src/assets/images/menu/cake/Cake_TiramisuDelight.png'
   },
   {
     category: 'Drinks',
