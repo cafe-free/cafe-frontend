@@ -108,18 +108,41 @@ export default function MenuClient() {
 }
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
+    const [dialogContent, setDialogContent] = useState("");
+    const dialogRef =  useState(null);
+
+    const toggleDialog = () => {
+        if (!dialogRef.current) {
+            return;
+        }
+        dialogRef.current.hasAttribute('open') 
+            ? dialogRef.current.close() : dialogRef.current.showModal();
+    };
+
+    function Modal() {
+        return (
+            <dialog ref={dialogRef}>Item Description</dialog>
+        );
+    }
+
     const filteredByCategory = data.filter(item => item.category === selectedCategory);
 
     function MenuCard({ item, index }) {
+        const sampleDescription = "This is a sample description for the menu item. It provides details about the ingredients, preparation, and other relevant information that might interest the customer.";
         return (
             <div key={index} className={styles.menuCard}>
-                <div>
-                    <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
-                </div>
-                <div className={styles.menuCardContent}>
-                    <p className={styles.menuCardTitle}>{item.title}</p>
-                    <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
-                </div>
+                <button onClick={() => {
+                    setDialogContent(sampleDescription);
+                    toggleDialog();
+                }} className={styles.menuCardButton}>
+                    <div>
+                        <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
+                    </div>
+                    <div className={styles.menuCardContent}>
+                        <p className={styles.menuCardTitle}>{item.title}</p>
+                        <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
+                    </div>
+                </button>
             </div>
         );
     }
