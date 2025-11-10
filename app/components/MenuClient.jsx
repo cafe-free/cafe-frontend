@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Menu.module.css';
 
 export default function MenuClient() {
@@ -108,32 +108,26 @@ export default function MenuClient() {
 }
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
-    // const [dialogContent, setDialogContent] = useState("");
-    const dialogRef =  useRef(null);
-
-    const toggleDialog = () => {
-        if (!dialogRef.current) {
-            return;
-        }
-        dialogRef.current.hasAttribute("open")
-            ? dialogRef.current.close() : dialogRef.current.showModal();
-    };
-
-    function Modal({ ref }) {
-        return (
-            <dialog ref={ref}>Item Description</dialog>
-        );
-    }
-
     const filteredByCategory = data.filter(item => item.category === selectedCategory);
 
     function MenuCard({ item, index }) {
-        const sampleDescription = "This is a sample description for the menu item. It provides details about the ingredients, preparation, and other relevant information that might interest the customer.";
+        const dialogRef = useRef(null);
+
+        const toggleDialog = () => {
+            if (!dialogRef.current) return;
+            dialogRef.current.hasAttribute("open")
+                ? dialogRef.current.close()
+                : dialogRef.current.showModal();
+        };
+
+        const sampleDescription = "This is a sample description...";
+
         return (
             <div key={index} className={styles.menuCard}>
-                <button onClick={() => {
-                    toggleDialog();
-                }} className={styles.menuCardButton}>
+                <button
+                    onClick={toggleDialog}
+                    className={styles.menuCardButton}
+                >
                     <div>
                         <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
                     </div>
@@ -142,10 +136,36 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                         <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                     </div>
                 </button>
-                <Modal ref={dialogRef}/>
+
+                <dialog 
+                    ref={dialogRef} 
+                    className={styles.modal}
+                >
+                    <div className={styles.modalWrapper}>
+                        <div className={styles.modalImage}>
+                            <img src={item.img} alt="Menu Item" />
+                        </div>
+                        <div className={styles.modalContent}>
+                            <h3>{item.title}</h3>
+                            <p>HKD {item.price.toFixed(1)}</p>
+                            <p>{sampleDescription}</p>
+                        </div>
+                    
+                    <button 
+                        className={styles.closeButton} 
+                        onClick={toggleDialog}
+                    >
+                        Close
+                    </button>
+                    
+                    </div>
+                
+                </dialog>
+
             </div>
         );
     }
+
 
     if (selectedSubcategory === "All") {
         const itemsBySubcategory = filteredByCategory.reduce((accumulator, currentItem) => {
