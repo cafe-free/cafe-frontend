@@ -12,7 +12,13 @@ body {
 
 /* == HEADER (unchanged) == */
 /* 1. header */
+
 .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
   width: 100%;
   min-width: 900px;
   height: 150px;
@@ -59,6 +65,7 @@ body {
 .header-navitem>a {
   color: #fff;
   text-decoration: none;
+  line-height: 1.5;
 }
 
 
