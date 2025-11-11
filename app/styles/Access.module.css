@@ -1,0 +1,40 @@
+.section {
+    display: inline-block;
+    background-image: url('../../public/BG01.jpg');
+    background-repeat: repeat;
+    width: 100%;
+}
+.container { text-align: center; }
+.wrap {
+    width: min(1150px, 100%);
+    min-width: min(900px, 100%);
+    margin: 50px auto 100px auto;
+    display: flex;
+}
+.map {
+    width: 600px;
+    height: 400px;
+    margin: 0 0 0 20px;
+    background-color: #333;
+}
+.info { margin: auto 0; padding: 0 40px; }
+.font { font-size: 18px; }
+.address { padding: 20px 0; }
+.tel { padding: 20px 0; }
+.hours { padding: 20px 0; }
+.route { padding: 20px 0; }
+.routeBtn {
+    width: 70px;
+    height: 30px;
+    background-color: #374063;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .wrap { width: 100%; min-width: 100%; display: block; }
+    .map { margin: 0; width: 100%; }
+    .info { text-align: center; }
+}
+
