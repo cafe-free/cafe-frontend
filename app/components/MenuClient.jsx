@@ -122,6 +122,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
         };
 
         const lowercaseFirstLetter = (str) => {
+            if (str === "Cookie") return str;
             if (!str || typeof str !== 'string') return str;
             return str.charAt(0).toLowerCase() + str.slice(1);
         };
