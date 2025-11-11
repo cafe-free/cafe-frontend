@@ -1,5 +1,29 @@
-.main {
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
+.section {
+	display: inline-block;
+	background-image: url('../../assets/images/BG02.jpg');
+	background-repeat: repeat;
+	width: 100%;
 }
+.container { text-align: center; }
+.news {
+	width: min(1150px, 100%);
+	min-width: min(900px, 100%);
+	margin: 50px auto 100px auto;
+}
+.list {
+	list-style: none;
+	padding: 0;
+}
+.item { border-bottom: 1px solid #333; }
+.itemTop { border-top: 1px solid #333; }
+.item a {
+	text-decoration: none;
+	color: #333;
+	display: flex;
+}
+.date { width: 200px; padding: 40px; }
+.title { padding: 40px; }
+@media screen and (max-width: 768px) {
+	.news { width: 100%; min-width: 100%; }
+}
+
