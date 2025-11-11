@@ -120,6 +120,11 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                 : dialogRef.current.showModal();
         };
 
+        const lowercaseFirstLetter = (str) => {
+            if (!str || typeof str !== 'string') return str;
+            return str.charAt(0).toLowerCase() + str.slice(1);
+        };
+        
         const sampleDescription = "This is a sample description...";
 
         return (
@@ -129,7 +134,11 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                     className={styles.menuCardButton}
                 >
                     <div>
-                        <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
+                        <img
+                            className={styles.menuCardImage} 
+                            src={`${lowercaseFirstLetter(item.subcategory)}/${item.img}`} 
+                            alt="Menu Item"
+                        />
                     </div>
                     <div className={styles.menuCardContent}>
                         <p className={styles.menuCardTitle}>{item.title}</p>
@@ -143,7 +152,11 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                 >
                     <div className={styles.modalWrapper}>
                         <div className={styles.modalImage}>
-                            <img src={item.img} alt="Menu Item" />
+                            <img
+                                className={styles.menuCardImage} 
+                                src={`${lowercaseFirstLetter(item.subcategory)}/${item.img}`} 
+                                alt="Menu Item"
+                            />
                         </div>
 
                         <div className={styles.modalContent}>
