@@ -166,10 +166,12 @@
     padding: 0;
     border: none;
     outline: none;
+    overflow: hidden;
 }
 
 .modalWrapper {
     display: flex;
+    height: 250px;
 }
 
 .modalImage img {
@@ -179,7 +181,8 @@
 }
 
 .modalContent {
-    padding: 1rem;
+    padding: 2rem 0 2rem 2rem;
+    height: 250px;
     text-align: left;
 }
 

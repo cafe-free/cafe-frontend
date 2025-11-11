@@ -162,7 +162,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                         <div className={styles.modalContent}>
                             <h3>{item.title}</h3>
                             <p>HKD {item.price.toFixed(1)}</p>
-                            <p>{sampleDescription}</p>
+                            <p>{item.description}</p>
                         </div>
                     
                     <button 
