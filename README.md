@@ -1,16 +1,68 @@
-# React + Vite
+## Cafe-frontend 
+### react_v3 (pickup, news, newsarticle, access, about)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Below is the directory structure of the Cafe-frontend (limited to 4 levels, excluding node_modules):
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│ ├── assets
+│ │ └── images
+│ │ ├── AboutImg.png
+│ │ ├── BG01.jpg
+│ │ ├── BG02.jpg
+│ │ ├── Line 1.png
+│ │ ├── Logo_v0.png
+│ │ ├── Logo.png
+│ │ ├── menu
+│ │ ├── menu-hero-background.png
+│ │ ├── MenuDrinkBG.png
+│ │ ├── MenuFoodBG.png
+│ │ ├── news
+│ │ ├── news_section_top.png
+│ │ ├── PickUp01.png
+│ │ ├── TopImg01.png
+│ │ ├── TopImg02.png
+│ │ └── TopImg03.png
+│ └── vite.svg
+├── README.md
+├── src
+│ ├── App.css
+│ ├── App.jsx
+│ ├── assets
+│ │ ├── css
+│ │ │ ├── pickup.css
+│ │ │ └── sanitize.css
+│ │ └── data
+│ │ └── newsData.js
+│ ├── components
+│ │ ├── About
+│ │ │ ├── About.css
+│ │ │ └── About.jsx
+│ │ ├── Access
+│ │ │ ├── Access.css
+│ │ │ └── Access.jsx
+│ │ ├── Footer
+│ │ │ ├── Footer.css
+│ │ │ └── Footer.jsx
+│ │ ├── Header
+│ │ │ ├── Header.css
+│ │ │ └── Header.jsx
+│ │ ├── News
+│ │ │ ├── Article
+│ │ │ ├── News.css
+│ │ │ └── News.jsx
+│ │ └── Pickup
+│ │ ├── Part1MainCarousel.jsx
+│ │ ├── Part2SectionCarousel.jsx
+│ │ ├── Part3CardsCarousel.jsx
+│ │ ├── Pickup.css
+│ │ └── Pickup.jsx
+│ ├── index.css
+│ └── main.jsx
+└── vite.config.js
+18 directories, 43 files
