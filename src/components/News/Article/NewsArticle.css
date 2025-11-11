@@ -1,0 +1,38 @@
+/* src/pages/news/article/newsArticle.css */
+.news-article-content p { 
+    margin-bottom: 1em; 
+    text-align: left; 
+    color: var(--text-color); 
+}
+
+.article-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.section-top--spaced {
+  padding-top: 70px;
+}
+
+.article-image {
+  width: 100%; /* Adjust as needed */
+  /* height: 400px; */
+  height: 500px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.article-text {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .article-layout {
+    flex-direction: column;
+  }
+  
+  .article-image {
+    width: 100%;
+  }
+}

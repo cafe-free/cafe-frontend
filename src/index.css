@@ -1,0 +1,16 @@
+/* src/index.css — remove offset so header can overlap */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Do not push content down — let header overlap */
+main {
+  margin-top: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 980px) {
+  main { margin-top: 0; }
+}
