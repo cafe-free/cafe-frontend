@@ -226,15 +226,18 @@
     z-index: 11;
     cursor: pointer;
 }
-.closeLogo { 
+.closeButton { 
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.closeLogoLine { 
+.closeButtonLine { 
     width: 1px;
     height: 100%;
     background-color: #fff;
     transform: rotate(-45deg);
+}
+.closeButtonLine + .closeButtonLine { 
+	transform: rotate(45deg);
 }

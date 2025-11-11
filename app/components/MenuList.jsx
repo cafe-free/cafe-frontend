@@ -2,13 +2,22 @@ import React from "react";
 import styles from "../styles/MenuSection.module.css";
 
 export default function MenuList({ active, right, title, items, onClose }) {
+    function CloseButton({ handleClick }) {
+        return (
+            <button className={styles.menuListClose} onClick={handleClick}>
+                <div className={styles.closeButton}>
+                    <div className={styles.closeButtonLine}></div>
+                    <div className={styles.closeButtonLine}></div>
+                </div>
+            </button>
+        );
+    }
+
     return (
         <div
-            className={
-                `${styles.menuList} 
-                 ${right ? styles.menuListRight : ""} 
-                 ${active ? styles.menuListActive : ""}`
-            }
+            className={`${styles.menuList} 
+                ${right ? styles.menuListRight : ""} 
+                ${active ? styles.menuListActive : ""}`}
         >
             <div
                 className={`${styles.menuListUl} ${
@@ -17,12 +26,7 @@ export default function MenuList({ active, right, title, items, onClose }) {
             >
                 <div className={styles.menuListTitle}>{title}</div>
 
-                <button className={styles.menuListClose} onClick={onClose}>
-                    <div className={styles.closeLogo}>
-                        <div className={styles.closeLogoLine}></div>
-                        <div className={styles.closeLogoLine}></div>
-                    </div>
-                </button>
+                <CloseButton handleClick={onClose} />
 
                 <ul className={styles.menuListInner}>
                     {items.map((item) => (
