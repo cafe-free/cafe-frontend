@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import About from './components/About';
+import MenuSection from './components/MenuSection';
 import Pickup from './components/Pickup';
 import News from './components/News';
 import Access from './components/Access';
@@ -21,6 +22,8 @@ export default function HomePage() {
                 <Hero />
 
                 <About />
+
+                <MenuSection />
 
                 <Pickup />
 
