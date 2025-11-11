@@ -14,9 +14,9 @@
     min-width: min(900px, 100%);
     height: auto;
     min-height: 500px;
-    display: flex;
     justify-content: space-between;
     margin: 50px auto 100px auto;
+    display: flex;
 }
 
 .imgCol {
@@ -45,13 +45,20 @@
     align-items: center;
 }
 
+.under {
+    position: absolute;
+    bottom: 0;
+}
+
 .title {
     padding: 100px 0;
     font-size: 30px;
 }
 
 .desc {
-    padding: 20px 0;
+    padding: 40px;
+    font: var(--font-size-md);
+    line-height: 1.8;
 }
 
 @media screen and (max-width: 768px) {
