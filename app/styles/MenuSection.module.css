@@ -1,0 +1,243 @@
+@import './variables.css';
+
+.section {
+	width: 100%;
+	min-width: 100%;
+}
+.sectionTitle { 
+	text-align: center;
+}
+.sectionHeaderPosition { 
+	position: absolute;
+	width: 100%;
+	min-width: 900px;
+}
+.sectionHeader { 
+	text-decoration: underline var(--secondary-text-color) 1px;
+	text-underline-offset: 10px;
+	margin: 0;
+	padding: 40px 0;
+}
+.sectionHeaderWhite { 
+	color: #ffffff;
+	text-decoration: underline solid #ffffff 1px;
+}
+.sectionHeaderPaddingTop { 
+	position: relative;
+	z-index: 2;
+}
+
+.menuTime {
+    height: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+.menuTimeInner { 
+	width: 50%;
+    min-width: 450px;
+    height: 700px;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    background-position: center;
+    display: flex;
+}
+
+.menuFoodButton { 
+    width: 100%;
+    height: 100%;
+    background-image: url(../../public/MenuFoodBG.png);
+    position: relative;
+    z-index: 0;
+    object-fit: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 0;
+}
+.menuFoodButton::before {
+    content: '';
+    background: inherit;
+    filter: blur(0px);
+    position: absolute;
+
+    top: -0px;
+    left: -0px;
+    right: -0px;
+    bottom: -0px;
+    z-index: -1;
+    transition: .3s ease-in-out;
+}
+.menuFoodTitle { 
+	font-family: var(--font-primary);
+    position: relative;
+    z-index: 2;
+    width: 250px;
+    height: 100px;
+    color: #fff;
+    font-size: 36px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuFoodButton:hover::before {
+    content: '';
+    background: inherit;
+    filter: blur(5px);
+    position: absolute;
+
+    top: -0px;
+    left: -0px;
+    right: -0px;
+    bottom: -0px;
+    z-index: -1;
+    transition: .3s ease-in-out;
+}
+.menuDrinkTitle {
+	font-family: var(--font-primary);
+    position: relative;
+    z-index: 2;
+    width: 250px;
+    height: 100px;
+    color: #fff;
+    font-size: 36px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuFoodTitle > button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menuDrinkButton { 
+    width: 100%;
+    height: 100%;
+    background-image: url(../../public/MenuDrinkBG.png);
+    position: relative;
+    z-index: 0;
+    object-fit: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 0;
+}
+.menuDrinkButton::before {
+	content: '';
+	background: inherit;
+	filter: blur(0px);
+	position: absolute;
+
+	top: -0px;
+	left: -0px;
+	right: -0px;
+	bottom: -0px;
+	z-index: -1;
+	transition: .3s ease-in-out;
+}
+.menuDrinkButton:hover::before {
+	content: '';
+	background: inherit;
+	filter: blur(5px);
+	position: absolute;
+
+	top: -0px;
+	left: -0px;
+	right: -0px;
+	bottom: -0px;
+	z-index: -1;
+	/* transition: .3s ease-in-out; */
+}
+
+.menuList { 
+    width: 100%;
+    height: 100%;
+    background-color: #374063;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+.menuListRight { 
+    transform: translateX(100%);
+}
+.menuListActive {    
+	opacity: 1;
+    transform: translateX(0);}
+
+.menuListUl { 
+    width: 60%;
+    height: 400px;
+    position: relative;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+.menuListUlRight { 
+	height: 300px;
+}
+.menuListTitle { 
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    transform: translateY(-100%);
+}
+
+.menuListInner { 
+    padding: 0;
+    margin: 0;
+}
+.menuListItem { 
+    list-style: none;
+    text-align: left;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+.menuListItem > a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+}
+.menuListClose { 
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-100%);
+    z-index: 11;
+    cursor: pointer;
+}
+.closeButton { 
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.closeButtonLine { 
+    width: 1px;
+    height: 100%;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+.closeButtonLine + .closeButtonLine { 
+	transform: rotate(45deg);
+}
