@@ -7,7 +7,7 @@ import { pickUpImages } from '../../lib/pickUpImages.js';
 
 // const images = ['5', '6', '1', '2', '3', '4', '5', '6', '1', '2']; 
 const images = pickUpImages.map((img) => (
-	<img key={img.id} src="https://picsum.photos/300/?random=10" alt={img.alt} className={styles.slideImage} />
+	<img key={img.id} src={img.src} alt={img.alt} className={styles.slideImage} />
 ));
 
 export default function Pickup() {
