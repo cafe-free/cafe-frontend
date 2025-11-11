@@ -28,8 +28,7 @@ async function printDb() {
       const name = collInfo.name;
       console.log(`\n=== Collection: ${name} ===`);
 
-      // fetch up to 10 documents
-      const cursor = db.collection(name).find().limit(10);
+      const cursor = db.collection(name).find().limit(100); // limit to 100 docs
       const docs = await cursor.toArray();
 
       if (docs.length === 0) {

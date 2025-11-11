@@ -1,13 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Menu.module.css';
+import Loader from './Loader';
 
 export default function MenuClient() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
     const [menuData, setMenuData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     
     // Fetch menu data from the API when the component mounts
     useEffect(() => {
@@ -16,23 +17,20 @@ export default function MenuClient() {
                 const response = await fetch('/api/menu');
                 if (!response.ok) {
                     const text = await response.text();
-                    throw new Error(`HTTP ${response.status} ${response.statusText} - ${text}`);
+                    console.error(`HTTP ${response.status} ${response.statusText} - ${text}`);
                 }
                 const data = await response.json();
                 setMenuData(data);
             } catch (error) {
                 console.error('Error fetching menu data:', error);
             } finally {
-                setLoading(false);
+                setIsLoading(false);
             }
         };
 
-        fetchMenuData();
+        fetchMenuData().then(r => console.log(r));
     }, []);
 
-    if (loading) {
-        return <div>Loading menu...</div>;
-    }
 
     const getSubcategories = (cat) => [
         ...new Set(menuData.filter(i => i.category === cat).map(i => i.subcategory))
@@ -79,6 +77,9 @@ export default function MenuClient() {
         );
     }
 
+    if (isLoading) {
+        return <Loader isLoading={isLoading} minMs={1000} />;
+    }
     return (
         <div className={styles.menuContainer}>
             <nav className={styles.menuCategoryList}>
@@ -108,44 +109,76 @@ export default function MenuClient() {
 }
 
 function MenuSection({ data, selectedCategory, selectedSubcategory }) {
-    const [dialogContent, setDialogContent] = useState("");
-    const dialogRef =  useState(null);
-
-    const toggleDialog = () => {
-        if (!dialogRef.current) {
-            return;
-        }
-        dialogRef.current.hasAttribute('open') 
-            ? dialogRef.current.close() : dialogRef.current.showModal();
-    };
-
-    function Modal() {
-        return (
-            <dialog ref={dialogRef}>Item Description</dialog>
-        );
-    }
-
     const filteredByCategory = data.filter(item => item.category === selectedCategory);
 
     function MenuCard({ item, index }) {
-        const sampleDescription = "This is a sample description for the menu item. It provides details about the ingredients, preparation, and other relevant information that might interest the customer.";
+        const dialogRef = useRef(null);
+
+        const toggleDialog = () => {
+            if (!dialogRef.current) return;
+            dialogRef.current.hasAttribute("open")
+                ? dialogRef.current.close()
+                : dialogRef.current.showModal();
+        };
+
+        const lowercaseFirstLetter = (str) => {
+            if (!str || typeof str !== 'string') return str;
+            return str.charAt(0).toLowerCase() + str.slice(1);
+        };
+        
+        const sampleDescription = "This is a sample description...";
+
         return (
             <div key={index} className={styles.menuCard}>
-                <button onClick={() => {
-                    setDialogContent(sampleDescription);
-                    toggleDialog();
-                }} className={styles.menuCardButton}>
+                <button
+                    onClick={toggleDialog}
+                    className={styles.menuCardButton}
+                >
                     <div>
-                        <img className={styles.menuCardImage} src={item.img} alt="Menu Item" />
+                        <img
+                            className={styles.menuCardImage} 
+                            src={`${lowercaseFirstLetter(item.subcategory)}/${item.img}`} 
+                            alt="Menu Item"
+                        />
                     </div>
                     <div className={styles.menuCardContent}>
                         <p className={styles.menuCardTitle}>{item.title}</p>
                         <p className={styles.menuCardPrice}>HKD {item.price.toFixed(1)}</p>
                     </div>
                 </button>
+
+                <dialog 
+                    ref={dialogRef} 
+                    className={styles.modal}
+                >
+                    <div className={styles.modalWrapper}>
+                        <div className={styles.modalImage}>
+                            <img
+                                className={styles.menuCardImage} 
+                                src={`${lowercaseFirstLetter(item.subcategory)}/${item.img}`} 
+                                alt="Menu Item"
+                            />
+                        </div>
+
+                        <div className={styles.modalContent}>
+                            <h3>{item.title}</h3>
+                            <p>HKD {item.price.toFixed(1)}</p>
+                            <p>{item.description}</p>
+                        </div>
+                    
+                    <button 
+                        className={styles.closeButton} 
+                        onClick={toggleDialog}
+                    >
+                        Close
+                    </button>
+                    </div>
+                </dialog>
+
             </div>
         );
     }
+
 
     if (selectedSubcategory === "All") {
         const itemsBySubcategory = filteredByCategory.reduce((accumulator, currentItem) => {
