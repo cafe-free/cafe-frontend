@@ -1,7 +1,8 @@
-import styles from './About.module.css';
+import styles from '../styles/About.module.css';
 import SectionHeader from './SectionHeader';
-import AboutImg from '../../public/AboutImg.png';
-import LineImg from '../../public/Line 1.png';
+
+const AboutImg = '/AboutImg.png';
+const LineImg = '/Line 1.png';
 
 export default function About() {
     return (

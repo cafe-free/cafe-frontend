@@ -1,4 +1,4 @@
-import styles from './Access.module.css';
+import styles from '../styles/Access.module.css';
 import SectionHeader from './SectionHeader.jsx';
 
 export default function Access() {

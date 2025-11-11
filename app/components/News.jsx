@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './News.module.css';
-import SectionHeader from '../SectionHeader/SectionHeader.jsx';
+import styles from '../styles/News.module.css';
+import SectionHeader from './SectionHeader.jsx';
 
 const dummy = [
 	{ date: '2025.08.31', title: 'TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT' },

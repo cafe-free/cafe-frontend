@@ -1,4 +1,4 @@
-import styles from './SectionHeader.module.css';
+import styles from '../styles/SectionHeader.module.css';
 
 export default function SectionHeader({ title, white = false, padTop = false, id }) {
     return (

@@ -1,8 +1,9 @@
-import styles from './Hero.module.css';
-import Logo from '../../public/Logo.png';
-import TopImg01 from '../../public/TopImg01.png';
-import TopImg02 from '../../public/TopImg02.png';
-import TopImg03 from '../../public/TopImg03.png';
+import styles from '../styles/Hero.module.css';
+
+const Logo = '/Logo.png';
+const TopImg01 = '/TopImg01.png';
+const TopImg02 = '/TopImg02.png';
+const TopImg03 = '/TopImg03.png';
 
 export default function Hero() {
     return (

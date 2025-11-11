@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import styles from './Pickup.module.css';
+import styles from '../styles/Pickup.module.css';
 import SectionHeader from './SectionHeader.jsx';
 
 export default function Pickup() {

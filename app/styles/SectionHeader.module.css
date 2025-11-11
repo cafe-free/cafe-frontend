@@ -1,0 +1,17 @@
+.wrap {
+	text-align: center;
+}
+.header {
+	text-decoration: underline solid #333 1px;
+	text-underline-offset: 10px;
+	margin: 0;
+	padding: 40px 0;
+}
+.white {
+	color: #fff;
+	text-decoration: underline solid #fff 1px;
+}
+.padTop {
+	padding: 40px 0 0 0;
+}
+
