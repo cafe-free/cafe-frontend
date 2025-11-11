@@ -3,13 +3,19 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styles from '../styles/Pickup.module.css';
 import SectionHeader from './SectionHeader.jsx';
+import { pickUpImages } from '../../lib/pickUpImages.js';
+
+// const images = ['5', '6', '1', '2', '3', '4', '5', '6', '1', '2']; 
+const images = pickUpImages.map((img) => (
+	<img key={img.id} src="https://picsum.photos/300/?random=10" alt={img.alt} className={styles.slideImage} />
+));
 
 export default function Pickup() {
 	const [currentIndex, setCurrentIndex] = useState(2);
 	const [autoPlayId, setAutoPlayId] = useState(null);
 	const slidesRef = useRef(null);
 	const navButtonsRef = useRef([]);
-	const items = useMemo(() => ['5', '6', '1', '2', '3', '4', '5', '6', '1', '2'], []);
+	const items = useMemo(() => images, []);
 
 	useEffect(() => {
 		// initialize position
@@ -70,7 +76,7 @@ export default function Pickup() {
 			},
 			{ once: true }
 		);
-		moveSlide(400);
+		moveSlide(800);
 		updateNav(index);
 	}
 
