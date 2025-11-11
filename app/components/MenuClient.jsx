@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Menu.module.css';
+import Loader from './Loader';
 
 export default function MenuClient() {
     const [selectedCategory, setSelectedCategory] = useState("Food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("All");
     const [menuData, setMenuData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     
     // Fetch menu data from the API when the component mounts
     useEffect(() => {
@@ -23,16 +24,13 @@ export default function MenuClient() {
             } catch (error) {
                 console.error('Error fetching menu data:', error);
             } finally {
-                setLoading(false);
+                setIsLoading(false);
             }
         };
 
         fetchMenuData().then(r => console.log(r));
     }, []);
 
-    if (loading) {
-        return <div>Loading menu...</div>;
-    }
 
     const getSubcategories = (cat) => [
         ...new Set(menuData.filter(i => i.category === cat).map(i => i.subcategory))
@@ -79,6 +77,9 @@ export default function MenuClient() {
         );
     }
 
+    if (isLoading) {
+        return <Loader isLoading={isLoading} minMs={1000} />;
+    }
     return (
         <div className={styles.menuContainer}>
             <nav className={styles.menuCategoryList}>
