@@ -145,6 +145,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                         <div className={styles.modalImage}>
                             <img src={item.img} alt="Menu Item" />
                         </div>
+
                         <div className={styles.modalContent}>
                             <h3>{item.title}</h3>
                             <p>HKD {item.price.toFixed(1)}</p>
@@ -157,9 +158,7 @@ function MenuSection({ data, selectedCategory, selectedSubcategory }) {
                     >
                         Close
                     </button>
-                    
                     </div>
-                
                 </dialog>
 
             </div>

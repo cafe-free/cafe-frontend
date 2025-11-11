@@ -163,6 +163,7 @@
 .modal {
     width: 750px;
     height: 250px;
+    padding: 0;
     border: none;
     outline: none;
 }
@@ -180,6 +181,12 @@
 .modalContent {
     padding: 1rem;
     text-align: left;
+}
+
+.modalContent h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: var(--font-weight-normal);
 }
 
 .closeButton {
