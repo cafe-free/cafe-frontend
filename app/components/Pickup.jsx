@@ -4,10 +4,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styles from '../styles/Pickup.module.css';
 import SectionHeader from './SectionHeader.jsx';
 import { pickUpImages } from '../../lib/pickUpImages.js';
+const menuImage = '/MenuDrinkBG.png';
 
 // const images = ['5', '6', '1', '2', '3', '4', '5', '6', '1', '2']; 
 const images = pickUpImages.map((img) => (
-	<img key={img.id} src={img.src} alt={img.alt} className={styles.slideImage} />
+	<img key={img.id} src={menuImage} alt={img.alt} className={styles.slideImage} />
 ));
 
 export default function Pickup() {
