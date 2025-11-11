@@ -1,32 +1,18 @@
 // src/pages/news/news.jsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../../assets/css/sanitize.css"; // optional if already imported globally
+import "../../assets/css/sanitize.css";
 import "./news.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { newsArticles } from "../../assets/data/newsData.js";
 
 export default function NewsList() {
-  const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
-  useEffect(() => {
-    fetch("/assets/data/news-list.json")
-      .then((r) => {
-        if (!r.ok) throw new Error("no data");
-        return r.json();
-      })
-      .then(setItems)
-      .catch(() => {
-        setItems([
-          { id: "news-01", date: "2025.08.31", title: "This is the first news about our Cafe shop" },
-          { id: "news-02", date: "2025.08.31", title: "This is the second news about our Cafe shop" },
-          { id: "news-03", date: "2025.08.31", title: "This is the third news about our Cafe shop" },
-          { id: "news-04", date: "2025.08.31", title: "This is the fourth news about our Cafe shop" },
-          { id: "news-05", date: "2025.08.31", title: "This is the fifth news about our Cafe shop" },
-          { id: "news-06", date: "2025.08.31", title: "This is the sixth news about our Cafe shop" }
-        ]);
-      });
-  }, []);
+  const totalPages = Math.ceil(newsArticles.length / itemsPerPage);
+  const displayedItems = newsArticles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <>
@@ -46,32 +32,60 @@ export default function NewsList() {
         <section className="section bg02-img" aria-label="News list">
           <div className="news">
             <div className="news-nav" aria-label="News pagination">
-              <button className="nav-arrow nav-double prev" aria-label="First page">&laquo;</button>
-              <button className="nav-arrow nav-single prev" aria-label="Previous page">&lt;</button>
+              {/* <button
+                className="nav-arrow nav-double prev"
+                aria-label="First page"
+                onClick={() => setCurrentPage(1)}
+                disabled={currentPage === 1}
+              >
+                &laquo;
+              </button> */}
+              <button
+                className="nav-arrow nav-single prev"
+                aria-label="Previous page"
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+              >
+                &lt;
+              </button>
 
               <nav className="nav-pages" aria-label="Page numbers">
-                <button className="page">1</button>
-                <span className="sep">|</span>
-                <button className="page">2</button>
-                <span className="sep">|</span>
-                <button className="page">3</button>
-                <span className="sep">|</span>
-                <button className="page">4</button>
-                <span className="sep">|</span>
-                <button className="page">5</button>
-                <span className="sep">|</span>
-                <button className="page">6</button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <React.Fragment key={page}>
+                    {page > 1 && <span className="sep">|</span>}
+                    <button
+                      className={`page ${page === currentPage ? "active" : ""}`}
+                      onClick={() => setCurrentPage(page)}
+                    >
+                      {page}
+                    </button>
+                  </React.Fragment>
+                ))}
               </nav>
 
-              <button className="nav-arrow nav-single next" aria-label="Next page">&gt;</button>
-              <button className="nav-arrow nav-double next" aria-label="Last page">&raquo;</button>
+              <button
+                className="nav-arrow nav-single next"
+                aria-label="Next page"
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+              >
+                &gt;
+              </button>
+              {/* <button 
+                className="nav-arrow nav-double next"
+                aria-label="Last page"
+                onClick={() => setCurrentPage(totalPages)}
+                disabled={currentPage === totalPages}
+              >
+                &raquo;
+              </button> */}
             </div>
 
             <ul className="news-list" role="list">
-              {items.map((it, idx) => (
+              {displayedItems.map((it, idx) => (
                 <li
                   key={it.id}
-                  className={`news-itme ${idx === 0 ? "news-itme-border-top" : ""} ${idx === items.length - 1 ? "news-itme-border-bottom" : ""}`}
+                  className={`news-item ${idx === 0 ? "news-item-border-top" : ""} ${idx === displayedItems.length - 1 ? "news-item-border-bottom" : ""}`}
                 >
                   <Link to={`/news/${encodeURIComponent(it.id)}`}>
                     <div className="news-date">{it.date}</div>

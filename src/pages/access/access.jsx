@@ -33,7 +33,7 @@ export default function AccessMain() {
         <div className="access-map" aria-hidden="false">
         <iframe
             className="gmap"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153163!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11b1b3%3A0x5045675218ceed30!2sCafe%20de%20Coral!5e0!3m2!1sen!2sau!4v1616161616161!5m2!1sen!2sau"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.5005940236465!2d114.21375587599415!3d22.334719441645547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340407c92f43b7e1%3A0x9c46c82fd1a46356!2sChristian%20Action!5e0!3m2!1sen!2shk!4v1762827018554!5m2!1sen!2shk"
             title="Location map"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -45,8 +45,9 @@ export default function AccessMain() {
     <div className="access-right">
         <div className="access-infor">
         <div className="access-infor-address access-infor-font">
-            <strong>Address</strong>: 近豐澤樓, 彩雲(二)邨啟輝樓 九龍彩雲二邨清水灣道55號, 55 Clear Water Bay Rd
+            <strong>Address</strong>: Christian Action, Choi Wan (II) Estate Kai Fai House, 55 Clear Water Bay Rd
         </div>
+
         <div className="access-infor-telephone access-infor-font">
             <strong>Telephone</strong>: 2123 4567
         </div>

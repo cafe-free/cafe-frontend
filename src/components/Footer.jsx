@@ -6,11 +6,11 @@ export default function Footer() {
     <footer className="footer" role="contentinfo">
       <div className="footer-nav">
         <ul className="footer-navlist">
-          <li className="footer-navitem"><a href="#">ABOUT</a></li>
-          <li className="footer-navitem"><a href="#">MENU</a></li>
-          <li className="footer-navitem"><a href="#">PICK UP</a></li>
-          <li className="footer-navitem"><a href="#">NEWS</a></li>
-          <li className="footer-navitem"><a href="#">ACCESS</a></li>
+          <li className="footer-navitem"><a href="/about">ABOUT</a></li>
+          <li className="footer-navitem"><a href="/menu">MENU</a></li>
+          <li className="footer-navitem"><a href="/pickup">PICK UP</a></li>
+          <li className="footer-navitem"><a href="/news">NEWS</a></li>
+          <li className="footer-navitem"><a href="/access">ACCESS</a></li>
         </ul>
       </div>
 

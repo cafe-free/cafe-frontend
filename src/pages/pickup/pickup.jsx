@@ -1,7 +1,7 @@
 // src/pages/pickup/pickup.jsx
 import React, { Suspense } from "react";
 import "../../assets/css/sanitize.css";      // still global reset (optional)
-import "./pickup.css";                      // page-specific CSS (local copy or overrides)
+import "../../assets/css/pickup.css";                      // page-specific CSS (local copy or overrides)
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
