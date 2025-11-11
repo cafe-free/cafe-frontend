@@ -77,9 +77,9 @@ export default function MenuClient() {
         );
     }
 
-    if (isLoading) {
-        return <Loader isLoading={isLoading} minMs={1000} />;
-    }
+    // if (isLoading) {
+    //     return <Loader isLoading={isLoading} minMs={1000} />;
+    // }
     return (
         <div className={styles.menuContainer}>
             <nav className={styles.menuCategoryList}>

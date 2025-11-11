@@ -48,6 +48,7 @@ export default function Loader({ isLoading, minMs }) {
     return (
         <div className={styles.loaderContainer}>
             <div className={styles.loader}></div>
+            <p>Now Loading</p>
         </div>
     );
 }
