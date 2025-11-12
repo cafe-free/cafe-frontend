@@ -21,7 +21,7 @@ export default function News() {
 				<ul className={styles.list}>
 					{newsArticles.slice(0, 4).map((n, i) => (
 						<li key={i} className={[styles.item, i === 0 ? styles.itemTop : ''].join(' ')}>
-							<a href="#">
+							<a href="\news-html">
 								<p className={styles.date}>{n.date}</p>
 								<p className={styles.title}>{n.title}</p>
 							</a>
