@@ -27,7 +27,7 @@ export default function Header({ isOnHomepage }) {
         <nav className={styles.headerNav}>
           <ul className={styles.headerNavlist}>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="/">TOP</a>
+              <a className={styles.headerNavitemLink} href="\">TOP</a>
             </li>
             <li className={styles.headerNavitem}>
               <a className={styles.headerNavitemLink} href="/about">ABOUT</a>
