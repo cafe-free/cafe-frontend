@@ -47,3 +47,75 @@
     color: #fff;
     text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        width: 100%;
+        min-width: 100%;
+
+        height: 100vh;
+        padding: 0;
+        background-color: #374063;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        position: fixed;
+        opacity: 0;
+        transition: 0.4s;
+    }
+
+    .headerActive {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    .logo {
+        visibility: visible;
+    }
+
+    .logoActive :last-child {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .logoActive :first-child {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .logoActive :nth-child(2) {
+        transform: rotate(45deg);
+        opacity: 0;
+    }
+
+    .logo {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    .nav {
+        width: 100%;
+        height: 80%;
+        align-items: center;
+        position: relative;
+    }
+
+    .navlist {
+        text-align: center;
+        display: inline-block;
+        width: 100vw;
+        margin: 12px 0;
+    }
+
+    .navitem {
+        padding: 30px 0;
+        font-size: 24px;
+    }
+
+    .section {
+        width: 100%;
+        min-width: 100%;
+    }
+}
