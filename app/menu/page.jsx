@@ -5,7 +5,7 @@ import styles from '../styles/Menu.module.css';
 import '../globals.css';
 
 export const metadata = {
-  title: 'Menu - Cafe de Coral',
+  title: 'Menu - Cafe Corail',
   description: 'Explore our delicious menu of food and drinks',
 }
 

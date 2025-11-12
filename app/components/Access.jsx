@@ -21,9 +21,18 @@ export default function Access() {
                     />
                 </div>
                 <div className={styles.info}>
-                    <p className={[styles.address, styles.font].join(' ')}>Christian Action, Choi Wan (II) Estate Kai Fai House, 55 Clear Water Bay Rd</p>
-                    <p className={[styles.tel, styles.font].join(' ')}>2123 4567</p>
-                    <p className={[styles.hours, styles.font].join(' ')}>10:00 - 12:30, 14:30 - 19:00</p>
+                    <span className={[styles.address, styles.font].join(' ')}>
+                        <h4>Address:</h4>
+                        Christian Action, Choi Wan (II) Estate Kai Fai House, 55 Clear Water Bay Rd
+                    </span>
+                    <span className={[styles.tel, styles.font].join(' ')}>
+                        <h4>Tel:</h4>
+                        2123 4567
+                    </span>
+                    <span className={[styles.hours, styles.font].join(' ')}>
+                        <h4>Opening Hours:</h4>
+                        10:00 - 12:30,  <br /> 14:30 - 19:00
+                    </span>
                     <p className={styles.route}>
                         <a href="#" className={styles.routeLink}>
                             <button className={styles.routeBtn}>route</button>

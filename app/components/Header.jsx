@@ -3,10 +3,11 @@
 
 import React, { useState } from "react";
 const Logo = "/Logo.png";
-import styles from '../styles/Header.module.css'
+import styles from '../styles/Header.module.css';
+import '../styles/variables.css';
 
 
-export default function Header() {
+export default function Header({ isOnHomepage }) {
   const [menuActive, setMenuActive] = useState(false);
 
   const toggleMenu = () => {
@@ -18,6 +19,7 @@ export default function Header() {
       <header
         id="header"
         className={`${styles.header} ${menuActive ? styles.headerActive : ""}`}
+        style={isOnHomepage ? {position: "absolute"} : {backgroundColor: "var(--highlight)"}}
       >
         <div className={styles.headerLogo}>
           <img src={Logo} alt="Logo" />
@@ -28,25 +30,20 @@ export default function Header() {
               <a className={styles.headerNavitemLink} href="\">TOP</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="#about">ABOUT</a>
+              <a className={styles.headerNavitemLink} href="/about">ABOUT</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\menu">MENU</a>
+              <a className={styles.headerNavitemLink} href="/menu">MENU</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="#pickup">PICK UP</a>
+              <a className={styles.headerNavitemLink} href="pickup.html">PICK UP</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\news.html">NEWS</a>
+              <a className={styles.headerNavitemLink} href="/news.html">NEWS</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="#access">ACCESS</a>
+              <a className={styles.headerNavitemLink} href="/access">ACCESS</a>
             </li>
-            {/* {["TOP", "ABOUT", "MENU", "PICK UP", "NEWS", "ACCESS"].map((item) => (
-              <li key={item} className={styles.headerNavitem}>
-                <a href="#">{item}</a>
-              </li>
-            ))} */}
           </ul>
         </nav>
       </header>

@@ -6,9 +6,9 @@
 
 .menuContainer {
     margin: 0 auto;
-    /*padding: 100px 0 0 10px;*/
     width: 1161px;
-    height: 3500px;
+    height: auto;
+    min-height: 3500px;
     display: flex;
     align-items: flex-start;
 }
@@ -22,7 +22,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-bottom: 24px; */
 }
 
 .menuHeroImage .menuHeroTitle {
@@ -31,8 +30,8 @@
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.cardsContainer {
-}
+/* .cardsContainer {
+} */
 
 .menuCategoryList {
     margin: 0;
@@ -45,7 +44,6 @@
     align-items: flex-start;
 }
 
-/* split the UL into its own class so you can apply it directly in JSX */
 .menuCategoryListUl {
     list-style: none;
     padding-left: 0;
@@ -94,7 +92,6 @@
     padding-top: 25px;
 }
 
-/* apply to the heading element directly in JSX */
 .menuSubcategoryTitleHeading {
     font-size: 24px;
     font-weight: var(--font-weight-normal);
@@ -118,7 +115,6 @@
     border: none;
     background-color: transparent;
     padding: 0;
-    /* text-align: left; */
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -201,4 +197,195 @@
     font-family: inherit;
     font-size: 16px;
     cursor: pointer;
+}
+
+/* Tablet styles (1024px and below) */
+@media (max-width: 1024px) {
+    .menuTitle {
+        padding-left: 20px;
+    }
+
+    .menuContainer {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        flex-direction: column;
+    }
+
+    .menuCategoryList {
+        width: 100%;
+        height: auto;
+        margin-bottom: 30px;
+        overflow-x: auto;
+    }
+
+    .menuCategoryListUl {
+        display: flex;
+        flex-direction: row;
+        padding-top: 20px;
+        gap: 20px;
+        white-space: nowrap;
+    }
+
+    .menuCategoryListItem {
+        margin: 0;
+    }
+
+    .selectedListItem {
+        border-left: none;
+        border-bottom: 3px solid var(--highlight);
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+
+    .menuCardContainer {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .menuSubcategoryTitle {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .modal {
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .closeButton {
+        right: 20px;
+    }
+}
+
+/* Mobile styles (768px and below) */
+@media (max-width: 768px) {
+    .menuHeroImage {
+        height: 200px;
+    }
+
+    .menuHeroImage .menuHeroTitle {
+        font-size: 32px;
+    }
+
+    .menuCardContainer {
+        justify-content: center;
+    }
+
+    .menuCard {
+        margin: 15px;
+        width: 160px;
+        height: 240px;
+    }
+
+    .menuCardImage {
+        width: 160px;
+        height: 160px;
+    }
+
+    .menuCardContent {
+        width: 160px;
+        height: 80px;
+    }
+
+    .menuCardTitle {
+        font-size: 16px;
+    }
+
+    .menuCardPrice {
+        font-size: 16px;
+    }
+
+    .modal {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+    }
+
+    .modalWrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .modalImage img {
+        height: 200px;
+    }
+
+    .modalContent {
+        padding: 1.5rem;
+        height: auto;
+    }
+
+    .closeButton {
+        position: static;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Small mobile styles (480px and below) */
+@media (max-width: 480px) {
+    .menuTitle {
+        padding-left: 15px;
+    }
+
+    .menuContainer {
+        padding: 0 10px;
+    }
+
+    .menuHeroImage {
+        height: 150px;
+    }
+
+    .menuHeroImage .menuHeroTitle {
+        font-size: 24px;
+    }
+
+    .menuCategoryListUl {
+        gap: 15px;
+    }
+
+    .menuCategoryListItem {
+        font-size: 16px;
+    }
+
+    .menuCard {
+        margin: 10px;
+        width: 140px;
+        height: 220px;
+    }
+
+    .menuCardImage {
+        width: 140px;
+        height: 140px;
+    }
+
+    .menuCardContent {
+        width: 140px;
+    }
+
+    .menuCardTitle,
+    .menuCardPrice {
+        font-size: 14px;
+    }
+
+    .menuSubcategoryTitle h2,
+    .menuSubcategoryTitleHeading {
+        font-size: 20px;
+        padding-top: 15px;
+    }
+
+    .modal {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .modalContent {
+        padding: 1rem;
+    }
+
+    .modalContent h3 {
+        font-size: 18px;
+    }
 }
