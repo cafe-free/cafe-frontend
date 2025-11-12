@@ -8,6 +8,8 @@ import Pickup from './components/Pickup';
 import News from './components/News';
 import Access from './components/Access';
 import './globals.css';
+import './styles/sanitize.css';
+import Opening from './components/Opening';
 
 // export const metadata = {
 //     title: 'Cafe de Coral - Home',
@@ -17,6 +19,7 @@ import './globals.css';
 export default function HomePage() {
     return (
         <>
+            <Opening />
             <Header isOnHomepage={true}/>
             <main>
                 <Hero />
