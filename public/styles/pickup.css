@@ -55,13 +55,14 @@ body {
   justify-content: space-between;
 }
 
+.header-navitem {
+  list-style-type: none;
+}
 
 .header-navitem>a {
   color: #fff;
   text-decoration: none;
 }
-
-
 
 /* 2. main body */
   /* PART 1.  pick up original block*/
