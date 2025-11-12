@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import './envConfig.js';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/your-db-name';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Filename to find and replacement
 const BAD_FILENAME = 'Cake_RedVekvetRoyale.png';
