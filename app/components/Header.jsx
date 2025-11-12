@@ -6,7 +6,7 @@ const Logo = "/Logo.png";
 import styles from '../styles/Header.module.css'
 
 
-export default function Header() {
+export default function Header({ isOnHomepage }) {
   const [menuActive, setMenuActive] = useState(false);
 
   const toggleMenu = () => {
@@ -18,6 +18,7 @@ export default function Header() {
       <header
         id="header"
         className={`${styles.header} ${menuActive ? styles.headerActive : ""}`}
+        style={isOnHomepage ? {position: "absolute"} : {backgroundColor: "var(--highlight)"}}
       >
         <div className={styles.headerLogo}>
           <img src={Logo} alt="Logo" />
