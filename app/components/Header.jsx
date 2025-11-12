@@ -37,7 +37,7 @@ export default function Header() {
               <a className={styles.headerNavitemLink} href="#pickup">PICK UP</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="#news">NEWS</a>
+              <a className={styles.headerNavitemLink} href="\news.html">NEWS</a>
             </li>
             <li className={styles.headerNavitem}>
               <a className={styles.headerNavitemLink} href="#access">ACCESS</a>
