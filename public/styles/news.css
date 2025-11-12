@@ -1,7 +1,8 @@
+@import '../../app/styles/variables.css';
+
 :root {
-  /* news container */
   --accent: #374063;
-  --accent-strong: #333333;
+  --accent-strong: #333;
   --muted: #555;
   --border: #eee;
   --border-strong: #333;
@@ -13,7 +14,6 @@
   --gap: 16px;
   --radius: 0px;
 
-  /* news article */
   --article-max-width:1000px;
   --article-padding: 20px;
   --text-color: #444444;
@@ -31,7 +31,7 @@
 
 html,
 body {
-  font-family: "Quattrocento", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "Quattrocento", sans-serif;
   font-size: var(--page-font-size);
   line-height: 1.5;
   color: #333;
@@ -164,6 +164,7 @@ body {
 }
 
 
+
 /* 2. top section */
 .section-header {
   text-decoration: underline solid #333 1px;
@@ -189,21 +190,19 @@ body {
   pointer-events: none;
 }
 
-.section-top {
-  position: relative;
-  overflow: hidden;
+.section-top { 
+  position: relative; 
+  overflow: hidden; }
+
+.section-top--spaced { 
+  padding-top:100px; 
 }
 
-.section-top--spaced {
-  padding-top: 120px;
-}
-
-.top-block-1 {
-  position: relative;
-  overflow: hidden;
-  min-height: 280px;
-  width: 100%;
-}
+.top-block-1 { 
+  position: relative; 
+  overflow: hidden; 
+  min-height: 280px; 
+  width: 100%; }
 
 .top-image {
   width: 100%;
@@ -212,22 +211,11 @@ body {
   object-position: center;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 360ms cubic-bezier(.2,.8,.2,1),
-              filter 260ms ease;
+  transition: transform 360ms cubic-bezier(.2,.8,.2,1), filter 260ms ease;
   backface-visibility: hidden;
   position: relative;
   z-index: 10;
 }
-
-/* .top-block-1:hover .top-image {
-  transform: scale(1.03);
-  filter: brightness(1.02);
-} */
-
-
-
-
-
 
 /* 3. the news section container */
 .news {
@@ -237,6 +225,7 @@ body {
   padding: 0 16px;
   position: relative;
 }
+
 /* news navigation (pagination) */
 .news-nav {
   position: absolute;
@@ -261,6 +250,10 @@ body {
   font-weight: 600;
 }
 
+.news-nav .nav-arrow:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
 
 .news-nav .page {
   background: transparent;
@@ -273,41 +266,14 @@ body {
   font-weight: 50;
 }
 
-.news-nav .nav-double {
-  font-weight: 900;
-  font-size: 18px;
-}
+.news-nav .nav-double { font-weight: 900; font-size: 18px; }
+.news-nav .nav-single { font-weight: 400; }
 
-.news-nav .nav-single {
-  font-weight: 400;
-}
+.nav-pages { display: inline-flex; align-items: center; gap: 8px; margin: 0 6px; }
+.nav-pages .sep { color: #8d8686; font-weight:100; padding: 0 4px; }
 
-
-
-.nav-pages {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 6px;
-}
-
-.nav-pages .sep {
-  color: #8d8686;
-  font-weight:100;
-  padding: 0 4px;
-}
-
-.news-nav .page.active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.news-nav .page:focus-visible,
-.news-nav .nav-arrow:focus-visible {
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
-  border-radius: 3px;
-  outline: none;
-}
+.news-nav .page.active { text-decoration: underline; text-underline-offset: 4px; }
+.news-nav .page:focus-visible, .news-nav .nav-arrow:focus-visible { box-shadow: 0 0 0 3px rgba(0,0,0,0.08); border-radius: 3px; outline: none; }
 
 /* news list reset */
 .news-list {
@@ -318,7 +284,7 @@ body {
 }
 
 /* each item row: date | body */
-.news-itme {
+.news-item {
   display: grid;
   grid-template-columns: var(--date-width) 1fr;
   gap: var(--gap);
@@ -331,55 +297,24 @@ body {
 }
 
 /* separator line only between rows (full width) */
-.news-itme + .news-itme {
-  border-top: 4px solid var(--border) ;
-}
+.news-item + .news-item { border-top: 4px solid var(--border) ; }
+.news-item-border-top { border-top: 5px solid var(--border); }
+.news-item.news-item-border-bottom { border-bottom: 5px solid var(--border) !important; }
 
-/* optional strong top border when class present */
-.news-itme-border-top {
-  border-top: 5px solid var(--border);
-}
-
-.news-itme.news-itme-border-bottom {
-  border-bottom: 5px solid var(--border) !important;
-}
 /* anchor inside item participates in grid */
-.news-itme > a {
-  display: contents;
-  text-decoration: none;
-  color: inherit;
-}
+.news-item > a { display: contents; text-decoration: none; color: inherit; }
 
 /* date column */
-.news-date {
-margin: 0;
-  color: #444;
-  line-height: 1.4;
-}
+.news-date { margin: 0; color: #444; line-height: 1.4; }
 
 /* body column */
-.news-body {
-  padding-right: 12px;
-  box-sizing: border-box;
-}
+.news-body { padding-right: 12px; box-sizing: border-box; }
 
 /* title */
-.news-title {
-  margin: 0;
-  color: #444;
-  line-height: 1.4;
-  /* font-size: 18px;
-  font-weight: 700;
-  color: #e61c1c;
-  margin: 0 0 6px 0;
-  border: none !important; */
-}
-
+.news-title { margin: 0; color: #444; line-height: 1.4; }
 
 /* hover state for whole row */
-.news-itme:hover {
-  background: var(--bg-hover);
-}
+.news-item:hover { background: var(--bg-hover); }
 
 /* alternate three-column rows when using .news-row */
 .news-row {
@@ -390,107 +325,33 @@ margin: 0;
   padding: 18px 16px;
   color: inherit;
 }
-
-.news-row + .news-row {
-  border-top: 1px solid var(--border);
-}
-
-.news-row:hover {
-  background: var(--bg-hover);
-}
+.news-row + .news-row { border-top: 1px solid var(--border); }
+.news-row:hover { background: var(--bg-hover); }
 
 /* small-screen rules for .news-row */
 @media (max-width: 900px) {
-  .news-row {
-    grid-template-columns: 120px 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .news-short-des {
-    grid-column: 1 / -1;
-    padding-top: 8px;
-  }
+  .news-row { grid-template-columns: 120px 1fr; grid-template-rows: auto auto; }
+  .news-short-des { grid-column: 1 / -1; padding-top: 8px; }
 }
 
 /* responsive: stack date above content on small screens */
 @media (max-width: 700px) {
-  .news-itme,
-  .news-row {
-    grid-template-columns: 1fr;
-  }
-
-  .news-date {
-    margin-bottom: 8px;
-    width: auto;
-  }
-
-  .news-list {
-    padding-top: 20px;
-  }
-
-  .news-nav {
-    position: static;
-    transform: none;
-    margin-bottom: 12px;
-  }
+  .news-item, .news-row { grid-template-columns: 1fr; }
+  .news-date { margin-bottom: 8px; width: auto; }
+  .news-list { padding-top: 20px; }
+  .news-nav { position: static; transform: none; margin-bottom: 12px; }
 }
 
-/* pager styles (cleaned, behavior preserved) */
-.news-heading {
-  margin: 0 0 12px 0;
-  font-size: 22px;
-  color: #333;
-}
-
-.news-pager {
-  display: flex;
-  align-items: left;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.pager-btn {
-  background: transparent;
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  color: var(--accent);
-}
-
-.pager-list {
-  display: flex;
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.pager-item button {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--accent);
-}
-
-.pager-item.active button {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.pager-btn:focus,
-.pager-item button:focus,
-.news-row:focus {
-  outline: 3px solid rgba(55,64,99,0.2);
-  outline-offset: 2px;
-}
+/* pager styles */
+.news-heading { margin: 0 0 12px 0; font-size: 22px; color: #333; }
+.news-pager { display: flex; align-items: left; gap: 12px; margin-bottom: 18px; }
+.pager-btn { background: transparent; border: 1px solid #ccc; padding: 6px 10px; cursor: pointer; border-radius: 4px; color: var(--accent); }
+.pager-list { display: flex; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.pager-item button { background: #fff; border: 1px solid #ddd; padding: 6px 10px; border-radius: 4px; cursor: pointer; color: var(--accent); }
+.pager-item.active button { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pager-btn:focus, .pager-item button:focus, .news-row:focus { outline: 3px solid rgba(55,64,99,0.2); outline-offset: 2px; }
 
 /* 3.2 news article setting */
-/* Support original typo class and the correct class name */
-.news-article,
 .news-article {
   box-sizing: border-box;
   max-width: var(--article-max-width);
@@ -500,9 +361,6 @@ margin: 0;
   display: block;
 }
 
-
-
-/* Date */
 .news-article-date,
 .news-article .news-article-date {
   text-align: left;
@@ -512,19 +370,16 @@ margin: 0;
   margin-bottom: 10px;
 }
 
-/* Title */
 .news-article-title,
 .news-article .news-article-title {
-  /* font-style: italic; */
   font-size: var(--title-size);
   font-weight: 700;
   margin: 0 0 20px 0;
   text-align: center;
 }
 
-/* Content: use normal flow (not flex) so text lines wrap naturally and center block is handled by container */
 .news-article-content,
-.news-article .news-article-contenr {
+.news-article .news-article-content {
   font-size: var(--body-size);
   line-height: var(--line-height);
   color: var(--text-color);
@@ -534,161 +389,105 @@ margin: 0;
   text-align: center;
 }
 
-/* Narrow screens: reduce max-width so content remains readable */
+/* responsive article tweaks */
 @media (max-width: 900px) {
-  :root {
-    --article-max-width: 640px;
-    --title-size: 22px;
-    --body-size: 16px;
-  }
-
-  .news-article,
-  .news-article {
-    padding: 0 14px;
-  }
+  :root { --article-max-width: 640px; --title-size: 22px; --body-size: 16px; }
+  .news-article, .news-article { padding: 0 14px; }
 }
-
-/* Very small screens: full-width with comfortable padding */
 @media (max-width: 480px) {
-  :root {
-    --article-max-width: 100%;
-    --title-size: 20px;
-    --body-size: 15px;
-  }
-
-  .news-article,
-  .news-article {
-    padding: 0 12px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* 4. footer */
-.footer {
-  width: 100%;
-  min-width: var(--min-site-width);
-  height: 320px;
-  background-color: var(--accent);
-  display: block;
-}
-
-.footer-nav {
-  width: 70%;
-  min-width: var(--min-site-width);
-  height: 90px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-.footer-navlist {
-  width: 100%;
-  height: 40px;
-  padding: 0 20px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer-navitem {
-  width: 120px;
-  height: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-navitem > a {
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-logo {
-  width: 50%;
-  min-width: var(--min-site-width);
-  height: 150px;
-  margin: 0 auto;
-  padding: 10px 0 0 0;
-}
-
-.footer-logo-img {
-  width: 150px;
-  height: 150px;
-  margin: auto;
-}
-
-.footer-logo-img > img {
-  width: 150px;
-  height: 150px;
-}
-
-.footer-copyright {
-  width: 50%;
-  min-width: var(--min-site-width);
-  margin: 0 auto;
-  padding-top: 40px;
-}
-
-.footer-copyright-infor {
-  width: 150px;
-  height: 20px;
-  color: #fff;
-  margin: auto;
+  :root { --article-max-width: 100%; --title-size: 20px; --body-size: 15px; }
+  .news-article, .news-article { padding: 0 12px; }
 }
 
 /* responsive adjustments preserved */
 @media (max-width: 1100px) {
-  .header {
-    min-width: unset;
-  }
-
-  .news {
-    min-width: unset;
-    max-width: 95%;
-    padding: 0 12px;
-    margin: 30px auto 60px;
-  }
-
-  .footer-nav,
-  .footer-logo,
-  .footer-copyright {
-    min-width: unset;
-    width: 100%;
-  }
+  .news { min-width: unset; max-width: 95%; padding: 0 12px; margin: 30px auto 60px; }
 }
-
 @media (max-width: 700px) {
-  .header {
-    height: 100px;
-    padding: 12px;
-  }
-
-  .header-Logo > img {
-    width: 72px;
-    height: 72px;
-  }
-
-  .news-date,
-  .news-title {
-    padding: 18px;
-  }
+  .header { height: 100px; padding: 12px; }
+  .header-Logo > img { width: 72px; height: 72px; }
+  .news-date, .news-title { padding: 18px; }
+}
+@media (max-width: 360px) {
+  .news-nav { display: none; }
 }
 
-/* very narrow screens: hide pagination to avoid overlap */
-@media (max-width: 360px) {
-  .news-nav {
-    display: none;
-  }
+
+
+/* footer */
+/* footer.css - responsive footer styles */
+
+.footer {
+width: 100%;
+min-width: 900px;
+height: 320px;
+background-color: #374063;
+display: block;
+}
+
+.footer-nav {
+width: 70%;
+min-width: 900px;
+height: 90px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+}
+
+.footer-navlist {
+width: 100%;
+height: 40px;
+padding: 0 20px 0 20px;
+list-style: none;
+display: flex;
+justify-content: space-between;
+}
+
+.footer-navitem {
+width: 120px;
+height: 100%;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.footer-navitem>a {
+font-size: 16px;
+color: #fff;
+text-decoration: none;
+}
+
+.footer-logo {
+width: 50%;
+min-width: 900px;
+height: 150px;
+margin: 0 auto;
+padding: 10px 0 0 0;
+}
+
+.footer-logo-img {
+width: 150px;
+height: 150px;
+margin: auto;
+}
+
+.footer-logo-img>img {
+width: 150px;
+height: 150px;
+}
+
+.footer-copyright {
+width: 50%;
+min-width: 900px;
+margin: 0 auto;
+padding-top: 40px;
+}
+
+.footer-copyright-infor {
+width: 150px;
+height: 20px;
+color: #fff;
+margin: auto;
+
 }

@@ -29,24 +29,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  font-family: "Quattrocento",
-               "Helvetica Neue",
-               "Helvetica",
-               "Hiragino Sans",
-               "Arial",
-               "Yu Gothic",
-               "Meiryo",
-               sans-serif;
-  font-size: var(--page-font-size);
-  line-height: 1.5;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-
 /* 1. header */
 .header {
   width: 100%;
