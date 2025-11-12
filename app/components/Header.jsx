@@ -3,7 +3,8 @@
 
 import React, { useState } from "react";
 const Logo = "/Logo.png";
-import styles from '../styles/Header.module.css'
+import styles from '../styles/Header.module.css';
+import '../styles/variables.css';
 
 
 export default function Header({ isOnHomepage }) {
@@ -41,7 +42,7 @@ export default function Header({ isOnHomepage }) {
               <a className={styles.headerNavitemLink} href="\news.html">NEWS</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\access">ACCESS</a>
+              <a className={styles.headerNavitemLink} href="/access">ACCESS</a>
             </li>
           </ul>
         </nav>

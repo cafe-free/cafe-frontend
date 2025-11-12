@@ -1,3 +1,12 @@
+@import url('../styles/variables.css');
+
+.access {
+    font-family: var(--font-primary), serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .section {
     display: inline-block;
     background-image: url('../../public/BG01.jpg');
@@ -14,14 +23,18 @@
 .map {
     width: 600px;
     height: 400px;
-    margin: 0 0 0 20px;
+    margin: 0 20px 0 20px;
     background-color: #333;
 }
-.info { margin: auto 0; padding: 0 40px; }
+.info { 
+    margin: auto 0; 
+    padding: 0 10px 0 20px; 
+    height: 400px;
+}
 .font { font-size: 18px; }
-.address { padding: 20px 0; }
+/* .address { padding: 20px 0; }
 .tel { padding: 20px 0; }
-.hours { padding: 20px 0; }
+.hours { padding: 20px 0; } */
 .route { padding: 20px 0; }
 .routeBtn {
     width: 70px;
