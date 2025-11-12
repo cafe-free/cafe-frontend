@@ -1,17 +1,18 @@
-import styles from '../styles/Access.module.css';
-import Access from '../components/Access';
+
+import styles from '../styles/About.module.css';
+import About from '../components/About';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Access',
+  title: 'About',
 };
 
 export default function Page() {
   return (
     <main className={styles.fontPrimary}>
         <Header isOnHomepage={false} />
-        <Access />
+        <About />
         <Footer />
     </main>
   );

@@ -27,19 +27,19 @@ export default function Header({ isOnHomepage }) {
         <nav className={styles.headerNav}>
           <ul className={styles.headerNavlist}>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\">TOP</a>
+              <a className={styles.headerNavitemLink} href="/">TOP</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\about">ABOUT</a>
+              <a className={styles.headerNavitemLink} href="/about">ABOUT</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\menu">MENU</a>
+              <a className={styles.headerNavitemLink} href="/menu">MENU</a>
             </li>
             <li className={styles.headerNavitem}>
               <a className={styles.headerNavitemLink} href="pickup.html">PICK UP</a>
             </li>
             <li className={styles.headerNavitem}>
-              <a className={styles.headerNavitemLink} href="\news.html">NEWS</a>
+              <a className={styles.headerNavitemLink} href="/news.html">NEWS</a>
             </li>
             <li className={styles.headerNavitem}>
               <a className={styles.headerNavitemLink} href="/access">ACCESS</a>
