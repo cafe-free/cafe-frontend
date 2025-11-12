@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/News.module.css';
 import SectionHeader from './SectionHeader.jsx';
+import { newsArticles } from '../../lib/newsData.js';
 
 const dummy = [
 	{ date: '2025.08.31', title: 'TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT' },
@@ -8,6 +9,7 @@ const dummy = [
 	{ date: '2025.08.31', title: 'TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT' },
 	{ date: '2025.08.31', title: 'TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT' }
 ];
+
 
 export default function News() {
 	return (
@@ -17,7 +19,7 @@ export default function News() {
 			</div>
 			<div className={styles.news}>
 				<ul className={styles.list}>
-					{dummy.map((n, i) => (
+					{newsArticles.slice(0, 4).map((n, i) => (
 						<li key={i} className={[styles.item, i === 0 ? styles.itemTop : ''].join(' ')}>
 							<a href="#">
 								<p className={styles.date}>{n.date}</p>
