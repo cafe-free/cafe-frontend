@@ -68,18 +68,17 @@
 /* ========== Header Section ========== */
 .header {
   width: 100%;
-  min-width: 900px;
+  min-width: 100%;
   height: 100px;
-  padding: 20px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* position: absolute; */
   z-index: 3;
 }
 
 .headerLogo {
+  padding-left: 20px;
   width: 75px;
   height: 75px;
   display: flex;
@@ -101,10 +100,15 @@
 }
 
 .headerNavlist {
+  padding-right: 40px;
   width: 650px;
   margin: 12px;
   display: flex;
   justify-content: space-between;
+}
+
+.headerNavitem {
+  list-style-type: none;
 }
 
 .headerNavitem a {
